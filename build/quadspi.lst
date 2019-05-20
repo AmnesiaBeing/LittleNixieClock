@@ -1,0 +1,451 @@
+ARM GAS  /tmp/ccN0s0vc.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"quadspi.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.MX_QUADSPI_Init,"ax",%progbits
+  18              		.align	1
+  19              		.global	MX_QUADSPI_Init
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  23              		.fpu fpv4-sp-d16
+  25              	MX_QUADSPI_Init:
+  26              	.LFB284:
+  27              		.file 1 "HAL/quadspi.c"
+   1:HAL/quadspi.c **** /**
+   2:HAL/quadspi.c ****   ******************************************************************************
+   3:HAL/quadspi.c ****   * File Name          : QUADSPI.c
+   4:HAL/quadspi.c ****   * Description        : This file provides code for the configuration
+   5:HAL/quadspi.c ****   *                      of the QUADSPI instances.
+   6:HAL/quadspi.c ****   ******************************************************************************
+   7:HAL/quadspi.c ****   * @attention
+   8:HAL/quadspi.c ****   *
+   9:HAL/quadspi.c ****   * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
+  10:HAL/quadspi.c ****   * All rights reserved.</center></h2>
+  11:HAL/quadspi.c ****   *
+  12:HAL/quadspi.c ****   * This software component is licensed by ST under BSD 3-Clause license,
+  13:HAL/quadspi.c ****   * the "License"; You may not use this file except in compliance with the
+  14:HAL/quadspi.c ****   * License. You may obtain a copy of the License at:
+  15:HAL/quadspi.c ****   *                        opensource.org/licenses/BSD-3-Clause
+  16:HAL/quadspi.c ****   *
+  17:HAL/quadspi.c ****   ******************************************************************************
+  18:HAL/quadspi.c ****   */
+  19:HAL/quadspi.c **** 
+  20:HAL/quadspi.c **** /* Includes ------------------------------------------------------------------*/
+  21:HAL/quadspi.c **** #include "quadspi.h"
+  22:HAL/quadspi.c **** 
+  23:HAL/quadspi.c **** /* USER CODE BEGIN 0 */
+  24:HAL/quadspi.c **** 
+  25:HAL/quadspi.c **** /* USER CODE END 0 */
+  26:HAL/quadspi.c **** 
+  27:HAL/quadspi.c **** QSPI_HandleTypeDef hqspi;
+  28:HAL/quadspi.c **** 
+  29:HAL/quadspi.c **** /* QUADSPI init function */
+  30:HAL/quadspi.c **** void MX_QUADSPI_Init(void)
+  31:HAL/quadspi.c **** {
+ARM GAS  /tmp/ccN0s0vc.s 			page 2
+
+
+  28              		.loc 1 31 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32 0000 08B5     		push	{r3, lr}
+  33              	.LCFI0:
+  34              		.cfi_def_cfa_offset 8
+  35              		.cfi_offset 3, -8
+  36              		.cfi_offset 14, -4
+  32:HAL/quadspi.c **** 
+  33:HAL/quadspi.c ****   hqspi.Instance = QUADSPI;
+  37              		.loc 1 33 0
+  38 0002 0A48     		ldr	r0, .L5
+  39 0004 0A4B     		ldr	r3, .L5+4
+  40 0006 0360     		str	r3, [r0]
+  34:HAL/quadspi.c ****   hqspi.Init.ClockPrescaler = 255;
+  41              		.loc 1 34 0
+  42 0008 FF23     		movs	r3, #255
+  43 000a 4360     		str	r3, [r0, #4]
+  35:HAL/quadspi.c ****   hqspi.Init.FifoThreshold = 1;
+  44              		.loc 1 35 0
+  45 000c 0122     		movs	r2, #1
+  46 000e 8260     		str	r2, [r0, #8]
+  36:HAL/quadspi.c ****   hqspi.Init.SampleShifting = QSPI_SAMPLE_SHIFTING_NONE;
+  47              		.loc 1 36 0
+  48 0010 0023     		movs	r3, #0
+  49 0012 C360     		str	r3, [r0, #12]
+  37:HAL/quadspi.c ****   hqspi.Init.FlashSize = 1;
+  50              		.loc 1 37 0
+  51 0014 0261     		str	r2, [r0, #16]
+  38:HAL/quadspi.c ****   hqspi.Init.ChipSelectHighTime = QSPI_CS_HIGH_TIME_1_CYCLE;
+  52              		.loc 1 38 0
+  53 0016 4361     		str	r3, [r0, #20]
+  39:HAL/quadspi.c ****   hqspi.Init.ClockMode = QSPI_CLOCK_MODE_0;
+  54              		.loc 1 39 0
+  55 0018 8361     		str	r3, [r0, #24]
+  40:HAL/quadspi.c ****   hqspi.Init.FlashID = QSPI_FLASH_ID_1;
+  56              		.loc 1 40 0
+  57 001a C361     		str	r3, [r0, #28]
+  41:HAL/quadspi.c ****   hqspi.Init.DualFlash = QSPI_DUALFLASH_DISABLE;
+  58              		.loc 1 41 0
+  59 001c 0362     		str	r3, [r0, #32]
+  42:HAL/quadspi.c ****   if (HAL_QSPI_Init(&hqspi) != HAL_OK)
+  60              		.loc 1 42 0
+  61 001e FFF7FEFF 		bl	HAL_QSPI_Init
+  62              	.LVL0:
+  63 0022 00B9     		cbnz	r0, .L4
+  64              	.L1:
+  65 0024 08BD     		pop	{r3, pc}
+  66              	.L4:
+  43:HAL/quadspi.c ****   {
+  44:HAL/quadspi.c ****     Error_Handler();
+  67              		.loc 1 44 0
+  68 0026 FFF7FEFF 		bl	Error_Handler
+  69              	.LVL1:
+  45:HAL/quadspi.c ****   }
+  46:HAL/quadspi.c **** 
+ARM GAS  /tmp/ccN0s0vc.s 			page 3
+
+
+  47:HAL/quadspi.c **** }
+  70              		.loc 1 47 0
+  71 002a FBE7     		b	.L1
+  72              	.L6:
+  73              		.align	2
+  74              	.L5:
+  75 002c 00000000 		.word	hqspi
+  76 0030 001000A0 		.word	-1610608640
+  77              		.cfi_endproc
+  78              	.LFE284:
+  80              		.section	.text.HAL_QSPI_MspInit,"ax",%progbits
+  81              		.align	1
+  82              		.global	HAL_QSPI_MspInit
+  83              		.syntax unified
+  84              		.thumb
+  85              		.thumb_func
+  86              		.fpu fpv4-sp-d16
+  88              	HAL_QSPI_MspInit:
+  89              	.LFB285:
+  48:HAL/quadspi.c **** 
+  49:HAL/quadspi.c **** void HAL_QSPI_MspInit(QSPI_HandleTypeDef* qspiHandle)
+  50:HAL/quadspi.c **** {
+  90              		.loc 1 50 0
+  91              		.cfi_startproc
+  92              		@ args = 0, pretend = 0, frame = 32
+  93              		@ frame_needed = 0, uses_anonymous_args = 0
+  94              	.LVL2:
+  95 0000 70B5     		push	{r4, r5, r6, lr}
+  96              	.LCFI1:
+  97              		.cfi_def_cfa_offset 16
+  98              		.cfi_offset 4, -16
+  99              		.cfi_offset 5, -12
+ 100              		.cfi_offset 6, -8
+ 101              		.cfi_offset 14, -4
+ 102 0002 88B0     		sub	sp, sp, #32
+ 103              	.LCFI2:
+ 104              		.cfi_def_cfa_offset 48
+  51:HAL/quadspi.c **** 
+  52:HAL/quadspi.c ****   GPIO_InitTypeDef GPIO_InitStruct = {0};
+ 105              		.loc 1 52 0
+ 106 0004 0023     		movs	r3, #0
+ 107 0006 0393     		str	r3, [sp, #12]
+ 108 0008 0493     		str	r3, [sp, #16]
+ 109 000a 0593     		str	r3, [sp, #20]
+ 110 000c 0693     		str	r3, [sp, #24]
+ 111 000e 0793     		str	r3, [sp, #28]
+  53:HAL/quadspi.c ****   if(qspiHandle->Instance==QUADSPI)
+ 112              		.loc 1 53 0
+ 113 0010 0268     		ldr	r2, [r0]
+ 114 0012 1F4B     		ldr	r3, .L11
+ 115 0014 9A42     		cmp	r2, r3
+ 116 0016 01D0     		beq	.L10
+ 117              	.LVL3:
+ 118              	.L7:
+  54:HAL/quadspi.c ****   {
+  55:HAL/quadspi.c ****   /* USER CODE BEGIN QUADSPI_MspInit 0 */
+  56:HAL/quadspi.c **** 
+ARM GAS  /tmp/ccN0s0vc.s 			page 4
+
+
+  57:HAL/quadspi.c ****   /* USER CODE END QUADSPI_MspInit 0 */
+  58:HAL/quadspi.c ****     /* QUADSPI clock enable */
+  59:HAL/quadspi.c ****     __HAL_RCC_QSPI_CLK_ENABLE();
+  60:HAL/quadspi.c ****   
+  61:HAL/quadspi.c ****     __HAL_RCC_GPIOA_CLK_ENABLE();
+  62:HAL/quadspi.c ****     __HAL_RCC_GPIOB_CLK_ENABLE();
+  63:HAL/quadspi.c ****     /**QUADSPI GPIO Configuration    
+  64:HAL/quadspi.c ****     PA6     ------> QUADSPI_BK1_IO3
+  65:HAL/quadspi.c ****     PA7     ------> QUADSPI_BK1_IO2
+  66:HAL/quadspi.c ****     PB0     ------> QUADSPI_BK1_IO1
+  67:HAL/quadspi.c ****     PB1     ------> QUADSPI_BK1_IO0
+  68:HAL/quadspi.c ****     PB10     ------> QUADSPI_CLK
+  69:HAL/quadspi.c ****     PB11     ------> QUADSPI_BK1_NCS 
+  70:HAL/quadspi.c ****     */
+  71:HAL/quadspi.c ****     GPIO_InitStruct.Pin = GPIO_PIN_6|GPIO_PIN_7;
+  72:HAL/quadspi.c ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+  73:HAL/quadspi.c ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+  74:HAL/quadspi.c ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+  75:HAL/quadspi.c ****     GPIO_InitStruct.Alternate = GPIO_AF10_QUADSPI;
+  76:HAL/quadspi.c ****     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+  77:HAL/quadspi.c **** 
+  78:HAL/quadspi.c ****     GPIO_InitStruct.Pin = GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_10|GPIO_PIN_11;
+  79:HAL/quadspi.c ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+  80:HAL/quadspi.c ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+  81:HAL/quadspi.c ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+  82:HAL/quadspi.c ****     GPIO_InitStruct.Alternate = GPIO_AF10_QUADSPI;
+  83:HAL/quadspi.c ****     HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+  84:HAL/quadspi.c **** 
+  85:HAL/quadspi.c ****   /* USER CODE BEGIN QUADSPI_MspInit 1 */
+  86:HAL/quadspi.c **** 
+  87:HAL/quadspi.c ****   /* USER CODE END QUADSPI_MspInit 1 */
+  88:HAL/quadspi.c ****   }
+  89:HAL/quadspi.c **** }
+ 119              		.loc 1 89 0
+ 120 0018 08B0     		add	sp, sp, #32
+ 121              	.LCFI3:
+ 122              		.cfi_remember_state
+ 123              		.cfi_def_cfa_offset 16
+ 124              		@ sp needed
+ 125 001a 70BD     		pop	{r4, r5, r6, pc}
+ 126              	.LVL4:
+ 127              	.L10:
+ 128              	.LCFI4:
+ 129              		.cfi_restore_state
+ 130              	.LBB2:
+  59:HAL/quadspi.c ****   
+ 131              		.loc 1 59 0
+ 132 001c 03F12043 		add	r3, r3, #-1610612736
+ 133 0020 03F50033 		add	r3, r3, #131072
+ 134 0024 1A6D     		ldr	r2, [r3, #80]
+ 135 0026 42F48072 		orr	r2, r2, #256
+ 136 002a 1A65     		str	r2, [r3, #80]
+ 137 002c 1A6D     		ldr	r2, [r3, #80]
+ 138 002e 02F48072 		and	r2, r2, #256
+ 139 0032 0092     		str	r2, [sp]
+ 140 0034 009A     		ldr	r2, [sp]
+ 141              	.LBE2:
+ARM GAS  /tmp/ccN0s0vc.s 			page 5
+
+
+ 142              	.LBB3:
+  61:HAL/quadspi.c ****     __HAL_RCC_GPIOB_CLK_ENABLE();
+ 143              		.loc 1 61 0
+ 144 0036 DA6C     		ldr	r2, [r3, #76]
+ 145 0038 42F00102 		orr	r2, r2, #1
+ 146 003c DA64     		str	r2, [r3, #76]
+ 147 003e DA6C     		ldr	r2, [r3, #76]
+ 148 0040 02F00102 		and	r2, r2, #1
+ 149 0044 0192     		str	r2, [sp, #4]
+ 150 0046 019A     		ldr	r2, [sp, #4]
+ 151              	.LBE3:
+ 152              	.LBB4:
+  62:HAL/quadspi.c ****     /**QUADSPI GPIO Configuration    
+ 153              		.loc 1 62 0
+ 154 0048 DA6C     		ldr	r2, [r3, #76]
+ 155 004a 42F00202 		orr	r2, r2, #2
+ 156 004e DA64     		str	r2, [r3, #76]
+ 157 0050 DB6C     		ldr	r3, [r3, #76]
+ 158 0052 03F00203 		and	r3, r3, #2
+ 159 0056 0293     		str	r3, [sp, #8]
+ 160 0058 029B     		ldr	r3, [sp, #8]
+ 161              	.LBE4:
+  71:HAL/quadspi.c ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+ 162              		.loc 1 71 0
+ 163 005a C023     		movs	r3, #192
+ 164 005c 0393     		str	r3, [sp, #12]
+  72:HAL/quadspi.c ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 165              		.loc 1 72 0
+ 166 005e 0226     		movs	r6, #2
+ 167 0060 0496     		str	r6, [sp, #16]
+  74:HAL/quadspi.c ****     GPIO_InitStruct.Alternate = GPIO_AF10_QUADSPI;
+ 168              		.loc 1 74 0
+ 169 0062 0325     		movs	r5, #3
+ 170 0064 0695     		str	r5, [sp, #24]
+  75:HAL/quadspi.c ****     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+ 171              		.loc 1 75 0
+ 172 0066 0A24     		movs	r4, #10
+ 173 0068 0794     		str	r4, [sp, #28]
+  76:HAL/quadspi.c **** 
+ 174              		.loc 1 76 0
+ 175 006a 03A9     		add	r1, sp, #12
+ 176 006c 4FF09040 		mov	r0, #1207959552
+ 177              	.LVL5:
+ 178 0070 FFF7FEFF 		bl	HAL_GPIO_Init
+ 179              	.LVL6:
+  78:HAL/quadspi.c ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+ 180              		.loc 1 78 0
+ 181 0074 40F60343 		movw	r3, #3075
+ 182 0078 0393     		str	r3, [sp, #12]
+  79:HAL/quadspi.c ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 183              		.loc 1 79 0
+ 184 007a 0496     		str	r6, [sp, #16]
+  80:HAL/quadspi.c ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+ 185              		.loc 1 80 0
+ 186 007c 0023     		movs	r3, #0
+ 187 007e 0593     		str	r3, [sp, #20]
+  81:HAL/quadspi.c ****     GPIO_InitStruct.Alternate = GPIO_AF10_QUADSPI;
+ARM GAS  /tmp/ccN0s0vc.s 			page 6
+
+
+ 188              		.loc 1 81 0
+ 189 0080 0695     		str	r5, [sp, #24]
+  82:HAL/quadspi.c ****     HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+ 190              		.loc 1 82 0
+ 191 0082 0794     		str	r4, [sp, #28]
+  83:HAL/quadspi.c **** 
+ 192              		.loc 1 83 0
+ 193 0084 03A9     		add	r1, sp, #12
+ 194 0086 0348     		ldr	r0, .L11+4
+ 195 0088 FFF7FEFF 		bl	HAL_GPIO_Init
+ 196              	.LVL7:
+ 197              		.loc 1 89 0
+ 198 008c C4E7     		b	.L7
+ 199              	.L12:
+ 200 008e 00BF     		.align	2
+ 201              	.L11:
+ 202 0090 001000A0 		.word	-1610608640
+ 203 0094 00040048 		.word	1207960576
+ 204              		.cfi_endproc
+ 205              	.LFE285:
+ 207              		.section	.text.HAL_QSPI_MspDeInit,"ax",%progbits
+ 208              		.align	1
+ 209              		.global	HAL_QSPI_MspDeInit
+ 210              		.syntax unified
+ 211              		.thumb
+ 212              		.thumb_func
+ 213              		.fpu fpv4-sp-d16
+ 215              	HAL_QSPI_MspDeInit:
+ 216              	.LFB286:
+  90:HAL/quadspi.c **** 
+  91:HAL/quadspi.c **** void HAL_QSPI_MspDeInit(QSPI_HandleTypeDef* qspiHandle)
+  92:HAL/quadspi.c **** {
+ 217              		.loc 1 92 0
+ 218              		.cfi_startproc
+ 219              		@ args = 0, pretend = 0, frame = 0
+ 220              		@ frame_needed = 0, uses_anonymous_args = 0
+ 221              	.LVL8:
+ 222 0000 08B5     		push	{r3, lr}
+ 223              	.LCFI5:
+ 224              		.cfi_def_cfa_offset 8
+ 225              		.cfi_offset 3, -8
+ 226              		.cfi_offset 14, -4
+  93:HAL/quadspi.c **** 
+  94:HAL/quadspi.c ****   if(qspiHandle->Instance==QUADSPI)
+ 227              		.loc 1 94 0
+ 228 0002 0268     		ldr	r2, [r0]
+ 229 0004 094B     		ldr	r3, .L17
+ 230 0006 9A42     		cmp	r2, r3
+ 231 0008 00D0     		beq	.L16
+ 232              	.LVL9:
+ 233              	.L13:
+ 234 000a 08BD     		pop	{r3, pc}
+ 235              	.LVL10:
+ 236              	.L16:
+  95:HAL/quadspi.c ****   {
+  96:HAL/quadspi.c ****   /* USER CODE BEGIN QUADSPI_MspDeInit 0 */
+  97:HAL/quadspi.c **** 
+ARM GAS  /tmp/ccN0s0vc.s 			page 7
+
+
+  98:HAL/quadspi.c ****   /* USER CODE END QUADSPI_MspDeInit 0 */
+  99:HAL/quadspi.c ****     /* Peripheral clock disable */
+ 100:HAL/quadspi.c ****     __HAL_RCC_QSPI_CLK_DISABLE();
+ 237              		.loc 1 100 0
+ 238 000c 084A     		ldr	r2, .L17+4
+ 239 000e 136D     		ldr	r3, [r2, #80]
+ 240 0010 23F48073 		bic	r3, r3, #256
+ 241 0014 1365     		str	r3, [r2, #80]
+ 101:HAL/quadspi.c ****   
+ 102:HAL/quadspi.c ****     /**QUADSPI GPIO Configuration    
+ 103:HAL/quadspi.c ****     PA6     ------> QUADSPI_BK1_IO3
+ 104:HAL/quadspi.c ****     PA7     ------> QUADSPI_BK1_IO2
+ 105:HAL/quadspi.c ****     PB0     ------> QUADSPI_BK1_IO1
+ 106:HAL/quadspi.c ****     PB1     ------> QUADSPI_BK1_IO0
+ 107:HAL/quadspi.c ****     PB10     ------> QUADSPI_CLK
+ 108:HAL/quadspi.c ****     PB11     ------> QUADSPI_BK1_NCS 
+ 109:HAL/quadspi.c ****     */
+ 110:HAL/quadspi.c ****     HAL_GPIO_DeInit(GPIOA, GPIO_PIN_6|GPIO_PIN_7);
+ 242              		.loc 1 110 0
+ 243 0016 C021     		movs	r1, #192
+ 244 0018 4FF09040 		mov	r0, #1207959552
+ 245              	.LVL11:
+ 246 001c FFF7FEFF 		bl	HAL_GPIO_DeInit
+ 247              	.LVL12:
+ 111:HAL/quadspi.c **** 
+ 112:HAL/quadspi.c ****     HAL_GPIO_DeInit(GPIOB, GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_10|GPIO_PIN_11);
+ 248              		.loc 1 112 0
+ 249 0020 40F60341 		movw	r1, #3075
+ 250 0024 0348     		ldr	r0, .L17+8
+ 251 0026 FFF7FEFF 		bl	HAL_GPIO_DeInit
+ 252              	.LVL13:
+ 113:HAL/quadspi.c **** 
+ 114:HAL/quadspi.c ****   /* USER CODE BEGIN QUADSPI_MspDeInit 1 */
+ 115:HAL/quadspi.c **** 
+ 116:HAL/quadspi.c ****   /* USER CODE END QUADSPI_MspDeInit 1 */
+ 117:HAL/quadspi.c ****   }
+ 118:HAL/quadspi.c **** } 
+ 253              		.loc 1 118 0
+ 254 002a EEE7     		b	.L13
+ 255              	.L18:
+ 256              		.align	2
+ 257              	.L17:
+ 258 002c 001000A0 		.word	-1610608640
+ 259 0030 00100240 		.word	1073876992
+ 260 0034 00040048 		.word	1207960576
+ 261              		.cfi_endproc
+ 262              	.LFE286:
+ 264              		.comm	hqspi,76,4
+ 265              		.text
+ 266              	.Letext0:
+ 267              		.file 2 "/usr/include/newlib/machine/_default_types.h"
+ 268              		.file 3 "/usr/include/newlib/sys/_stdint.h"
+ 269              		.file 4 "Drivers/CMSIS/Include/core_cm4.h"
+ 270              		.file 5 "Drivers/CMSIS/Device/ST/STM32L4xx/Include/system_stm32l4xx.h"
+ 271              		.file 6 "Drivers/CMSIS/Device/ST/STM32L4xx/Include/stm32l433xx.h"
+ 272              		.file 7 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_def.h"
+ 273              		.file 8 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_gpio.h"
+ARM GAS  /tmp/ccN0s0vc.s 			page 8
+
+
+ 274              		.file 9 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_dma.h"
+ 275              		.file 10 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_flash.h"
+ 276              		.file 11 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_qspi.h"
+ 277              		.file 12 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h"
+ 278              		.file 13 "Inc/quadspi.h"
+ 279              		.file 14 "Inc/main.h"
+ARM GAS  /tmp/ccN0s0vc.s 			page 9
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 quadspi.c
+     /tmp/ccN0s0vc.s:18     .text.MX_QUADSPI_Init:0000000000000000 $t
+     /tmp/ccN0s0vc.s:25     .text.MX_QUADSPI_Init:0000000000000000 MX_QUADSPI_Init
+     /tmp/ccN0s0vc.s:75     .text.MX_QUADSPI_Init:000000000000002c $d
+                            *COM*:000000000000004c hqspi
+     /tmp/ccN0s0vc.s:81     .text.HAL_QSPI_MspInit:0000000000000000 $t
+     /tmp/ccN0s0vc.s:88     .text.HAL_QSPI_MspInit:0000000000000000 HAL_QSPI_MspInit
+     /tmp/ccN0s0vc.s:202    .text.HAL_QSPI_MspInit:0000000000000090 $d
+     /tmp/ccN0s0vc.s:208    .text.HAL_QSPI_MspDeInit:0000000000000000 $t
+     /tmp/ccN0s0vc.s:215    .text.HAL_QSPI_MspDeInit:0000000000000000 HAL_QSPI_MspDeInit
+     /tmp/ccN0s0vc.s:258    .text.HAL_QSPI_MspDeInit:000000000000002c $d
+                     .debug_frame:0000000000000010 $d
+
+UNDEFINED SYMBOLS
+HAL_QSPI_Init
+Error_Handler
+HAL_GPIO_Init
+HAL_GPIO_DeInit

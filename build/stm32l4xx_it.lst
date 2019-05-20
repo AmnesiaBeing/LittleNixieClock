@@ -1,0 +1,490 @@
+ARM GAS  /tmp/cckJSThv.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"stm32l4xx_it.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.NMI_Handler,"ax",%progbits
+  18              		.align	1
+  19              		.global	NMI_Handler
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  23              		.fpu fpv4-sp-d16
+  25              	NMI_Handler:
+  26              	.LFB284:
+  27              		.file 1 "HAL/stm32l4xx_it.c"
+   1:HAL/stm32l4xx_it.c **** /* USER CODE BEGIN Header */
+   2:HAL/stm32l4xx_it.c **** /**
+   3:HAL/stm32l4xx_it.c ****   ******************************************************************************
+   4:HAL/stm32l4xx_it.c ****   * @file    stm32l4xx_it.c
+   5:HAL/stm32l4xx_it.c ****   * @brief   Interrupt Service Routines.
+   6:HAL/stm32l4xx_it.c ****   ******************************************************************************
+   7:HAL/stm32l4xx_it.c ****   * @attention
+   8:HAL/stm32l4xx_it.c ****   *
+   9:HAL/stm32l4xx_it.c ****   * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
+  10:HAL/stm32l4xx_it.c ****   * All rights reserved.</center></h2>
+  11:HAL/stm32l4xx_it.c ****   *
+  12:HAL/stm32l4xx_it.c ****   * This software component is licensed by ST under BSD 3-Clause license,
+  13:HAL/stm32l4xx_it.c ****   * the "License"; You may not use this file except in compliance with the
+  14:HAL/stm32l4xx_it.c ****   * License. You may obtain a copy of the License at:
+  15:HAL/stm32l4xx_it.c ****   *                        opensource.org/licenses/BSD-3-Clause
+  16:HAL/stm32l4xx_it.c ****   *
+  17:HAL/stm32l4xx_it.c ****   ******************************************************************************
+  18:HAL/stm32l4xx_it.c ****   */
+  19:HAL/stm32l4xx_it.c **** /* USER CODE END Header */
+  20:HAL/stm32l4xx_it.c **** 
+  21:HAL/stm32l4xx_it.c **** /* Includes ------------------------------------------------------------------*/
+  22:HAL/stm32l4xx_it.c **** #include "main.h"
+  23:HAL/stm32l4xx_it.c **** #include "stm32l4xx_it.h"
+  24:HAL/stm32l4xx_it.c **** /* Private includes ----------------------------------------------------------*/
+  25:HAL/stm32l4xx_it.c **** /* USER CODE BEGIN Includes */
+  26:HAL/stm32l4xx_it.c **** /* USER CODE END Includes */
+  27:HAL/stm32l4xx_it.c **** 
+  28:HAL/stm32l4xx_it.c **** /* Private typedef -----------------------------------------------------------*/
+  29:HAL/stm32l4xx_it.c **** /* USER CODE BEGIN TD */
+  30:HAL/stm32l4xx_it.c **** 
+  31:HAL/stm32l4xx_it.c **** /* USER CODE END TD */
+ARM GAS  /tmp/cckJSThv.s 			page 2
+
+
+  32:HAL/stm32l4xx_it.c **** 
+  33:HAL/stm32l4xx_it.c **** /* Private define ------------------------------------------------------------*/
+  34:HAL/stm32l4xx_it.c **** /* USER CODE BEGIN PD */
+  35:HAL/stm32l4xx_it.c ****  
+  36:HAL/stm32l4xx_it.c **** /* USER CODE END PD */
+  37:HAL/stm32l4xx_it.c **** 
+  38:HAL/stm32l4xx_it.c **** /* Private macro -------------------------------------------------------------*/
+  39:HAL/stm32l4xx_it.c **** /* USER CODE BEGIN PM */
+  40:HAL/stm32l4xx_it.c **** 
+  41:HAL/stm32l4xx_it.c **** /* USER CODE END PM */
+  42:HAL/stm32l4xx_it.c **** 
+  43:HAL/stm32l4xx_it.c **** /* Private variables ---------------------------------------------------------*/
+  44:HAL/stm32l4xx_it.c **** /* USER CODE BEGIN PV */
+  45:HAL/stm32l4xx_it.c **** 
+  46:HAL/stm32l4xx_it.c **** /* USER CODE END PV */
+  47:HAL/stm32l4xx_it.c **** 
+  48:HAL/stm32l4xx_it.c **** /* Private function prototypes -----------------------------------------------*/
+  49:HAL/stm32l4xx_it.c **** /* USER CODE BEGIN PFP */
+  50:HAL/stm32l4xx_it.c **** 
+  51:HAL/stm32l4xx_it.c **** /* USER CODE END PFP */
+  52:HAL/stm32l4xx_it.c **** 
+  53:HAL/stm32l4xx_it.c **** /* Private user code ---------------------------------------------------------*/
+  54:HAL/stm32l4xx_it.c **** /* USER CODE BEGIN 0 */
+  55:HAL/stm32l4xx_it.c **** 
+  56:HAL/stm32l4xx_it.c **** /* USER CODE END 0 */
+  57:HAL/stm32l4xx_it.c **** 
+  58:HAL/stm32l4xx_it.c **** /* External variables --------------------------------------------------------*/
+  59:HAL/stm32l4xx_it.c **** extern DMA_HandleTypeDef hdma_spi1_tx;
+  60:HAL/stm32l4xx_it.c **** /* USER CODE BEGIN EV */
+  61:HAL/stm32l4xx_it.c **** 
+  62:HAL/stm32l4xx_it.c **** /* USER CODE END EV */
+  63:HAL/stm32l4xx_it.c **** 
+  64:HAL/stm32l4xx_it.c **** /******************************************************************************/
+  65:HAL/stm32l4xx_it.c **** /*           Cortex-M4 Processor Interruption and Exception Handlers          */ 
+  66:HAL/stm32l4xx_it.c **** /******************************************************************************/
+  67:HAL/stm32l4xx_it.c **** /**
+  68:HAL/stm32l4xx_it.c ****   * @brief This function handles Non maskable interrupt.
+  69:HAL/stm32l4xx_it.c ****   */
+  70:HAL/stm32l4xx_it.c **** void NMI_Handler(void)
+  71:HAL/stm32l4xx_it.c **** {
+  28              		.loc 1 71 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		@ link register save eliminated.
+  33 0000 7047     		bx	lr
+  34              		.cfi_endproc
+  35              	.LFE284:
+  37              		.section	.text.HardFault_Handler,"ax",%progbits
+  38              		.align	1
+  39              		.global	HardFault_Handler
+  40              		.syntax unified
+  41              		.thumb
+  42              		.thumb_func
+  43              		.fpu fpv4-sp-d16
+  45              	HardFault_Handler:
+  46              	.LFB285:
+ARM GAS  /tmp/cckJSThv.s 			page 3
+
+
+  72:HAL/stm32l4xx_it.c ****   /* USER CODE BEGIN NonMaskableInt_IRQn 0 */
+  73:HAL/stm32l4xx_it.c **** 
+  74:HAL/stm32l4xx_it.c ****   /* USER CODE END NonMaskableInt_IRQn 0 */
+  75:HAL/stm32l4xx_it.c ****   /* USER CODE BEGIN NonMaskableInt_IRQn 1 */
+  76:HAL/stm32l4xx_it.c **** 
+  77:HAL/stm32l4xx_it.c ****   /* USER CODE END NonMaskableInt_IRQn 1 */
+  78:HAL/stm32l4xx_it.c **** }
+  79:HAL/stm32l4xx_it.c **** 
+  80:HAL/stm32l4xx_it.c **** /**
+  81:HAL/stm32l4xx_it.c ****   * @brief This function handles Hard fault interrupt.
+  82:HAL/stm32l4xx_it.c ****   */
+  83:HAL/stm32l4xx_it.c **** void HardFault_Handler(void)
+  84:HAL/stm32l4xx_it.c **** {
+  47              		.loc 1 84 0
+  48              		.cfi_startproc
+  49              		@ Volatile: function does not return.
+  50              		@ args = 0, pretend = 0, frame = 0
+  51              		@ frame_needed = 0, uses_anonymous_args = 0
+  52              		@ link register save eliminated.
+  53              	.L3:
+  54 0000 FEE7     		b	.L3
+  55              		.cfi_endproc
+  56              	.LFE285:
+  58              		.section	.text.MemManage_Handler,"ax",%progbits
+  59              		.align	1
+  60              		.global	MemManage_Handler
+  61              		.syntax unified
+  62              		.thumb
+  63              		.thumb_func
+  64              		.fpu fpv4-sp-d16
+  66              	MemManage_Handler:
+  67              	.LFB286:
+  85:HAL/stm32l4xx_it.c ****   /* USER CODE BEGIN HardFault_IRQn 0 */
+  86:HAL/stm32l4xx_it.c **** 
+  87:HAL/stm32l4xx_it.c ****   /* USER CODE END HardFault_IRQn 0 */
+  88:HAL/stm32l4xx_it.c ****   while (1)
+  89:HAL/stm32l4xx_it.c ****   {
+  90:HAL/stm32l4xx_it.c ****     /* USER CODE BEGIN W1_HardFault_IRQn 0 */
+  91:HAL/stm32l4xx_it.c ****     /* USER CODE END W1_HardFault_IRQn 0 */
+  92:HAL/stm32l4xx_it.c ****   }
+  93:HAL/stm32l4xx_it.c **** }
+  94:HAL/stm32l4xx_it.c **** 
+  95:HAL/stm32l4xx_it.c **** /**
+  96:HAL/stm32l4xx_it.c ****   * @brief This function handles Memory management fault.
+  97:HAL/stm32l4xx_it.c ****   */
+  98:HAL/stm32l4xx_it.c **** void MemManage_Handler(void)
+  99:HAL/stm32l4xx_it.c **** {
+  68              		.loc 1 99 0
+  69              		.cfi_startproc
+  70              		@ Volatile: function does not return.
+  71              		@ args = 0, pretend = 0, frame = 0
+  72              		@ frame_needed = 0, uses_anonymous_args = 0
+  73              		@ link register save eliminated.
+  74              	.L5:
+  75 0000 FEE7     		b	.L5
+  76              		.cfi_endproc
+  77              	.LFE286:
+ARM GAS  /tmp/cckJSThv.s 			page 4
+
+
+  79              		.section	.text.BusFault_Handler,"ax",%progbits
+  80              		.align	1
+  81              		.global	BusFault_Handler
+  82              		.syntax unified
+  83              		.thumb
+  84              		.thumb_func
+  85              		.fpu fpv4-sp-d16
+  87              	BusFault_Handler:
+  88              	.LFB287:
+ 100:HAL/stm32l4xx_it.c ****   /* USER CODE BEGIN MemoryManagement_IRQn 0 */
+ 101:HAL/stm32l4xx_it.c **** 
+ 102:HAL/stm32l4xx_it.c ****   /* USER CODE END MemoryManagement_IRQn 0 */
+ 103:HAL/stm32l4xx_it.c ****   while (1)
+ 104:HAL/stm32l4xx_it.c ****   {
+ 105:HAL/stm32l4xx_it.c ****     /* USER CODE BEGIN W1_MemoryManagement_IRQn 0 */
+ 106:HAL/stm32l4xx_it.c ****     /* USER CODE END W1_MemoryManagement_IRQn 0 */
+ 107:HAL/stm32l4xx_it.c ****   }
+ 108:HAL/stm32l4xx_it.c **** }
+ 109:HAL/stm32l4xx_it.c **** 
+ 110:HAL/stm32l4xx_it.c **** /**
+ 111:HAL/stm32l4xx_it.c ****   * @brief This function handles Prefetch fault, memory access fault.
+ 112:HAL/stm32l4xx_it.c ****   */
+ 113:HAL/stm32l4xx_it.c **** void BusFault_Handler(void)
+ 114:HAL/stm32l4xx_it.c **** {
+  89              		.loc 1 114 0
+  90              		.cfi_startproc
+  91              		@ Volatile: function does not return.
+  92              		@ args = 0, pretend = 0, frame = 0
+  93              		@ frame_needed = 0, uses_anonymous_args = 0
+  94              		@ link register save eliminated.
+  95              	.L7:
+  96 0000 FEE7     		b	.L7
+  97              		.cfi_endproc
+  98              	.LFE287:
+ 100              		.section	.text.UsageFault_Handler,"ax",%progbits
+ 101              		.align	1
+ 102              		.global	UsageFault_Handler
+ 103              		.syntax unified
+ 104              		.thumb
+ 105              		.thumb_func
+ 106              		.fpu fpv4-sp-d16
+ 108              	UsageFault_Handler:
+ 109              	.LFB288:
+ 115:HAL/stm32l4xx_it.c ****   /* USER CODE BEGIN BusFault_IRQn 0 */
+ 116:HAL/stm32l4xx_it.c **** 
+ 117:HAL/stm32l4xx_it.c ****   /* USER CODE END BusFault_IRQn 0 */
+ 118:HAL/stm32l4xx_it.c ****   while (1)
+ 119:HAL/stm32l4xx_it.c ****   {
+ 120:HAL/stm32l4xx_it.c ****     /* USER CODE BEGIN W1_BusFault_IRQn 0 */
+ 121:HAL/stm32l4xx_it.c ****     /* USER CODE END W1_BusFault_IRQn 0 */
+ 122:HAL/stm32l4xx_it.c ****   }
+ 123:HAL/stm32l4xx_it.c **** }
+ 124:HAL/stm32l4xx_it.c **** 
+ 125:HAL/stm32l4xx_it.c **** /**
+ 126:HAL/stm32l4xx_it.c ****   * @brief This function handles Undefined instruction or illegal state.
+ 127:HAL/stm32l4xx_it.c ****   */
+ 128:HAL/stm32l4xx_it.c **** void UsageFault_Handler(void)
+ARM GAS  /tmp/cckJSThv.s 			page 5
+
+
+ 129:HAL/stm32l4xx_it.c **** {
+ 110              		.loc 1 129 0
+ 111              		.cfi_startproc
+ 112              		@ Volatile: function does not return.
+ 113              		@ args = 0, pretend = 0, frame = 0
+ 114              		@ frame_needed = 0, uses_anonymous_args = 0
+ 115              		@ link register save eliminated.
+ 116              	.L9:
+ 117 0000 FEE7     		b	.L9
+ 118              		.cfi_endproc
+ 119              	.LFE288:
+ 121              		.section	.text.SVC_Handler,"ax",%progbits
+ 122              		.align	1
+ 123              		.global	SVC_Handler
+ 124              		.syntax unified
+ 125              		.thumb
+ 126              		.thumb_func
+ 127              		.fpu fpv4-sp-d16
+ 129              	SVC_Handler:
+ 130              	.LFB289:
+ 130:HAL/stm32l4xx_it.c ****   /* USER CODE BEGIN UsageFault_IRQn 0 */
+ 131:HAL/stm32l4xx_it.c **** 
+ 132:HAL/stm32l4xx_it.c ****   /* USER CODE END UsageFault_IRQn 0 */
+ 133:HAL/stm32l4xx_it.c ****   while (1)
+ 134:HAL/stm32l4xx_it.c ****   {
+ 135:HAL/stm32l4xx_it.c ****     /* USER CODE BEGIN W1_UsageFault_IRQn 0 */
+ 136:HAL/stm32l4xx_it.c ****     /* USER CODE END W1_UsageFault_IRQn 0 */
+ 137:HAL/stm32l4xx_it.c ****   }
+ 138:HAL/stm32l4xx_it.c **** }
+ 139:HAL/stm32l4xx_it.c **** 
+ 140:HAL/stm32l4xx_it.c **** /**
+ 141:HAL/stm32l4xx_it.c ****   * @brief This function handles System service call via SWI instruction.
+ 142:HAL/stm32l4xx_it.c ****   */
+ 143:HAL/stm32l4xx_it.c **** void SVC_Handler(void)
+ 144:HAL/stm32l4xx_it.c **** {
+ 131              		.loc 1 144 0
+ 132              		.cfi_startproc
+ 133              		@ args = 0, pretend = 0, frame = 0
+ 134              		@ frame_needed = 0, uses_anonymous_args = 0
+ 135              		@ link register save eliminated.
+ 136 0000 7047     		bx	lr
+ 137              		.cfi_endproc
+ 138              	.LFE289:
+ 140              		.section	.text.DebugMon_Handler,"ax",%progbits
+ 141              		.align	1
+ 142              		.global	DebugMon_Handler
+ 143              		.syntax unified
+ 144              		.thumb
+ 145              		.thumb_func
+ 146              		.fpu fpv4-sp-d16
+ 148              	DebugMon_Handler:
+ 149              	.LFB290:
+ 145:HAL/stm32l4xx_it.c ****   /* USER CODE BEGIN SVCall_IRQn 0 */
+ 146:HAL/stm32l4xx_it.c **** 
+ 147:HAL/stm32l4xx_it.c ****   /* USER CODE END SVCall_IRQn 0 */
+ 148:HAL/stm32l4xx_it.c ****   /* USER CODE BEGIN SVCall_IRQn 1 */
+ 149:HAL/stm32l4xx_it.c **** 
+ARM GAS  /tmp/cckJSThv.s 			page 6
+
+
+ 150:HAL/stm32l4xx_it.c ****   /* USER CODE END SVCall_IRQn 1 */
+ 151:HAL/stm32l4xx_it.c **** }
+ 152:HAL/stm32l4xx_it.c **** 
+ 153:HAL/stm32l4xx_it.c **** /**
+ 154:HAL/stm32l4xx_it.c ****   * @brief This function handles Debug monitor.
+ 155:HAL/stm32l4xx_it.c ****   */
+ 156:HAL/stm32l4xx_it.c **** void DebugMon_Handler(void)
+ 157:HAL/stm32l4xx_it.c **** {
+ 150              		.loc 1 157 0
+ 151              		.cfi_startproc
+ 152              		@ args = 0, pretend = 0, frame = 0
+ 153              		@ frame_needed = 0, uses_anonymous_args = 0
+ 154              		@ link register save eliminated.
+ 155 0000 7047     		bx	lr
+ 156              		.cfi_endproc
+ 157              	.LFE290:
+ 159              		.section	.text.PendSV_Handler,"ax",%progbits
+ 160              		.align	1
+ 161              		.global	PendSV_Handler
+ 162              		.syntax unified
+ 163              		.thumb
+ 164              		.thumb_func
+ 165              		.fpu fpv4-sp-d16
+ 167              	PendSV_Handler:
+ 168              	.LFB291:
+ 158:HAL/stm32l4xx_it.c ****   /* USER CODE BEGIN DebugMonitor_IRQn 0 */
+ 159:HAL/stm32l4xx_it.c **** 
+ 160:HAL/stm32l4xx_it.c ****   /* USER CODE END DebugMonitor_IRQn 0 */
+ 161:HAL/stm32l4xx_it.c ****   /* USER CODE BEGIN DebugMonitor_IRQn 1 */
+ 162:HAL/stm32l4xx_it.c **** 
+ 163:HAL/stm32l4xx_it.c ****   /* USER CODE END DebugMonitor_IRQn 1 */
+ 164:HAL/stm32l4xx_it.c **** }
+ 165:HAL/stm32l4xx_it.c **** 
+ 166:HAL/stm32l4xx_it.c **** /**
+ 167:HAL/stm32l4xx_it.c ****   * @brief This function handles Pendable request for system service.
+ 168:HAL/stm32l4xx_it.c ****   */
+ 169:HAL/stm32l4xx_it.c **** void PendSV_Handler(void)
+ 170:HAL/stm32l4xx_it.c **** {
+ 169              		.loc 1 170 0
+ 170              		.cfi_startproc
+ 171              		@ args = 0, pretend = 0, frame = 0
+ 172              		@ frame_needed = 0, uses_anonymous_args = 0
+ 173              		@ link register save eliminated.
+ 174 0000 7047     		bx	lr
+ 175              		.cfi_endproc
+ 176              	.LFE291:
+ 178              		.section	.text.SysTick_Handler,"ax",%progbits
+ 179              		.align	1
+ 180              		.global	SysTick_Handler
+ 181              		.syntax unified
+ 182              		.thumb
+ 183              		.thumb_func
+ 184              		.fpu fpv4-sp-d16
+ 186              	SysTick_Handler:
+ 187              	.LFB292:
+ 171:HAL/stm32l4xx_it.c ****   /* USER CODE BEGIN PendSV_IRQn 0 */
+ 172:HAL/stm32l4xx_it.c **** 
+ARM GAS  /tmp/cckJSThv.s 			page 7
+
+
+ 173:HAL/stm32l4xx_it.c ****   /* USER CODE END PendSV_IRQn 0 */
+ 174:HAL/stm32l4xx_it.c ****   /* USER CODE BEGIN PendSV_IRQn 1 */
+ 175:HAL/stm32l4xx_it.c **** 
+ 176:HAL/stm32l4xx_it.c ****   /* USER CODE END PendSV_IRQn 1 */
+ 177:HAL/stm32l4xx_it.c **** }
+ 178:HAL/stm32l4xx_it.c **** 
+ 179:HAL/stm32l4xx_it.c **** /**
+ 180:HAL/stm32l4xx_it.c ****   * @brief This function handles System tick timer.
+ 181:HAL/stm32l4xx_it.c ****   */
+ 182:HAL/stm32l4xx_it.c **** void SysTick_Handler(void)
+ 183:HAL/stm32l4xx_it.c **** {
+ 188              		.loc 1 183 0
+ 189              		.cfi_startproc
+ 190              		@ args = 0, pretend = 0, frame = 0
+ 191              		@ frame_needed = 0, uses_anonymous_args = 0
+ 192              		.loc 1 183 0
+ 193 0000 08B5     		push	{r3, lr}
+ 194              	.LCFI0:
+ 195              		.cfi_def_cfa_offset 8
+ 196              		.cfi_offset 3, -8
+ 197              		.cfi_offset 14, -4
+ 184:HAL/stm32l4xx_it.c ****   /* USER CODE BEGIN SysTick_IRQn 0 */
+ 185:HAL/stm32l4xx_it.c **** 
+ 186:HAL/stm32l4xx_it.c ****   /* USER CODE END SysTick_IRQn 0 */
+ 187:HAL/stm32l4xx_it.c ****   HAL_IncTick();
+ 198              		.loc 1 187 0
+ 199 0002 FFF7FEFF 		bl	HAL_IncTick
+ 200              	.LVL0:
+ 201 0006 08BD     		pop	{r3, pc}
+ 202              		.cfi_endproc
+ 203              	.LFE292:
+ 205              		.section	.text.DMA1_Channel3_IRQHandler,"ax",%progbits
+ 206              		.align	1
+ 207              		.global	DMA1_Channel3_IRQHandler
+ 208              		.syntax unified
+ 209              		.thumb
+ 210              		.thumb_func
+ 211              		.fpu fpv4-sp-d16
+ 213              	DMA1_Channel3_IRQHandler:
+ 214              	.LFB293:
+ 188:HAL/stm32l4xx_it.c ****   /* USER CODE BEGIN SysTick_IRQn 1 */
+ 189:HAL/stm32l4xx_it.c **** 
+ 190:HAL/stm32l4xx_it.c ****   /* USER CODE END SysTick_IRQn 1 */
+ 191:HAL/stm32l4xx_it.c **** }
+ 192:HAL/stm32l4xx_it.c **** 
+ 193:HAL/stm32l4xx_it.c **** /******************************************************************************/
+ 194:HAL/stm32l4xx_it.c **** /* STM32L4xx Peripheral Interrupt Handlers                                    */
+ 195:HAL/stm32l4xx_it.c **** /* Add here the Interrupt Handlers for the used peripherals.                  */
+ 196:HAL/stm32l4xx_it.c **** /* For the available peripheral interrupt handler names,                      */
+ 197:HAL/stm32l4xx_it.c **** /* please refer to the startup file (startup_stm32l4xx.s).                    */
+ 198:HAL/stm32l4xx_it.c **** /******************************************************************************/
+ 199:HAL/stm32l4xx_it.c **** 
+ 200:HAL/stm32l4xx_it.c **** /**
+ 201:HAL/stm32l4xx_it.c ****   * @brief This function handles DMA1 channel3 global interrupt.
+ 202:HAL/stm32l4xx_it.c ****   */
+ 203:HAL/stm32l4xx_it.c **** void DMA1_Channel3_IRQHandler(void)
+ 204:HAL/stm32l4xx_it.c **** {
+ARM GAS  /tmp/cckJSThv.s 			page 8
+
+
+ 215              		.loc 1 204 0
+ 216              		.cfi_startproc
+ 217              		@ args = 0, pretend = 0, frame = 0
+ 218              		@ frame_needed = 0, uses_anonymous_args = 0
+ 219 0000 08B5     		push	{r3, lr}
+ 220              	.LCFI1:
+ 221              		.cfi_def_cfa_offset 8
+ 222              		.cfi_offset 3, -8
+ 223              		.cfi_offset 14, -4
+ 205:HAL/stm32l4xx_it.c ****   /* USER CODE BEGIN DMA1_Channel3_IRQn 0 */
+ 206:HAL/stm32l4xx_it.c **** 
+ 207:HAL/stm32l4xx_it.c ****   /* USER CODE END DMA1_Channel3_IRQn 0 */
+ 208:HAL/stm32l4xx_it.c ****   HAL_DMA_IRQHandler(&hdma_spi1_tx);
+ 224              		.loc 1 208 0
+ 225 0002 0248     		ldr	r0, .L17
+ 226 0004 FFF7FEFF 		bl	HAL_DMA_IRQHandler
+ 227              	.LVL1:
+ 228 0008 08BD     		pop	{r3, pc}
+ 229              	.L18:
+ 230 000a 00BF     		.align	2
+ 231              	.L17:
+ 232 000c 00000000 		.word	hdma_spi1_tx
+ 233              		.cfi_endproc
+ 234              	.LFE293:
+ 236              		.text
+ 237              	.Letext0:
+ 238              		.file 2 "/usr/include/newlib/machine/_default_types.h"
+ 239              		.file 3 "/usr/include/newlib/sys/_stdint.h"
+ 240              		.file 4 "Drivers/CMSIS/Include/core_cm4.h"
+ 241              		.file 5 "Drivers/CMSIS/Device/ST/STM32L4xx/Include/system_stm32l4xx.h"
+ 242              		.file 6 "Drivers/CMSIS/Device/ST/STM32L4xx/Include/stm32l433xx.h"
+ 243              		.file 7 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_def.h"
+ 244              		.file 8 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_dma.h"
+ 245              		.file 9 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_flash.h"
+ 246              		.file 10 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h"
+ARM GAS  /tmp/cckJSThv.s 			page 9
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 stm32l4xx_it.c
+     /tmp/cckJSThv.s:18     .text.NMI_Handler:0000000000000000 $t
+     /tmp/cckJSThv.s:25     .text.NMI_Handler:0000000000000000 NMI_Handler
+     /tmp/cckJSThv.s:38     .text.HardFault_Handler:0000000000000000 $t
+     /tmp/cckJSThv.s:45     .text.HardFault_Handler:0000000000000000 HardFault_Handler
+     /tmp/cckJSThv.s:59     .text.MemManage_Handler:0000000000000000 $t
+     /tmp/cckJSThv.s:66     .text.MemManage_Handler:0000000000000000 MemManage_Handler
+     /tmp/cckJSThv.s:80     .text.BusFault_Handler:0000000000000000 $t
+     /tmp/cckJSThv.s:87     .text.BusFault_Handler:0000000000000000 BusFault_Handler
+     /tmp/cckJSThv.s:101    .text.UsageFault_Handler:0000000000000000 $t
+     /tmp/cckJSThv.s:108    .text.UsageFault_Handler:0000000000000000 UsageFault_Handler
+     /tmp/cckJSThv.s:122    .text.SVC_Handler:0000000000000000 $t
+     /tmp/cckJSThv.s:129    .text.SVC_Handler:0000000000000000 SVC_Handler
+     /tmp/cckJSThv.s:141    .text.DebugMon_Handler:0000000000000000 $t
+     /tmp/cckJSThv.s:148    .text.DebugMon_Handler:0000000000000000 DebugMon_Handler
+     /tmp/cckJSThv.s:160    .text.PendSV_Handler:0000000000000000 $t
+     /tmp/cckJSThv.s:167    .text.PendSV_Handler:0000000000000000 PendSV_Handler
+     /tmp/cckJSThv.s:179    .text.SysTick_Handler:0000000000000000 $t
+     /tmp/cckJSThv.s:186    .text.SysTick_Handler:0000000000000000 SysTick_Handler
+     /tmp/cckJSThv.s:206    .text.DMA1_Channel3_IRQHandler:0000000000000000 $t
+     /tmp/cckJSThv.s:213    .text.DMA1_Channel3_IRQHandler:0000000000000000 DMA1_Channel3_IRQHandler
+     /tmp/cckJSThv.s:232    .text.DMA1_Channel3_IRQHandler:000000000000000c $d
+                     .debug_frame:0000000000000010 $d
+
+UNDEFINED SYMBOLS
+HAL_IncTick
+HAL_DMA_IRQHandler
+hdma_spi1_tx

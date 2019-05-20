@@ -1,0 +1,127 @@
+ARM GAS  /tmp/ccXqsszZ.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"dma.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.MX_DMA_Init,"ax",%progbits
+  18              		.align	1
+  19              		.global	MX_DMA_Init
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  23              		.fpu fpv4-sp-d16
+  25              	MX_DMA_Init:
+  26              	.LFB284:
+  27              		.file 1 "HAL/dma.c"
+   1:HAL/dma.c     **** /**
+   2:HAL/dma.c     ****   ******************************************************************************
+   3:HAL/dma.c     ****   * File Name          : dma.c
+   4:HAL/dma.c     ****   * Description        : This file provides code for the configuration
+   5:HAL/dma.c     ****   *                      of all the requested memory to memory DMA transfers.
+   6:HAL/dma.c     ****   ******************************************************************************
+   7:HAL/dma.c     ****   * @attention
+   8:HAL/dma.c     ****   *
+   9:HAL/dma.c     ****   * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
+  10:HAL/dma.c     ****   * All rights reserved.</center></h2>
+  11:HAL/dma.c     ****   *
+  12:HAL/dma.c     ****   * This software component is licensed by ST under BSD 3-Clause license,
+  13:HAL/dma.c     ****   * the "License"; You may not use this file except in compliance with the
+  14:HAL/dma.c     ****   * License. You may obtain a copy of the License at:
+  15:HAL/dma.c     ****   *                        opensource.org/licenses/BSD-3-Clause
+  16:HAL/dma.c     ****   *
+  17:HAL/dma.c     ****   ******************************************************************************
+  18:HAL/dma.c     ****   */
+  19:HAL/dma.c     **** /* Includes ------------------------------------------------------------------*/
+  20:HAL/dma.c     **** #include "dma.h"
+  21:HAL/dma.c     **** 
+  22:HAL/dma.c     **** /* USER CODE BEGIN 0 */
+  23:HAL/dma.c     **** 
+  24:HAL/dma.c     **** /* USER CODE END 0 */
+  25:HAL/dma.c     **** 
+  26:HAL/dma.c     **** /*----------------------------------------------------------------------------*/
+  27:HAL/dma.c     **** /* Configure DMA                                                              */
+  28:HAL/dma.c     **** /*----------------------------------------------------------------------------*/
+  29:HAL/dma.c     **** 
+  30:HAL/dma.c     **** /* USER CODE BEGIN 1 */
+  31:HAL/dma.c     **** 
+ARM GAS  /tmp/ccXqsszZ.s 			page 2
+
+
+  32:HAL/dma.c     **** /* USER CODE END 1 */
+  33:HAL/dma.c     **** 
+  34:HAL/dma.c     **** /** 
+  35:HAL/dma.c     ****   * Enable DMA controller clock
+  36:HAL/dma.c     ****   */
+  37:HAL/dma.c     **** void MX_DMA_Init(void) 
+  38:HAL/dma.c     **** {
+  28              		.loc 1 38 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 8
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		@ link register save eliminated.
+  33 0000 82B0     		sub	sp, sp, #8
+  34              	.LCFI0:
+  35              		.cfi_def_cfa_offset 8
+  36              	.LBB2:
+  39:HAL/dma.c     ****   /* DMA controller clock enable */
+  40:HAL/dma.c     ****   __HAL_RCC_DMA1_CLK_ENABLE();
+  37              		.loc 1 40 0
+  38 0002 064B     		ldr	r3, .L3
+  39 0004 9A6C     		ldr	r2, [r3, #72]
+  40 0006 42F00102 		orr	r2, r2, #1
+  41 000a 9A64     		str	r2, [r3, #72]
+  42 000c 9B6C     		ldr	r3, [r3, #72]
+  43 000e 03F00103 		and	r3, r3, #1
+  44 0012 0193     		str	r3, [sp, #4]
+  45 0014 019B     		ldr	r3, [sp, #4]
+  46              	.LBE2:
+  41:HAL/dma.c     **** 
+  42:HAL/dma.c     **** 
+  43:HAL/dma.c     **** }
+  47              		.loc 1 43 0
+  48 0016 02B0     		add	sp, sp, #8
+  49              	.LCFI1:
+  50              		.cfi_def_cfa_offset 0
+  51              		@ sp needed
+  52 0018 7047     		bx	lr
+  53              	.L4:
+  54 001a 00BF     		.align	2
+  55              	.L3:
+  56 001c 00100240 		.word	1073876992
+  57              		.cfi_endproc
+  58              	.LFE284:
+  60              		.text
+  61              	.Letext0:
+  62              		.file 2 "/usr/include/newlib/machine/_default_types.h"
+  63              		.file 3 "/usr/include/newlib/sys/_stdint.h"
+  64              		.file 4 "Drivers/CMSIS/Include/core_cm4.h"
+  65              		.file 5 "Drivers/CMSIS/Device/ST/STM32L4xx/Include/system_stm32l4xx.h"
+  66              		.file 6 "Drivers/CMSIS/Device/ST/STM32L4xx/Include/stm32l433xx.h"
+  67              		.file 7 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_def.h"
+  68              		.file 8 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_flash.h"
+  69              		.file 9 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h"
+ARM GAS  /tmp/ccXqsszZ.s 			page 3
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 dma.c
+     /tmp/ccXqsszZ.s:18     .text.MX_DMA_Init:0000000000000000 $t
+     /tmp/ccXqsszZ.s:25     .text.MX_DMA_Init:0000000000000000 MX_DMA_Init
+     /tmp/ccXqsszZ.s:56     .text.MX_DMA_Init:000000000000001c $d
+                     .debug_frame:0000000000000010 $d
+
+NO UNDEFINED SYMBOLS
