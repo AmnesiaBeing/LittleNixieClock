@@ -4,5 +4,5 @@ ehthumbs.db
 Desktop.ini
 
 # Project:
-build
-.vscode
+build/
+.vscode/ipch/

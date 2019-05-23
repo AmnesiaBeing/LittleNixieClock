@@ -13,7 +13,7 @@
 ######################################
 # target
 ######################################
-TARGET = LittleNixieAndHisTime
+TARGET = LittleNixieClock
 
 
 ######################################
@@ -75,7 +75,8 @@ HAL/tim.c \
 HAL/usart.c \
 HAL/dma.c \
 main.c \
-FUN/Debug.c
+FUN/Debug.c \
+FUN/RGBLED.c
 
 # ASM sources
 ASM_SOURCES =  \
