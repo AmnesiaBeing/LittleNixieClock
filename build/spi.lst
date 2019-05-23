@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccsMmKdw.s 			page 1
+ARM GAS  /tmp/cc1T072v.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccsMmKdw.s 			page 1
   29:HAL/spi.c     **** 
   30:HAL/spi.c     **** /* SPI1 init function */
   31:HAL/spi.c     **** void MX_SPI1_Init(void)
-ARM GAS  /tmp/ccsMmKdw.s 			page 2
+ARM GAS  /tmp/cc1T072v.s 			page 2
 
 
   32:HAL/spi.c     **** {
@@ -118,7 +118,7 @@ ARM GAS  /tmp/ccsMmKdw.s 			page 1
   46:HAL/spi.c     ****   hspi1.Init.CRCLength = SPI_CRC_LENGTH_DATASIZE;
   68              		.loc 1 46 0
   69 002e 0363     		str	r3, [r0, #48]
-ARM GAS  /tmp/ccsMmKdw.s 			page 3
+ARM GAS  /tmp/cc1T072v.s 			page 3
 
 
   47:HAL/spi.c     ****   hspi1.Init.NSSPMode = SPI_NSS_PULSE_ENABLE;
@@ -178,7 +178,7 @@ ARM GAS  /tmp/ccsMmKdw.s 			page 1
   57:HAL/spi.c     **** 
   58:HAL/spi.c     ****   GPIO_InitTypeDef GPIO_InitStruct = {0};
  116              		.loc 1 58 0
-ARM GAS  /tmp/ccsMmKdw.s 			page 4
+ARM GAS  /tmp/cc1T072v.s 			page 4
 
 
  117 0004 0023     		movs	r3, #0
@@ -238,7 +238,7 @@ ARM GAS  /tmp/ccsMmKdw.s 			page 1
  100:HAL/spi.c     ****   }
  101:HAL/spi.c     **** }
  130              		.loc 1 101 0
-ARM GAS  /tmp/ccsMmKdw.s 			page 5
+ARM GAS  /tmp/cc1T072v.s 			page 5
 
 
  131 0018 08B0     		add	sp, sp, #32
@@ -298,7 +298,7 @@ ARM GAS  /tmp/ccsMmKdw.s 			page 1
  178              	.LVL5:
  179 005a FFF7FEFF 		bl	HAL_GPIO_Init
  180              	.LVL6:
-ARM GAS  /tmp/ccsMmKdw.s 			page 6
+ARM GAS  /tmp/cc1T072v.s 			page 6
 
 
   81:HAL/spi.c     ****     hdma_spi1_tx.Init.Request = DMA_REQUEST_1;
@@ -358,7 +358,7 @@ ARM GAS  /tmp/ccsMmKdw.s 			page 1
  223              	.L13:
  224 0090 00300140 		.word	1073819648
  225 0094 00040048 		.word	1207960576
-ARM GAS  /tmp/ccsMmKdw.s 			page 7
+ARM GAS  /tmp/cc1T072v.s 			page 7
 
 
  226 0098 00000000 		.word	hdma_spi1_tx
@@ -418,7 +418,7 @@ ARM GAS  /tmp/ccsMmKdw.s 			page 1
  118:HAL/spi.c     ****     HAL_GPIO_DeInit(GPIOB, GPIO_PIN_3|GPIO_PIN_5);
  265              		.loc 1 118 0
  266 0018 2821     		movs	r1, #40
-ARM GAS  /tmp/ccsMmKdw.s 			page 8
+ARM GAS  /tmp/cc1T072v.s 			page 8
 
 
  267 001a 0548     		ldr	r0, .L22+8
@@ -459,22 +459,22 @@ ARM GAS  /tmp/ccsMmKdw.s 			page 1
  300              		.file 12 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h"
  301              		.file 13 "Inc/spi.h"
  302              		.file 14 "Inc/main.h"
-ARM GAS  /tmp/ccsMmKdw.s 			page 9
+ARM GAS  /tmp/cc1T072v.s 			page 9
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 spi.c
-     /tmp/ccsMmKdw.s:18     .text.MX_SPI1_Init:0000000000000000 $t
-     /tmp/ccsMmKdw.s:25     .text.MX_SPI1_Init:0000000000000000 MX_SPI1_Init
-     /tmp/ccsMmKdw.s:88     .text.MX_SPI1_Init:0000000000000044 $d
+     /tmp/cc1T072v.s:18     .text.MX_SPI1_Init:0000000000000000 $t
+     /tmp/cc1T072v.s:25     .text.MX_SPI1_Init:0000000000000000 MX_SPI1_Init
+     /tmp/cc1T072v.s:88     .text.MX_SPI1_Init:0000000000000044 $d
                             *COM*:0000000000000064 hspi1
-     /tmp/ccsMmKdw.s:94     .text.HAL_SPI_MspInit:0000000000000000 $t
-     /tmp/ccsMmKdw.s:101    .text.HAL_SPI_MspInit:0000000000000000 HAL_SPI_MspInit
-     /tmp/ccsMmKdw.s:224    .text.HAL_SPI_MspInit:0000000000000090 $d
+     /tmp/cc1T072v.s:94     .text.HAL_SPI_MspInit:0000000000000000 $t
+     /tmp/cc1T072v.s:101    .text.HAL_SPI_MspInit:0000000000000000 HAL_SPI_MspInit
+     /tmp/cc1T072v.s:224    .text.HAL_SPI_MspInit:0000000000000090 $d
                             *COM*:0000000000000048 hdma_spi1_tx
-     /tmp/ccsMmKdw.s:232    .text.HAL_SPI_MspDeInit:0000000000000000 $t
-     /tmp/ccsMmKdw.s:239    .text.HAL_SPI_MspDeInit:0000000000000000 HAL_SPI_MspDeInit
-     /tmp/ccsMmKdw.s:280    .text.HAL_SPI_MspDeInit:0000000000000028 $d
+     /tmp/cc1T072v.s:232    .text.HAL_SPI_MspDeInit:0000000000000000 $t
+     /tmp/cc1T072v.s:239    .text.HAL_SPI_MspDeInit:0000000000000000 HAL_SPI_MspDeInit
+     /tmp/cc1T072v.s:280    .text.HAL_SPI_MspDeInit:0000000000000028 $d
                      .debug_frame:0000000000000010 $d
 
 UNDEFINED SYMBOLS

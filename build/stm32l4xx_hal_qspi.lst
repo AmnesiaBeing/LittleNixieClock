@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccn9FJY7.s 			page 1
+ARM GAS  /tmp/cche4iIe.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
   30:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****         (++) If interrupt mode is used, enable and configure QuadSPI global
   31:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****             interrupt with HAL_NVIC_SetPriority() and HAL_NVIC_EnableIRQ().
   32:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****         (++) If DMA mode is used, enable the clocks for the QuadSPI DMA channel
-ARM GAS  /tmp/ccn9FJY7.s 			page 2
+ARM GAS  /tmp/cche4iIe.s 			page 2
 
 
   33:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****             with __HAL_RCC_DMAx_CLK_ENABLE(), configure DMA with HAL_DMA_Init(),
@@ -118,7 +118,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
   87:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****       (#) After the configuration :
   88:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****          (++) In polling mode, the output of the function is done when the status match is reached.
   89:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****              automatic stop is activated to avoid an infinite loop.
-ARM GAS  /tmp/ccn9FJY7.s 			page 3
+ARM GAS  /tmp/cche4iIe.s 			page 3
 
 
   90:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****          (++) In interrupt mode, HAL_QSPI_StatusMatchCallback() will be called each time the status
@@ -178,7 +178,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  144:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****         (+) RxHalfCpltCallback : callback when half of the reception transfer is completed.
  145:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****         (+) TxHalfCpltCallback : callback when half of the transmission transfer is completed.
  146:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****         (+) StatusMatchCallback : callback when a status match occurs.
-ARM GAS  /tmp/ccn9FJY7.s 			page 4
+ARM GAS  /tmp/cche4iIe.s 			page 4
 
 
  147:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****         (+) TimeOutCallback : callback when the timeout perioed expires.
@@ -238,7 +238,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  201:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****   *
  202:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****   * This software component is licensed by ST under BSD 3-Clause license,
  203:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****   * the "License"; You may not use this file except in compliance with the
-ARM GAS  /tmp/ccn9FJY7.s 			page 5
+ARM GAS  /tmp/cche4iIe.s 			page 5
 
 
  204:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****   * License. You may obtain a copy of the License at:
@@ -298,7 +298,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  258:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c **** static void QSPI_DMAError(DMA_HandleTypeDef *hdma);
  259:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c **** static void QSPI_DMAAbortCplt(DMA_HandleTypeDef *hdma);
  260:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c **** static HAL_StatusTypeDef QSPI_WaitFlagStateUntilTimeout(QSPI_HandleTypeDef *hqspi, uint32_t Flag, F
-ARM GAS  /tmp/ccn9FJY7.s 			page 6
+ARM GAS  /tmp/cche4iIe.s 			page 6
 
 
  261:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c **** static void QSPI_Config(QSPI_HandleTypeDef *hqspi, QSPI_CommandTypeDef *cmd, uint32_t FunctionalMod
@@ -358,7 +358,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  315:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****     assert_param(IS_QSPI_FLASH_ID(hqspi->Init.FlashID));
  316:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****   }
  317:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c **** #endif
-ARM GAS  /tmp/ccn9FJY7.s 			page 7
+ARM GAS  /tmp/cche4iIe.s 			page 7
 
 
  318:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c **** 
@@ -418,7 +418,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  372:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****                ((hqspi->Init.ClockPrescaler << QUADSPI_CR_PRESCALER_Pos) |
  373:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****                 hqspi->Init.SampleShifting));
  374:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c **** #endif
-ARM GAS  /tmp/ccn9FJY7.s 			page 8
+ARM GAS  /tmp/cche4iIe.s 			page 8
 
 
  375:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c **** 
@@ -478,7 +478,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  429:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c **** 
  430:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****   /* Set QSPI error code to none */
  431:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****   hqspi->ErrorCode = HAL_QSPI_ERROR_NONE;
-ARM GAS  /tmp/ccn9FJY7.s 			page 9
+ARM GAS  /tmp/cche4iIe.s 			page 9
 
 
  432:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c **** 
@@ -538,7 +538,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  486:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****       (+) Handle the command sequence.
  487:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****       (+) Transmit data in blocking, interrupt or DMA mode.
  488:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****       (+) Receive data in blocking, interrupt or DMA mode.
-ARM GAS  /tmp/ccn9FJY7.s 			page 10
+ARM GAS  /tmp/cche4iIe.s 			page 10
 
 
  489:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****       (+) Manage the auto-polling functional mode.
@@ -598,7 +598,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  543:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****           hqspi->RxXferCount--;
  544:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****         }
  545:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****         else
-ARM GAS  /tmp/ccn9FJY7.s 			page 11
+ARM GAS  /tmp/cche4iIe.s 			page 11
 
 
  546:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****         {
@@ -658,7 +658,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  600:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****       HAL_QSPI_TxCpltCallback(hqspi);
  601:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c **** #endif
  602:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****     }
-ARM GAS  /tmp/ccn9FJY7.s 			page 12
+ARM GAS  /tmp/cche4iIe.s 			page 12
 
 
  603:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****     else if(hqspi->State == HAL_QSPI_STATE_BUSY_INDIRECT_RX)
@@ -718,7 +718,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  657:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****       HAL_QSPI_CmdCpltCallback(hqspi);
  658:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c **** #endif
  659:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****     }
-ARM GAS  /tmp/ccn9FJY7.s 			page 13
+ARM GAS  /tmp/cche4iIe.s 			page 13
 
 
  660:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****     else if(hqspi->State == HAL_QSPI_STATE_ABORT)
@@ -778,7 +778,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  714:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c **** #if (USE_HAL_QSPI_REGISTER_CALLBACKS == 1)
  715:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****     hqspi->StatusMatchCallback(hqspi);
  716:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c **** #else
-ARM GAS  /tmp/ccn9FJY7.s 			page 14
+ARM GAS  /tmp/cche4iIe.s 			page 14
 
 
  717:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****     HAL_QSPI_StatusMatchCallback(hqspi);
@@ -838,7 +838,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  771:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****   else if(((flag & QSPI_FLAG_TO) != 0U) && ((itsource & QSPI_IT_TO) != 0U))
  772:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****   {
  773:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****     /* Clear interrupt */
-ARM GAS  /tmp/ccn9FJY7.s 			page 15
+ARM GAS  /tmp/cche4iIe.s 			page 15
 
 
  774:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****     WRITE_REG(hqspi->Instance->FCR, QSPI_FLAG_TO);
@@ -898,7 +898,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  828:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c **** 
  829:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****   /* Process locked */
  830:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****   __HAL_LOCK(hqspi);
-ARM GAS  /tmp/ccn9FJY7.s 			page 16
+ARM GAS  /tmp/cche4iIe.s 			page 16
 
 
  831:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c **** 
@@ -958,7 +958,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  885:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****   * @retval HAL status
  886:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****   */
  887:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c **** HAL_StatusTypeDef HAL_QSPI_Command_IT(QSPI_HandleTypeDef *hqspi, QSPI_CommandTypeDef *cmd)
-ARM GAS  /tmp/ccn9FJY7.s 			page 17
+ARM GAS  /tmp/cche4iIe.s 			page 17
 
 
  888:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c **** {
@@ -1018,7 +1018,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  942:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****       if (cmd->DataMode == QSPI_DATA_NONE)
  943:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****       {
  944:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****         /* When there is no data phase, the transfer start as soon as the configuration is done
-ARM GAS  /tmp/ccn9FJY7.s 			page 18
+ARM GAS  /tmp/cche4iIe.s 			page 18
 
 
  945:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****         so activate TC and TE interrupts */
@@ -1078,7 +1078,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  999:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c **** 
 1000:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****     if(pData != NULL )
 1001:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****     {
-ARM GAS  /tmp/ccn9FJY7.s 			page 19
+ARM GAS  /tmp/cche4iIe.s 			page 19
 
 
 1002:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****       /* Update state */
@@ -1138,7 +1138,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
 1056:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****     status = HAL_BUSY;
 1057:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****   }
 1058:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c **** 
-ARM GAS  /tmp/ccn9FJY7.s 			page 20
+ARM GAS  /tmp/cche4iIe.s 			page 20
 
 
 1059:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****   /* Process unlocked */
@@ -1198,7 +1198,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
 1113:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c **** 
 1114:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****         *hqspi->pRxBuffPtr = *((__IO uint8_t *)data_reg);
 1115:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****         hqspi->pRxBuffPtr++;
-ARM GAS  /tmp/ccn9FJY7.s 			page 21
+ARM GAS  /tmp/cche4iIe.s 			page 21
 
 
 1116:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****         hqspi->RxXferCount--;
@@ -1258,7 +1258,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
 1170:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****   if(hqspi->State == HAL_QSPI_STATE_READY)
 1171:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****   {
 1172:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****     hqspi->ErrorCode = HAL_QSPI_ERROR_NONE;
-ARM GAS  /tmp/ccn9FJY7.s 			page 22
+ARM GAS  /tmp/cche4iIe.s 			page 22
 
 
 1173:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c **** 
@@ -1318,7 +1318,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
 1227:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c **** 
 1228:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****   /* Process locked */
 1229:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****   __HAL_LOCK(hqspi);
-ARM GAS  /tmp/ccn9FJY7.s 			page 23
+ARM GAS  /tmp/cche4iIe.s 			page 23
 
 
 1230:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c **** 
@@ -1378,7 +1378,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
 1284:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****   * @note   This function is used only in Indirect Write Mode
 1285:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****   * @note   If DMA peripheral access is configured as halfword, the number
 1286:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****   *         of data and the fifo threshold should be aligned on halfword
-ARM GAS  /tmp/ccn9FJY7.s 			page 24
+ARM GAS  /tmp/cche4iIe.s 			page 24
 
 
 1287:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****   * @note   If DMA peripheral access is configured as word, the number
@@ -1438,7 +1438,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
 1341:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****         {
 1342:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****           hqspi->TxXferCount = (data_size >> 2U);
 1343:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****         }
-ARM GAS  /tmp/ccn9FJY7.s 			page 25
+ARM GAS  /tmp/cche4iIe.s 			page 25
 
 
 1344:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****       }
@@ -1498,7 +1498,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
 1398:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c **** 
 1399:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****           /* Process unlocked */
 1400:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****           __HAL_UNLOCK(hqspi);
-ARM GAS  /tmp/ccn9FJY7.s 			page 26
+ARM GAS  /tmp/cche4iIe.s 			page 26
 
 
 1401:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****         }
@@ -1558,7 +1558,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
 1455:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****       }
 1456:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****       else if (hqspi->hdma->Init.PeriphDataAlignment == DMA_PDATAALIGN_HALFWORD)
 1457:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****       {
-ARM GAS  /tmp/ccn9FJY7.s 			page 27
+ARM GAS  /tmp/cche4iIe.s 			page 27
 
 
 1458:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****         if (((data_size % 2U) != 0U) || ((hqspi->Init.FifoThreshold % 2U) != 0U))
@@ -1618,7 +1618,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
 1512:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c **** 
 1513:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****         /* Set the DMA error callback */
 1514:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****         hqspi->hdma->XferErrorCallback = QSPI_DMAError;
-ARM GAS  /tmp/ccn9FJY7.s 			page 28
+ARM GAS  /tmp/cche4iIe.s 			page 28
 
 
 1515:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c **** 
@@ -1678,7 +1678,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
 1569:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****   return status;
 1570:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c **** }
 1571:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c **** 
-ARM GAS  /tmp/ccn9FJY7.s 			page 29
+ARM GAS  /tmp/cche4iIe.s 			page 29
 
 
 1572:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c **** /**
@@ -1738,7 +1738,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
 1626:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****     /* Wait till BUSY flag reset */
 1627:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****     status = QSPI_WaitFlagStateUntilTimeout(hqspi, QSPI_FLAG_BUSY, RESET, tickstart, Timeout);
 1628:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c **** 
-ARM GAS  /tmp/ccn9FJY7.s 			page 30
+ARM GAS  /tmp/cche4iIe.s 			page 30
 
 
 1629:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****     if (status == HAL_OK)
@@ -1798,7 +1798,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
 1683:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****   HAL_StatusTypeDef status;
 1684:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****   uint32_t tickstart = HAL_GetTick();
 1685:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c **** 
-ARM GAS  /tmp/ccn9FJY7.s 			page 31
+ARM GAS  /tmp/cche4iIe.s 			page 31
 
 
 1686:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****   /* Check the parameters */
@@ -1858,7 +1858,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
 1740:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c **** 
 1741:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****       /* Configure QSPI: CR register with Match mode and Automatic stop mode */
 1742:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****       MODIFY_REG(hqspi->Instance->CR, (QUADSPI_CR_PMM | QUADSPI_CR_APMS),
-ARM GAS  /tmp/ccn9FJY7.s 			page 32
+ARM GAS  /tmp/cche4iIe.s 			page 32
 
 
 1743:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****                (cfg->MatchMode | cfg->AutomaticStop));
@@ -1918,7 +1918,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
 1797:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****   assert_param(IS_QSPI_ADDRESS_MODE(cmd->AddressMode));
 1798:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****   if (cmd->AddressMode != QSPI_ADDRESS_NONE)
 1799:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****   {
-ARM GAS  /tmp/ccn9FJY7.s 			page 33
+ARM GAS  /tmp/cche4iIe.s 			page 33
 
 
 1800:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****     assert_param(IS_QSPI_ADDRESS_SIZE(cmd->AddressSize));
@@ -1978,7 +1978,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
 1854:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****   else
 1855:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****   {
 1856:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****     status = HAL_BUSY;
-ARM GAS  /tmp/ccn9FJY7.s 			page 34
+ARM GAS  /tmp/cche4iIe.s 			page 34
 
 
 1857:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****   }
@@ -2038,7 +2038,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
 1911:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c **** /**
 1912:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****   * @brief  Rx Transfer completed callback.
 1913:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****   * @param  hqspi : QSPI handle
-ARM GAS  /tmp/ccn9FJY7.s 			page 35
+ARM GAS  /tmp/cche4iIe.s 			page 35
 
 
 1914:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****   * @retval None
@@ -2098,7 +2098,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
 1968:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****    */
 1969:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c **** }
 1970:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c **** 
-ARM GAS  /tmp/ccn9FJY7.s 			page 36
+ARM GAS  /tmp/cche4iIe.s 			page 36
 
 
 1971:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c **** /**
@@ -2158,7 +2158,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
 2025:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****   *          @arg @ref HAL_QSPI_CMD_CPLT_CB_ID       QSPI Command Complete Callback ID
 2026:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****   *          @arg @ref HAL_QSPI_RX_CPLT_CB_ID        QSPI Rx Complete Callback ID
 2027:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****   *          @arg @ref HAL_QSPI_TX_CPLT_CB_ID        QSPI Tx Complete Callback ID
-ARM GAS  /tmp/ccn9FJY7.s 			page 37
+ARM GAS  /tmp/cche4iIe.s 			page 37
 
 
 2028:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****   *          @arg @ref HAL_QSPI_RX_HALF_CPLT_CB_ID   QSPI Rx Half Complete Callback ID
@@ -2218,7 +2218,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
 2082:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****     case HAL_QSPI_TIMEOUT_CB_ID :
 2083:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****       hqspi->TimeOutCallback = pCallback;
 2084:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****       break;
-ARM GAS  /tmp/ccn9FJY7.s 			page 38
+ARM GAS  /tmp/cche4iIe.s 			page 38
 
 
 2085:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****     case HAL_QSPI_MSP_INIT_CB_ID :
@@ -2278,7 +2278,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
 2139:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****   *          @arg @ref HAL_QSPI_CMD_CPLT_CB_ID       QSPI Command Complete Callback ID
 2140:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****   *          @arg @ref HAL_QSPI_RX_CPLT_CB_ID        QSPI Rx Complete Callback ID
 2141:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****   *          @arg @ref HAL_QSPI_TX_CPLT_CB_ID        QSPI Tx Complete Callback ID
-ARM GAS  /tmp/ccn9FJY7.s 			page 39
+ARM GAS  /tmp/cche4iIe.s 			page 39
 
 
 2142:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****   *          @arg @ref HAL_QSPI_RX_HALF_CPLT_CB_ID   QSPI Rx Half Complete Callback ID
@@ -2338,7 +2338,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
 2196:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****       break;
 2197:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****     default :
 2198:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****       /* Update the error code */
-ARM GAS  /tmp/ccn9FJY7.s 			page 40
+ARM GAS  /tmp/cche4iIe.s 			page 40
 
 
 2199:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****       hqspi->ErrorCode |= HAL_QSPI_ERROR_INVALID_CALLBACK;
@@ -2398,7 +2398,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
 2253:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c **** 
 2254:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c **** 
 2255:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c **** @endverbatim
-ARM GAS  /tmp/ccn9FJY7.s 			page 41
+ARM GAS  /tmp/cche4iIe.s 			page 41
 
 
 2256:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****   * @{
@@ -2458,7 +2458,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
 2310:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****     SET_BIT(hqspi->Instance->CR, QUADSPI_CR_ABORT);
 2311:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c **** 
 2312:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****     /* Wait until TC flag is set to go back in idle state */
-ARM GAS  /tmp/ccn9FJY7.s 			page 42
+ARM GAS  /tmp/cche4iIe.s 			page 42
 
 
 2313:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****     status = QSPI_WaitFlagStateUntilTimeout(hqspi, QSPI_FLAG_TC, SET, tickstart, hqspi->Timeout);
@@ -2518,7 +2518,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
 2367:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****         hqspi->State = HAL_QSPI_STATE_READY;
 2368:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****         
 2369:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****         /* Abort Complete callback */
-ARM GAS  /tmp/ccn9FJY7.s 			page 43
+ARM GAS  /tmp/cche4iIe.s 			page 43
 
 
 2370:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c **** #if (USE_HAL_QSPI_REGISTER_CALLBACKS == 1)
@@ -2578,7 +2578,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
 2424:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****   {
 2425:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****     status = HAL_BUSY;
 2426:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****   }
-ARM GAS  /tmp/ccn9FJY7.s 			page 44
+ARM GAS  /tmp/cche4iIe.s 			page 44
 
 
 2427:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c **** 
@@ -2638,7 +2638,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
 2481:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c **** 
 2482:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c **** #endif
 2483:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c **** /**
-ARM GAS  /tmp/ccn9FJY7.s 			page 45
+ARM GAS  /tmp/cche4iIe.s 			page 45
 
 
 2484:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****   * @}
@@ -2698,7 +2698,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
 2509:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c **** /**
 2510:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****   * @brief  DMA QSPI transmit process complete callback.
 2511:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****   * @param  hdma : DMA handle
-ARM GAS  /tmp/ccn9FJY7.s 			page 46
+ARM GAS  /tmp/cche4iIe.s 			page 46
 
 
 2512:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****   * @retval None
@@ -2758,7 +2758,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
 2537:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c **** }
 2538:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c **** 
 2539:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c **** /**
-ARM GAS  /tmp/ccn9FJY7.s 			page 47
+ARM GAS  /tmp/cche4iIe.s 			page 47
 
 
 2540:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****   * @brief  DMA QSPI transmit process half complete callback.
@@ -2818,7 +2818,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
 2594:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****     /* Enable the QSPI Transfer Complete Interrupt */
 2595:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****     __HAL_QSPI_ENABLE_IT(hqspi, QSPI_IT_TC);
 2596:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c **** 
-ARM GAS  /tmp/ccn9FJY7.s 			page 48
+ARM GAS  /tmp/cche4iIe.s 			page 48
 
 
 2597:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****     /* Configure QSPI: CR register with Abort request */
@@ -2878,7 +2878,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  111 000e 2B68     		ldr	r3, [r5]
  112 0010 9B68     		ldr	r3, [r3, #8]
  113 0012 3B42     		tst	r3, r7
-ARM GAS  /tmp/ccn9FJY7.s 			page 49
+ARM GAS  /tmp/cche4iIe.s 			page 49
 
 
  114 0014 14BF     		ite	ne
@@ -2938,7 +2938,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  154              		.thumb
  155              		.thumb_func
  156              		.fpu fpv4-sp-d16
-ARM GAS  /tmp/ccn9FJY7.s 			page 50
+ARM GAS  /tmp/cche4iIe.s 			page 50
 
 
  158              	QSPI_Config:
@@ -2998,7 +2998,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  196              	.LVL13:
  197              	.L12:
 2660:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c **** 
-ARM GAS  /tmp/ccn9FJY7.s 			page 51
+ARM GAS  /tmp/cche4iIe.s 			page 51
 
 
 2661:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****   if ((cmd->DataMode != QSPI_DATA_NONE) && (FunctionalMode != QSPI_FUNCTIONAL_MODE_MEMORY_MAPPED))
@@ -3058,7 +3058,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  234 0060 6069     		ldr	r0, [r4, #20]
  235 0062 43EA8043 		orr	r3, r3, r0, lsl #18
  236 0066 2069     		ldr	r0, [r4, #16]
-ARM GAS  /tmp/ccn9FJY7.s 			page 52
+ARM GAS  /tmp/cche4iIe.s 			page 52
 
 
  237 0068 0343     		orrs	r3, r3, r0
@@ -3118,7 +3118,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
 2712:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****         if (FunctionalMode != QSPI_FUNCTIONAL_MODE_MEMORY_MAPPED)
 2713:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****         {
 2714:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****           /* Configure QSPI: AR register with address value */
-ARM GAS  /tmp/ccn9FJY7.s 			page 53
+ARM GAS  /tmp/cche4iIe.s 			page 53
 
 
 2715:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****           WRITE_REG(hqspi->Instance->AR, cmd->Address);
@@ -3178,7 +3178,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
 2769:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****                                          cmd->DataMode | (cmd->DummyCycles << QUADSPI_CCR_DCYC_Pos)
 2770:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****                                          cmd->AlternateByteMode | cmd->AddressSize |
 2771:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****                                          cmd->AddressMode | cmd->InstructionMode | FunctionalMode))
-ARM GAS  /tmp/ccn9FJY7.s 			page 54
+ARM GAS  /tmp/cche4iIe.s 			page 54
 
 
 2772:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c **** 
@@ -3238,7 +3238,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  289 00b8 1D43     		orrs	r5, r5, r3
  290              	.LVL16:
  291 00ba 5561     		str	r5, [r2, #20]
-ARM GAS  /tmp/ccn9FJY7.s 			page 55
+ARM GAS  /tmp/cche4iIe.s 			page 55
 
 
  292 00bc E6E7     		b	.L11
@@ -3298,7 +3298,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  341 0112 3B43     		orrs	r3, r3, r7
  342 0114 0343     		orrs	r3, r3, r0
  343 0116 0B43     		orrs	r3, r3, r1
-ARM GAS  /tmp/ccn9FJY7.s 			page 56
+ARM GAS  /tmp/cche4iIe.s 			page 56
 
 
  344 0118 2168     		ldr	r1, [r4]
@@ -3358,7 +3358,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  392 016a 8FE7     		b	.L11
  393              	.L20:
 2756:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****                                          cmd->DataMode | (cmd->DummyCycles << QUADSPI_CCR_DCYC_Pos)
-ARM GAS  /tmp/ccn9FJY7.s 			page 57
+ARM GAS  /tmp/cche4iIe.s 			page 57
 
 
  394              		.loc 1 2756 0
@@ -3418,7 +3418,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  444 01c8 6268     		ldr	r2, [r4, #4]
  445 01ca 9A61     		str	r2, [r3, #24]
  446 01cc 5EE7     		b	.L11
-ARM GAS  /tmp/ccn9FJY7.s 			page 58
+ARM GAS  /tmp/cche4iIe.s 			page 58
 
 
  447              	.L21:
@@ -3478,7 +3478,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  501              		.syntax unified
  502              		.thumb
  503              		.thumb_func
-ARM GAS  /tmp/ccn9FJY7.s 			page 59
+ARM GAS  /tmp/cche4iIe.s 			page 59
 
 
  504              		.fpu fpv4-sp-d16
@@ -3538,7 +3538,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  554 0014 0123     		movs	r3, #1
  555 0016 80F84030 		strb	r3, [r0, #64]
  415:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c **** 
-ARM GAS  /tmp/ccn9FJY7.s 			page 60
+ARM GAS  /tmp/cche4iIe.s 			page 60
 
 
  556              		.loc 1 415 0 discriminator 2
@@ -3598,7 +3598,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  605              		.cfi_offset 5, -20
  606              		.cfi_offset 6, -16
  607              		.cfi_offset 7, -12
-ARM GAS  /tmp/ccn9FJY7.s 			page 61
+ARM GAS  /tmp/cche4iIe.s 			page 61
 
 
  608              		.cfi_offset 8, -8
@@ -3658,7 +3658,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  652 0042 B3F5806F 		cmp	r3, #1024
  653 0046 0AD0     		beq	.L39
  810:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****   if (cmd->AddressMode != QSPI_ADDRESS_NONE)
-ARM GAS  /tmp/ccn9FJY7.s 			page 62
+ARM GAS  /tmp/cche4iIe.s 			page 62
 
 
  654              		.loc 1 810 0 discriminator 2
@@ -3718,7 +3718,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  696              		.loc 1 816 0 discriminator 3
  697 0092 B3F5404F 		cmp	r3, #49152
  698 0096 04D0     		beq	.L41
-ARM GAS  /tmp/ccn9FJY7.s 			page 63
+ARM GAS  /tmp/cche4iIe.s 			page 63
 
 
  816:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****   if (cmd->AlternateByteMode != QSPI_ALTERNATE_BYTES_NONE)
@@ -3778,7 +3778,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  741 00dc B3F1407F 		cmp	r3, #50331648
  742 00e0 04D0     		beq	.L44
  823:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c **** 
-ARM GAS  /tmp/ccn9FJY7.s 			page 64
+ARM GAS  /tmp/cche4iIe.s 			page 64
 
 
  743              		.loc 1 823 0 discriminator 4
@@ -3838,7 +3838,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  787 012c DBB2     		uxtb	r3, r3
  788 012e 012B     		cmp	r3, #1
  789 0130 46D0     		beq	.L51
-ARM GAS  /tmp/ccn9FJY7.s 			page 65
+ARM GAS  /tmp/cche4iIe.s 			page 65
 
 
  830:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c **** 
@@ -3898,7 +3898,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  837:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c **** 
  836              		.loc 1 837 0
  837 0170 0223     		movs	r3, #2
-ARM GAS  /tmp/ccn9FJY7.s 			page 66
+ARM GAS  /tmp/cche4iIe.s 			page 66
 
 
  838 0172 85F84130 		strb	r3, [r5, #65]
@@ -3958,7 +3958,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  883 01ba 85F84130 		strb	r3, [r5, #65]
  884 01be C2E7     		b	.L49
  885              	.LVL55:
-ARM GAS  /tmp/ccn9FJY7.s 			page 67
+ARM GAS  /tmp/cche4iIe.s 			page 67
 
 
  886              	.L51:
@@ -4018,7 +4018,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  936 0018 B3F5007F 		cmp	r3, #512
  937 001c 07D0     		beq	.L61
  893:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****   if (cmd->InstructionMode != QSPI_INSTRUCTION_NONE)
-ARM GAS  /tmp/ccn9FJY7.s 			page 68
+ARM GAS  /tmp/cche4iIe.s 			page 68
 
 
  938              		.loc 1 893 0 discriminator 3
@@ -4078,7 +4078,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  981 0062 B3F5805F 		cmp	r3, #4096
  982 0066 0AD0     		beq	.L64
  902:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****   }
-ARM GAS  /tmp/ccn9FJY7.s 			page 69
+ARM GAS  /tmp/cche4iIe.s 			page 69
 
 
  983              		.loc 1 902 0 discriminator 2
@@ -4138,7 +4138,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  1025              		.loc 1 908 0 discriminator 3
  1026 00b2 B3F5403F 		cmp	r3, #196608
  1027 00b6 04D0     		beq	.L66
-ARM GAS  /tmp/ccn9FJY7.s 			page 70
+ARM GAS  /tmp/cche4iIe.s 			page 70
 
 
  908:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****   }
@@ -4198,7 +4198,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  1071 00fe 3BB1     		cbz	r3, .L70
  915:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****   assert_param(IS_QSPI_SIOO_MODE(cmd->SIOOMode));
  1072              		.loc 1 915 0 is_stmt 0 discriminator 1
-ARM GAS  /tmp/ccn9FJY7.s 			page 71
+ARM GAS  /tmp/cche4iIe.s 			page 71
 
 
  1073 0100 B3F1804F 		cmp	r3, #1073741824
@@ -4258,7 +4258,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  1117              	.LCFI13:
  1118              		.cfi_remember_state
  1119              		.cfi_def_cfa_offset 16
-ARM GAS  /tmp/ccn9FJY7.s 			page 72
+ARM GAS  /tmp/cche4iIe.s 			page 72
 
 
  1120              		@ sp needed
@@ -4318,7 +4318,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  940:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c **** 
  1166              		.loc 1 940 0
  1167 018a 0022     		movs	r2, #0
-ARM GAS  /tmp/ccn9FJY7.s 			page 73
+ARM GAS  /tmp/cche4iIe.s 			page 73
 
 
  1168 018c 2146     		mov	r1, r4
@@ -4378,7 +4378,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  1216              		.thumb_func
  1217              		.fpu fpv4-sp-d16
  1219              	HAL_QSPI_Transmit:
-ARM GAS  /tmp/ccn9FJY7.s 			page 74
+ARM GAS  /tmp/cche4iIe.s 			page 74
 
 
  1220              	.LFB291:
@@ -4438,7 +4438,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  1266              		.loc 1 1060 0
  1267 0030 0023     		movs	r3, #0
  1268 0032 84F84030 		strb	r3, [r4, #64]
-ARM GAS  /tmp/ccn9FJY7.s 			page 75
+ARM GAS  /tmp/cche4iIe.s 			page 75
 
 
  1269              	.LVL86:
@@ -4498,7 +4498,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
 1016:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c **** 
  1313              		.loc 1 1016 0
  1314 006c 0097     		str	r7, [sp]
-ARM GAS  /tmp/ccn9FJY7.s 			page 76
+ARM GAS  /tmp/cche4iIe.s 			page 76
 
 
  1315 006e 3346     		mov	r3, r6
@@ -4558,7 +4558,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  1361 00b0 F1D1     		bne	.L91
 1036:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c **** 
  1362              		.loc 1 1036 0
-ARM GAS  /tmp/ccn9FJY7.s 			page 77
+ARM GAS  /tmp/cche4iIe.s 			page 77
 
 
  1363 00b2 2368     		ldr	r3, [r4]
@@ -4618,7 +4618,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  1415              	.LVL99:
 1077:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****   uint32_t addr_reg = READ_REG(hqspi->Instance->AR);
  1416              		.loc 1 1077 0
-ARM GAS  /tmp/ccn9FJY7.s 			page 78
+ARM GAS  /tmp/cche4iIe.s 			page 78
 
 
  1417 000c FFF7FEFF 		bl	HAL_GetTick
@@ -4678,7 +4678,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  1462 0044 B8F1000F 		cmp	r8, #0
  1463 0048 3CD0     		beq	.L100
 1091:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c **** 
-ARM GAS  /tmp/ccn9FJY7.s 			page 79
+ARM GAS  /tmp/cche4iIe.s 			page 79
 
 
  1464              		.loc 1 1091 0
@@ -4738,7 +4738,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
 1115:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****         hqspi->RxXferCount--;
  1508              		.loc 1 1115 0
  1509 0090 236B     		ldr	r3, [r4, #48]
-ARM GAS  /tmp/ccn9FJY7.s 			page 80
+ARM GAS  /tmp/cche4iIe.s 			page 80
 
 
  1510 0092 0133     		adds	r3, r3, #1
@@ -4798,7 +4798,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  1556 00ce B0E7     		b	.L99
  1557              	.LVL115:
  1558              	.L105:
-ARM GAS  /tmp/ccn9FJY7.s 			page 81
+ARM GAS  /tmp/cche4iIe.s 			page 81
 
 
 1082:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c **** 
@@ -4858,7 +4858,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  1607 0026 4364     		str	r3, [r0, #68]
 1174:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****     {
  1608              		.loc 1 1174 0
-ARM GAS  /tmp/ccn9FJY7.s 			page 82
+ARM GAS  /tmp/cche4iIe.s 			page 82
 
 
  1609 0028 D9B1     		cbz	r1, .L113
@@ -4918,7 +4918,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  1652              		.loc 1 1202 0
  1653 006a 0023     		movs	r3, #0
  1654 006c 80F84030 		strb	r3, [r0, #64]
-ARM GAS  /tmp/ccn9FJY7.s 			page 83
+ARM GAS  /tmp/cche4iIe.s 			page 83
 
 
 1199:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c **** 
@@ -4978,7 +4978,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  1703 0016 90F84130 		ldrb	r3, [r0, #65]	@ zero_extendqisi2
  1704 001a DBB2     		uxtb	r3, r3
  1705 001c 012B     		cmp	r3, #1
-ARM GAS  /tmp/ccn9FJY7.s 			page 84
+ARM GAS  /tmp/cche4iIe.s 			page 84
 
 
  1706 001e 06D0     		beq	.L122
@@ -5038,7 +5038,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  1749 004c 0268     		ldr	r2, [r0]
  1750 004e 5369     		ldr	r3, [r2, #20]
  1751 0050 23F04063 		bic	r3, r3, #201326592
-ARM GAS  /tmp/ccn9FJY7.s 			page 85
+ARM GAS  /tmp/cche4iIe.s 			page 85
 
 
  1752 0054 43F08063 		orr	r3, r3, #67108864
@@ -5098,7 +5098,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  1799              		.fpu fpv4-sp-d16
  1801              	HAL_QSPI_Transmit_DMA:
  1802              	.LFB295:
-ARM GAS  /tmp/ccn9FJY7.s 			page 86
+ARM GAS  /tmp/cche4iIe.s 			page 86
 
 
 1292:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****   HAL_StatusTypeDef status = HAL_OK;
@@ -5158,7 +5158,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  1848              		.loc 1 1302 0
  1849 0030 0023     		movs	r3, #0
  1850 0032 4364     		str	r3, [r0, #68]
-ARM GAS  /tmp/ccn9FJY7.s 			page 87
+ARM GAS  /tmp/cche4iIe.s 			page 87
 
 
 1304:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****     {
@@ -5218,7 +5218,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
 1372:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c **** 
  1893              		.loc 1 1372 0
  1894 0070 C36B     		ldr	r3, [r0, #60]
-ARM GAS  /tmp/ccn9FJY7.s 			page 88
+ARM GAS  /tmp/cche4iIe.s 			page 88
 
 
  1895 0072 384A     		ldr	r2, .L141+8
@@ -5278,7 +5278,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  1941 00c2 04D0     		beq	.L139
 1328:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****       {
  1942              		.loc 1 1328 0
-ARM GAS  /tmp/ccn9FJY7.s 			page 89
+ARM GAS  /tmp/cche4iIe.s 			page 89
 
 
  1943 00c4 B3F5007F 		cmp	r3, #512
@@ -5338,7 +5338,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  1986 0102 08D0     		beq	.L133
  1987              	.L132:
 1334:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****           status = HAL_ERROR;
-ARM GAS  /tmp/ccn9FJY7.s 			page 90
+ARM GAS  /tmp/cche4iIe.s 			page 90
 
 
  1988              		.loc 1 1334 0 is_stmt 1
@@ -5398,7 +5398,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
 1407:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c **** 
  2032              		.loc 1 1407 0
  2033 0142 0124     		movs	r4, #1
-ARM GAS  /tmp/ccn9FJY7.s 			page 91
+ARM GAS  /tmp/cche4iIe.s 			page 91
 
 
  2034 0144 72E7     		b	.L124
@@ -5458,7 +5458,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  2085 0010 00F09F80 		beq	.L155
  2086 0014 0134     		adds	r4, r4, #1
  2087              	.LVL168:
-ARM GAS  /tmp/ccn9FJY7.s 			page 92
+ARM GAS  /tmp/cche4iIe.s 			page 92
 
 
 1442:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c **** 
@@ -5518,7 +5518,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
 1498:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c **** 
  2131              		.loc 1 1498 0
  2132 0050 2223     		movs	r3, #34
-ARM GAS  /tmp/ccn9FJY7.s 			page 93
+ARM GAS  /tmp/cche4iIe.s 			page 93
 
 
  2133 0052 80F84130 		strb	r3, [r0, #65]
@@ -5578,7 +5578,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  2177              	.LVL175:
  2178 0098 0028     		cmp	r0, #0
  2179 009a 46D1     		bne	.L154
-ARM GAS  /tmp/ccn9FJY7.s 			page 94
+ARM GAS  /tmp/cche4iIe.s 			page 94
 
 
 1527:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c **** 
@@ -5638,7 +5638,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  2224              	.L150:
 1462:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****           status = HAL_ERROR;
  2225              		.loc 1 1462 0 is_stmt 1
-ARM GAS  /tmp/ccn9FJY7.s 			page 95
+ARM GAS  /tmp/cche4iIe.s 			page 95
 
 
  2226 00e8 436C     		ldr	r3, [r0, #68]
@@ -5698,7 +5698,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  2269 0120 92E7     		b	.L148
  2270              	.LVL186:
  2271              	.L153:
-ARM GAS  /tmp/ccn9FJY7.s 			page 96
+ARM GAS  /tmp/cche4iIe.s 			page 96
 
 
 1487:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****         }
@@ -5758,7 +5758,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  2317 0160 00000000 		.word	QSPI_DMAError
  2318              		.cfi_endproc
  2319              	.LFE296:
-ARM GAS  /tmp/ccn9FJY7.s 			page 97
+ARM GAS  /tmp/cche4iIe.s 			page 97
 
 
  2321              		.section	.text.HAL_QSPI_AutoPolling,"ax",%progbits
@@ -5818,7 +5818,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  2369              		.loc 1 1587 0 discriminator 4
  2370 002a 40F23361 		movw	r1, #1587
  2371 002e 7D48     		ldr	r0, .L188
-ARM GAS  /tmp/ccn9FJY7.s 			page 98
+ARM GAS  /tmp/cche4iIe.s 			page 98
 
 
  2372              	.LVL197:
@@ -5878,7 +5878,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  2414              		.loc 1 1596 0 discriminator 3
  2415 0074 B3F5405F 		cmp	r3, #12288
  2416 0078 04D0     		beq	.L167
-ARM GAS  /tmp/ccn9FJY7.s 			page 99
+ARM GAS  /tmp/cche4iIe.s 			page 99
 
 
 1596:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****   }
@@ -5938,7 +5938,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  2459 00c4 FFF7FEFF 		bl	assert_failed
  2460              	.LVL202:
  2461              	.L169:
-ARM GAS  /tmp/ccn9FJY7.s 			page 100
+ARM GAS  /tmp/cche4iIe.s 			page 100
 
 
 1605:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****   assert_param(IS_QSPI_DATA_MODE(cmd->DataMode));
@@ -5998,7 +5998,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  2504 010c 40F24961 		movw	r1, #1609
  2505 0110 4448     		ldr	r0, .L188
  2506 0112 FFF7FEFF 		bl	assert_failed
-ARM GAS  /tmp/ccn9FJY7.s 			page 101
+ARM GAS  /tmp/cche4iIe.s 			page 101
 
 
  2507              	.LVL205:
@@ -6058,7 +6058,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  2551 015a 86F84030 		strb	r3, [r6, #64]
 1619:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****   {
  2552              		.loc 1 1619 0 is_stmt 1 discriminator 2
-ARM GAS  /tmp/ccn9FJY7.s 			page 102
+ARM GAS  /tmp/cche4iIe.s 			page 102
 
 
  2553 015e 96F84130 		ldrb	r3, [r6, #65]	@ zero_extendqisi2
@@ -6118,7 +6118,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  2600 019c 40F24D61 		movw	r1, #1613
  2601 01a0 2048     		ldr	r0, .L188
  2602 01a2 FFF7FEFF 		bl	assert_failed
-ARM GAS  /tmp/ccn9FJY7.s 			page 103
+ARM GAS  /tmp/cche4iIe.s 			page 103
 
 
  2603              	.LVL214:
@@ -6178,7 +6178,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  2647 01ee 4FF00062 		mov	r2, #134217728
  2648 01f2 2146     		mov	r1, r4
  2649 01f4 3046     		mov	r0, r6
-ARM GAS  /tmp/ccn9FJY7.s 			page 104
+ARM GAS  /tmp/cche4iIe.s 			page 104
 
 
  2650              	.LVL216:
@@ -6238,7 +6238,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  2700 0000 F0B5     		push	{r4, r5, r6, r7, lr}
  2701              	.LCFI32:
  2702              		.cfi_def_cfa_offset 20
-ARM GAS  /tmp/ccn9FJY7.s 			page 105
+ARM GAS  /tmp/cche4iIe.s 			page 105
 
 
  2703              		.cfi_offset 4, -20
@@ -6298,7 +6298,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  2748 003e 6BB1     		cbz	r3, .L193
 1693:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****   if (cmd->AddressMode != QSPI_ADDRESS_NONE)
  2749              		.loc 1 1693 0 is_stmt 0 discriminator 1
-ARM GAS  /tmp/ccn9FJY7.s 			page 106
+ARM GAS  /tmp/cche4iIe.s 			page 106
 
 
  2750 0040 B3F5806F 		cmp	r3, #1024
@@ -6358,7 +6358,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  2792 008a B3F5004F 		cmp	r3, #32768
  2793 008e 07D0     		beq	.L195
 1699:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****   if (cmd->AlternateByteMode != QSPI_ALTERNATE_BYTES_NONE)
-ARM GAS  /tmp/ccn9FJY7.s 			page 107
+ARM GAS  /tmp/cche4iIe.s 			page 107
 
 
  2794              		.loc 1 1699 0 discriminator 3
@@ -6418,7 +6418,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  2837 00d8 07D0     		beq	.L198
 1706:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c **** 
  2838              		.loc 1 1706 0 discriminator 3
-ARM GAS  /tmp/ccn9FJY7.s 			page 108
+ARM GAS  /tmp/cche4iIe.s 			page 108
 
 
  2839 00da B3F1407F 		cmp	r3, #50331648
@@ -6478,7 +6478,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
 1712:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****   assert_param(IS_QSPI_STATUS_BYTES_SIZE(cfg->StatusBytesSize));
  2883              		.loc 1 1712 0 is_stmt 1
  2884 0126 AB68     		ldr	r3, [r5, #8]
-ARM GAS  /tmp/ccn9FJY7.s 			page 109
+ARM GAS  /tmp/cche4iIe.s 			page 109
 
 
  2885 0128 B3F5803F 		cmp	r3, #65536
@@ -6538,7 +6538,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  2929 0174 012B     		cmp	r3, #1
  2930 0176 1ED0     		beq	.L215
  2931              	.LVL235:
-ARM GAS  /tmp/ccn9FJY7.s 			page 110
+ARM GAS  /tmp/cche4iIe.s 			page 110
 
 
 1770:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****   }
@@ -6598,7 +6598,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
 1722:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c **** 
  2979              		.loc 1 1722 0
  2980 01b6 0022     		movs	r2, #0
-ARM GAS  /tmp/ccn9FJY7.s 			page 111
+ARM GAS  /tmp/cche4iIe.s 			page 111
 
 
  2981 01b8 7264     		str	r2, [r6, #68]
@@ -6658,7 +6658,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  3026 0200 0922     		movs	r2, #9
  3027 0202 DA60     		str	r2, [r3, #12]
 1749:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****       QSPI_Config(hqspi, cmd, QSPI_FUNCTIONAL_MODE_AUTO_POLLING);
-ARM GAS  /tmp/ccn9FJY7.s 			page 112
+ARM GAS  /tmp/cche4iIe.s 			page 112
 
 
  3028              		.loc 1 1749 0
@@ -6718,7 +6718,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  3079              		.cfi_offset 6, -12
  3080              		.cfi_offset 7, -8
  3081              		.cfi_offset 14, -4
-ARM GAS  /tmp/ccn9FJY7.s 			page 113
+ARM GAS  /tmp/cche4iIe.s 			page 113
 
 
  3082 0002 83B0     		sub	sp, sp, #12
@@ -6778,7 +6778,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
 1797:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****   if (cmd->AddressMode != QSPI_ADDRESS_NONE)
  3126              		.loc 1 1797 0 discriminator 2
  3127 0046 B3F5006F 		cmp	r3, #2048
-ARM GAS  /tmp/ccn9FJY7.s 			page 114
+ARM GAS  /tmp/cche4iIe.s 			page 114
 
 
  3128 004a 07D0     		beq	.L222
@@ -6838,7 +6838,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  3170 0094 04D0     		beq	.L224
 1803:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****   if (cmd->AlternateByteMode != QSPI_ALTERNATE_BYTES_NONE)
  3171              		.loc 1 1803 0 discriminator 4
-ARM GAS  /tmp/ccn9FJY7.s 			page 115
+ARM GAS  /tmp/cche4iIe.s 			page 115
 
 
  3172 0096 40F20B71 		movw	r1, #1803
@@ -6898,7 +6898,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
 1810:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c **** 
  3215              		.loc 1 1810 0 discriminator 4
  3216 00e0 40F21271 		movw	r1, #1810
-ARM GAS  /tmp/ccn9FJY7.s 			page 116
+ARM GAS  /tmp/cche4iIe.s 			page 116
 
 
  3217 00e4 4048     		ldr	r0, .L244
@@ -6958,7 +6958,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  3260              		.loc 1 1816 0 is_stmt 0 discriminator 1
  3261 012a 082B     		cmp	r3, #8
  3262 012c 04D0     		beq	.L231
-ARM GAS  /tmp/ccn9FJY7.s 			page 117
+ARM GAS  /tmp/cche4iIe.s 			page 117
 
 
 1816:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c **** 
@@ -7018,7 +7018,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  3309              	.L240:
 1809:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****   assert_param(IS_QSPI_DATA_MODE(cmd->DataMode));
  3310              		.loc 1 1809 0 discriminator 1
-ARM GAS  /tmp/ccn9FJY7.s 			page 118
+ARM GAS  /tmp/cche4iIe.s 			page 118
 
 
  3311 016c 40F21171 		movw	r1, #1809
@@ -7078,7 +7078,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
 1838:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c **** 
  3358              		.loc 1 1838 0
  3359 01b8 3368     		ldr	r3, [r6]
-ARM GAS  /tmp/ccn9FJY7.s 			page 119
+ARM GAS  /tmp/cche4iIe.s 			page 119
 
 
  3360 01ba B3F5803F 		cmp	r3, #65536
@@ -7138,7 +7138,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  3410              		.loc 1 1872 0
  3411              		.cfi_startproc
  3412              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  /tmp/ccn9FJY7.s 			page 120
+ARM GAS  /tmp/cche4iIe.s 			page 120
 
 
  3413              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -7198,7 +7198,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  3461              	.L251:
 2592:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c **** 
  3462              		.loc 1 2592 0
-ARM GAS  /tmp/ccn9FJY7.s 			page 121
+ARM GAS  /tmp/cche4iIe.s 			page 121
 
 
  3463 0020 0368     		ldr	r3, [r0]
@@ -7258,7 +7258,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  3517              		.cfi_endproc
  3518              	.LFE302:
  3520              		.section	.text.HAL_QSPI_RxCpltCallback,"ax",%progbits
-ARM GAS  /tmp/ccn9FJY7.s 			page 122
+ARM GAS  /tmp/cche4iIe.s 			page 122
 
 
  3521              		.align	1
@@ -7318,7 +7318,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  3577              		.cfi_endproc
  3578              	.LFE305:
  3580              		.section	.text.QSPI_DMARxHalfCplt,"ax",%progbits
-ARM GAS  /tmp/ccn9FJY7.s 			page 123
+ARM GAS  /tmp/cche4iIe.s 			page 123
 
 
  3581              		.align	1
@@ -7378,7 +7378,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  3635              		.fpu fpv4-sp-d16
  3637              	QSPI_DMATxHalfCplt:
  3638              	.LFB321:
-ARM GAS  /tmp/ccn9FJY7.s 			page 124
+ARM GAS  /tmp/cche4iIe.s 			page 124
 
 
 2545:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****   QSPI_HandleTypeDef* hqspi = (QSPI_HandleTypeDef*)(hdma->Parent);
@@ -7438,7 +7438,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  3692              		@ args = 0, pretend = 0, frame = 0
  3693              		@ frame_needed = 0, uses_anonymous_args = 0
  3694              		@ link register save eliminated.
-ARM GAS  /tmp/ccn9FJY7.s 			page 125
+ARM GAS  /tmp/cche4iIe.s 			page 125
 
 
  3695              	.LVL298:
@@ -7498,7 +7498,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  3748              	.LVL302:
  508:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****   {
  3749              		.loc 1 508 0
-ARM GAS  /tmp/ccn9FJY7.s 			page 126
+ARM GAS  /tmp/cche4iIe.s 			page 126
 
 
  3750 000a 12F0040F 		tst	r2, #4
@@ -7558,7 +7558,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  3795              		.loc 1 520 0
  3796 004c 626A     		ldr	r2, [r4, #36]
  3797 004e 1278     		ldrb	r2, [r2]	@ zero_extendqisi2
-ARM GAS  /tmp/ccn9FJY7.s 			page 127
+ARM GAS  /tmp/cche4iIe.s 			page 127
 
 
  3798 0050 83F82020 		strb	r2, [r3, #32]
@@ -7618,7 +7618,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  3842              		.loc 1 568 0
  3843 0092 12F0020F 		tst	r2, #2
  3844 0096 77D0     		beq	.L276
-ARM GAS  /tmp/ccn9FJY7.s 			page 128
+ARM GAS  /tmp/cche4iIe.s 			page 128
 
 
  568:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****   {
@@ -7678,7 +7678,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  676:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c **** #endif
  3889              		.loc 1 676 0
  3890 00ec 2046     		mov	r0, r4
-ARM GAS  /tmp/ccn9FJY7.s 			page 129
+ARM GAS  /tmp/cche4iIe.s 			page 129
 
 
  3891              	.LVL315:
@@ -7738,7 +7738,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  3937 0136 1368     		ldr	r3, [r2]
  3938 0138 23F00103 		bic	r3, r3, #1
  3939 013c 1360     		str	r3, [r2]
-ARM GAS  /tmp/ccn9FJY7.s 			page 130
+ARM GAS  /tmp/cche4iIe.s 			page 130
 
 
  3940              	.L281:
@@ -7798,7 +7798,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  3985              	.LVL328:
  3986              	.L284:
  687:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c **** #endif
-ARM GAS  /tmp/ccn9FJY7.s 			page 131
+ARM GAS  /tmp/cche4iIe.s 			page 131
 
 
  3987              		.loc 1 687 0
@@ -7858,7 +7858,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  725:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c **** 
  4032              		.loc 1 725 0 is_stmt 1
  4033 01c4 0122     		movs	r2, #1
-ARM GAS  /tmp/ccn9FJY7.s 			page 132
+ARM GAS  /tmp/cche4iIe.s 			page 132
 
 
  4034              	.LVL336:
@@ -7918,7 +7918,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  4078              		.loc 1 759 0
  4079 0210 0123     		movs	r3, #1
  4080 0212 84F84130 		strb	r3, [r4, #65]
-ARM GAS  /tmp/ccn9FJY7.s 			page 133
+ARM GAS  /tmp/cche4iIe.s 			page 133
 
 
  765:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c **** #endif
@@ -7978,7 +7978,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  4130              		@ args = 0, pretend = 0, frame = 0
  4131              		@ frame_needed = 0, uses_anonymous_args = 0
  4132              		@ link register save eliminated.
-ARM GAS  /tmp/ccn9FJY7.s 			page 134
+ARM GAS  /tmp/cche4iIe.s 			page 134
 
 
  4133              	.LVL349:
@@ -8038,7 +8038,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  4185              		.cfi_offset 5, -8
  4186              		.cfi_offset 14, -4
  4187 0002 83B0     		sub	sp, sp, #12
-ARM GAS  /tmp/ccn9FJY7.s 			page 135
+ARM GAS  /tmp/cche4iIe.s 			page 135
 
 
  4188              	.LCFI45:
@@ -8098,7 +8098,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  4233 0048 4A69     		ldr	r2, [r1, #20]
  4234 004a 22F04062 		bic	r2, r2, #201326592
  4235 004e 4A61     		str	r2, [r1, #20]
-ARM GAS  /tmp/ccn9FJY7.s 			page 136
+ARM GAS  /tmp/cche4iIe.s 			page 136
 
 
 2329:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****     }
@@ -8158,7 +8158,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  4282              	.L300:
 2334:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c **** 
  4283              		.loc 1 2334 0
-ARM GAS  /tmp/ccn9FJY7.s 			page 137
+ARM GAS  /tmp/cche4iIe.s 			page 137
 
 
  4284 0090 1846     		mov	r0, r3
@@ -8218,7 +8218,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  4332 002e 0268     		ldr	r2, [r0]
  4333 0030 1368     		ldr	r3, [r2]
  4334 0032 43F40033 		orr	r3, r3, #131072
-ARM GAS  /tmp/ccn9FJY7.s 			page 138
+ARM GAS  /tmp/cche4iIe.s 			page 138
 
 
  4335 0036 1360     		str	r3, [r2]
@@ -8278,7 +8278,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  4380 006c FFF7FEFF 		bl	HAL_QSPI_AbortCpltCallback
  4381              	.LVL373:
  4382 0070 F6E7     		b	.L308
-ARM GAS  /tmp/ccn9FJY7.s 			page 139
+ARM GAS  /tmp/cche4iIe.s 			page 139
 
 
  4383              	.L317:
@@ -8338,7 +8338,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  4433              		.section	.text.HAL_QSPI_SetTimeout,"ax",%progbits
  4434              		.align	1
  4435              		.global	HAL_QSPI_SetTimeout
-ARM GAS  /tmp/ccn9FJY7.s 			page 140
+ARM GAS  /tmp/cche4iIe.s 			page 140
 
 
  4436              		.syntax unified
@@ -8398,7 +8398,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  4487              		.loc 1 303 0
  4488 0012 2268     		ldr	r2, [r4]
  4489 0014 624B     		ldr	r3, .L342
-ARM GAS  /tmp/ccn9FJY7.s 			page 141
+ARM GAS  /tmp/cche4iIe.s 			page 141
 
 
  4490 0016 9A42     		cmp	r2, r3
@@ -8458,7 +8458,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  4534 005a B3F5007F 		cmp	r3, #512
  4535 005e 13D0     		beq	.L328
  308:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****   assert_param(IS_QSPI_CLOCK_MODE(hqspi->Init.ClockMode));
-ARM GAS  /tmp/ccn9FJY7.s 			page 142
+ARM GAS  /tmp/cche4iIe.s 			page 142
 
 
  4536              		.loc 1 308 0 discriminator 3
@@ -8518,7 +8518,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  4579              		.loc 1 315 0
  4580 00a8 E369     		ldr	r3, [r4, #28]
  4581 00aa 33B1     		cbz	r3, .L331
-ARM GAS  /tmp/ccn9FJY7.s 			page 143
+ARM GAS  /tmp/cche4iIe.s 			page 143
 
 
  315:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****   }
@@ -8578,7 +8578,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  4627 00fa 0368     		ldr	r3, [r0]
  4628 00fc 23F07F43 		bic	r3, r3, #-16777216
  4629 0100 23F0D003 		bic	r3, r3, #208
-ARM GAS  /tmp/ccn9FJY7.s 			page 144
+ARM GAS  /tmp/cche4iIe.s 			page 144
 
 
  4630 0104 6568     		ldr	r5, [r4, #4]
@@ -8638,7 +8638,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  4678              	.LCFI52:
  4679              		.cfi_restore_state
  304:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****   assert_param(IS_QSPI_FIFO_THRESHOLD(hqspi->Init.FifoThreshold));
-ARM GAS  /tmp/ccn9FJY7.s 			page 145
+ARM GAS  /tmp/cche4iIe.s 			page 145
 
 
  4680              		.loc 1 304 0 discriminator 1
@@ -8698,7 +8698,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  320:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c **** 
  4727              		.loc 1 320 0
  4728 019a 0221     		movs	r1, #2
-ARM GAS  /tmp/ccn9FJY7.s 			page 146
+ARM GAS  /tmp/cche4iIe.s 			page 146
 
 
  4729 019c D5E7     		b	.L322
@@ -8758,7 +8758,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  4778 0024 7047     		bx	lr
  4779              	.LVL401:
  4780              	.L349:
-ARM GAS  /tmp/ccn9FJY7.s 			page 147
+ARM GAS  /tmp/cche4iIe.s 			page 147
 
 
 2417:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c **** 
@@ -8818,7 +8818,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  4829 000a 7047     		bx	lr
  4830              		.cfi_endproc
  4831              	.LFE316:
-ARM GAS  /tmp/ccn9FJY7.s 			page 148
+ARM GAS  /tmp/cche4iIe.s 			page 148
 
 
  4833              		.section	.text.HAL_QSPI_SetFlashID,"ax",%progbits
@@ -8878,7 +8878,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  4881 002a DBB2     		uxtb	r3, r3
  4882 002c 012B     		cmp	r3, #1
  4883 002e 04D0     		beq	.L358
-ARM GAS  /tmp/ccn9FJY7.s 			page 149
+ARM GAS  /tmp/cche4iIe.s 			page 149
 
 
 2472:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c ****   }
@@ -8938,7 +8938,7 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  4927              		.text
  4928              	.Letext0:
  4929              		.file 2 "/usr/include/newlib/machine/_default_types.h"
-ARM GAS  /tmp/ccn9FJY7.s 			page 150
+ARM GAS  /tmp/cche4iIe.s 			page 150
 
 
  4930              		.file 3 "/usr/include/newlib/sys/_stdint.h"
@@ -8952,111 +8952,111 @@ ARM GAS  /tmp/ccn9FJY7.s 			page 1
  4938              		.file 11 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_qspi.h"
  4939              		.file 12 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h"
  4940              		.file 13 "Inc/stm32l4xx_hal_conf.h"
-ARM GAS  /tmp/ccn9FJY7.s 			page 151
+ARM GAS  /tmp/cche4iIe.s 			page 151
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 stm32l4xx_hal_qspi.c
-     /tmp/ccn9FJY7.s:18     .text.QSPI_DMARxCplt:0000000000000000 $t
-     /tmp/ccn9FJY7.s:24     .text.QSPI_DMARxCplt:0000000000000000 QSPI_DMARxCplt
-     /tmp/ccn9FJY7.s:50     .text.QSPI_DMATxCplt:0000000000000000 $t
-     /tmp/ccn9FJY7.s:56     .text.QSPI_DMATxCplt:0000000000000000 QSPI_DMATxCplt
-     /tmp/ccn9FJY7.s:81     .text.QSPI_WaitFlagStateUntilTimeout:0000000000000000 $t
-     /tmp/ccn9FJY7.s:87     .text.QSPI_WaitFlagStateUntilTimeout:0000000000000000 QSPI_WaitFlagStateUntilTimeout
-     /tmp/ccn9FJY7.s:152    .text.QSPI_Config:0000000000000000 $t
-     /tmp/ccn9FJY7.s:158    .text.QSPI_Config:0000000000000000 QSPI_Config
-     /tmp/ccn9FJY7.s:474    .text.QSPI_Config:00000000000001fc $d
-     /tmp/ccn9FJY7.s:479    .text.HAL_QSPI_MspInit:0000000000000000 $t
-     /tmp/ccn9FJY7.s:486    .text.HAL_QSPI_MspInit:0000000000000000 HAL_QSPI_MspInit
-     /tmp/ccn9FJY7.s:499    .text.HAL_QSPI_MspDeInit:0000000000000000 $t
-     /tmp/ccn9FJY7.s:506    .text.HAL_QSPI_MspDeInit:0000000000000000 HAL_QSPI_MspDeInit
-     /tmp/ccn9FJY7.s:519    .text.HAL_QSPI_DeInit:0000000000000000 $t
-     /tmp/ccn9FJY7.s:526    .text.HAL_QSPI_DeInit:0000000000000000 HAL_QSPI_DeInit
-     /tmp/ccn9FJY7.s:587    .text.HAL_QSPI_Command:0000000000000000 $t
-     /tmp/ccn9FJY7.s:594    .text.HAL_QSPI_Command:0000000000000000 HAL_QSPI_Command
-     /tmp/ccn9FJY7.s:893    .text.HAL_QSPI_Command:00000000000001c8 $d
-     /tmp/ccn9FJY7.s:898    .text.HAL_QSPI_Command_IT:0000000000000000 $t
-     /tmp/ccn9FJY7.s:905    .text.HAL_QSPI_Command_IT:0000000000000000 HAL_QSPI_Command_IT
-     /tmp/ccn9FJY7.s:1207   .text.HAL_QSPI_Command_IT:00000000000001c4 $d
-     /tmp/ccn9FJY7.s:1212   .text.HAL_QSPI_Transmit:0000000000000000 $t
-     /tmp/ccn9FJY7.s:1219   .text.HAL_QSPI_Transmit:0000000000000000 HAL_QSPI_Transmit
-     /tmp/ccn9FJY7.s:1386   .text.HAL_QSPI_Receive:0000000000000000 $t
-     /tmp/ccn9FJY7.s:1393   .text.HAL_QSPI_Receive:0000000000000000 HAL_QSPI_Receive
-     /tmp/ccn9FJY7.s:1567   .text.HAL_QSPI_Transmit_IT:0000000000000000 $t
-     /tmp/ccn9FJY7.s:1574   .text.HAL_QSPI_Transmit_IT:0000000000000000 HAL_QSPI_Transmit_IT
-     /tmp/ccn9FJY7.s:1670   .text.HAL_QSPI_Receive_IT:0000000000000000 $t
-     /tmp/ccn9FJY7.s:1677   .text.HAL_QSPI_Receive_IT:0000000000000000 HAL_QSPI_Receive_IT
-     /tmp/ccn9FJY7.s:1794   .text.HAL_QSPI_Transmit_DMA:0000000000000000 $t
-     /tmp/ccn9FJY7.s:1801   .text.HAL_QSPI_Transmit_DMA:0000000000000000 HAL_QSPI_Transmit_DMA
-     /tmp/ccn9FJY7.s:2043   .text.HAL_QSPI_Transmit_DMA:000000000000014c $d
-     /tmp/ccn9FJY7.s:3637   .text.QSPI_DMATxHalfCplt:0000000000000000 QSPI_DMATxHalfCplt
-     /tmp/ccn9FJY7.s:4397   .text.QSPI_DMAError:0000000000000000 QSPI_DMAError
-     /tmp/ccn9FJY7.s:2050   .text.HAL_QSPI_Receive_DMA:0000000000000000 $t
-     /tmp/ccn9FJY7.s:2057   .text.HAL_QSPI_Receive_DMA:0000000000000000 HAL_QSPI_Receive_DMA
-     /tmp/ccn9FJY7.s:2315   .text.HAL_QSPI_Receive_DMA:0000000000000158 $d
-     /tmp/ccn9FJY7.s:3587   .text.QSPI_DMARxHalfCplt:0000000000000000 QSPI_DMARxHalfCplt
-     /tmp/ccn9FJY7.s:2322   .text.HAL_QSPI_AutoPolling:0000000000000000 $t
-     /tmp/ccn9FJY7.s:2329   .text.HAL_QSPI_AutoPolling:0000000000000000 HAL_QSPI_AutoPolling
-     /tmp/ccn9FJY7.s:2681   .text.HAL_QSPI_AutoPolling:0000000000000224 $d
-     /tmp/ccn9FJY7.s:2686   .text.HAL_QSPI_AutoPolling_IT:0000000000000000 $t
-     /tmp/ccn9FJY7.s:2693   .text.HAL_QSPI_AutoPolling_IT:0000000000000000 HAL_QSPI_AutoPolling_IT
-     /tmp/ccn9FJY7.s:3055   .text.HAL_QSPI_AutoPolling_IT:000000000000022c $d
-     /tmp/ccn9FJY7.s:3060   .text.HAL_QSPI_MemoryMapped:0000000000000000 $t
-     /tmp/ccn9FJY7.s:3067   .text.HAL_QSPI_MemoryMapped:0000000000000000 HAL_QSPI_MemoryMapped
-     /tmp/ccn9FJY7.s:3396   .text.HAL_QSPI_MemoryMapped:00000000000001e8 $d
-     /tmp/ccn9FJY7.s:3401   .text.HAL_QSPI_ErrorCallback:0000000000000000 $t
-     /tmp/ccn9FJY7.s:3408   .text.HAL_QSPI_ErrorCallback:0000000000000000 HAL_QSPI_ErrorCallback
-     /tmp/ccn9FJY7.s:3421   .text.QSPI_DMAAbortCplt:0000000000000000 $t
-     /tmp/ccn9FJY7.s:3427   .text.QSPI_DMAAbortCplt:0000000000000000 QSPI_DMAAbortCplt
-     /tmp/ccn9FJY7.s:3481   .text.HAL_QSPI_AbortCpltCallback:0000000000000000 $t
-     /tmp/ccn9FJY7.s:3488   .text.HAL_QSPI_AbortCpltCallback:0000000000000000 HAL_QSPI_AbortCpltCallback
-     /tmp/ccn9FJY7.s:3501   .text.HAL_QSPI_CmdCpltCallback:0000000000000000 $t
-     /tmp/ccn9FJY7.s:3508   .text.HAL_QSPI_CmdCpltCallback:0000000000000000 HAL_QSPI_CmdCpltCallback
-ARM GAS  /tmp/ccn9FJY7.s 			page 152
+     /tmp/cche4iIe.s:18     .text.QSPI_DMARxCplt:0000000000000000 $t
+     /tmp/cche4iIe.s:24     .text.QSPI_DMARxCplt:0000000000000000 QSPI_DMARxCplt
+     /tmp/cche4iIe.s:50     .text.QSPI_DMATxCplt:0000000000000000 $t
+     /tmp/cche4iIe.s:56     .text.QSPI_DMATxCplt:0000000000000000 QSPI_DMATxCplt
+     /tmp/cche4iIe.s:81     .text.QSPI_WaitFlagStateUntilTimeout:0000000000000000 $t
+     /tmp/cche4iIe.s:87     .text.QSPI_WaitFlagStateUntilTimeout:0000000000000000 QSPI_WaitFlagStateUntilTimeout
+     /tmp/cche4iIe.s:152    .text.QSPI_Config:0000000000000000 $t
+     /tmp/cche4iIe.s:158    .text.QSPI_Config:0000000000000000 QSPI_Config
+     /tmp/cche4iIe.s:474    .text.QSPI_Config:00000000000001fc $d
+     /tmp/cche4iIe.s:479    .text.HAL_QSPI_MspInit:0000000000000000 $t
+     /tmp/cche4iIe.s:486    .text.HAL_QSPI_MspInit:0000000000000000 HAL_QSPI_MspInit
+     /tmp/cche4iIe.s:499    .text.HAL_QSPI_MspDeInit:0000000000000000 $t
+     /tmp/cche4iIe.s:506    .text.HAL_QSPI_MspDeInit:0000000000000000 HAL_QSPI_MspDeInit
+     /tmp/cche4iIe.s:519    .text.HAL_QSPI_DeInit:0000000000000000 $t
+     /tmp/cche4iIe.s:526    .text.HAL_QSPI_DeInit:0000000000000000 HAL_QSPI_DeInit
+     /tmp/cche4iIe.s:587    .text.HAL_QSPI_Command:0000000000000000 $t
+     /tmp/cche4iIe.s:594    .text.HAL_QSPI_Command:0000000000000000 HAL_QSPI_Command
+     /tmp/cche4iIe.s:893    .text.HAL_QSPI_Command:00000000000001c8 $d
+     /tmp/cche4iIe.s:898    .text.HAL_QSPI_Command_IT:0000000000000000 $t
+     /tmp/cche4iIe.s:905    .text.HAL_QSPI_Command_IT:0000000000000000 HAL_QSPI_Command_IT
+     /tmp/cche4iIe.s:1207   .text.HAL_QSPI_Command_IT:00000000000001c4 $d
+     /tmp/cche4iIe.s:1212   .text.HAL_QSPI_Transmit:0000000000000000 $t
+     /tmp/cche4iIe.s:1219   .text.HAL_QSPI_Transmit:0000000000000000 HAL_QSPI_Transmit
+     /tmp/cche4iIe.s:1386   .text.HAL_QSPI_Receive:0000000000000000 $t
+     /tmp/cche4iIe.s:1393   .text.HAL_QSPI_Receive:0000000000000000 HAL_QSPI_Receive
+     /tmp/cche4iIe.s:1567   .text.HAL_QSPI_Transmit_IT:0000000000000000 $t
+     /tmp/cche4iIe.s:1574   .text.HAL_QSPI_Transmit_IT:0000000000000000 HAL_QSPI_Transmit_IT
+     /tmp/cche4iIe.s:1670   .text.HAL_QSPI_Receive_IT:0000000000000000 $t
+     /tmp/cche4iIe.s:1677   .text.HAL_QSPI_Receive_IT:0000000000000000 HAL_QSPI_Receive_IT
+     /tmp/cche4iIe.s:1794   .text.HAL_QSPI_Transmit_DMA:0000000000000000 $t
+     /tmp/cche4iIe.s:1801   .text.HAL_QSPI_Transmit_DMA:0000000000000000 HAL_QSPI_Transmit_DMA
+     /tmp/cche4iIe.s:2043   .text.HAL_QSPI_Transmit_DMA:000000000000014c $d
+     /tmp/cche4iIe.s:3637   .text.QSPI_DMATxHalfCplt:0000000000000000 QSPI_DMATxHalfCplt
+     /tmp/cche4iIe.s:4397   .text.QSPI_DMAError:0000000000000000 QSPI_DMAError
+     /tmp/cche4iIe.s:2050   .text.HAL_QSPI_Receive_DMA:0000000000000000 $t
+     /tmp/cche4iIe.s:2057   .text.HAL_QSPI_Receive_DMA:0000000000000000 HAL_QSPI_Receive_DMA
+     /tmp/cche4iIe.s:2315   .text.HAL_QSPI_Receive_DMA:0000000000000158 $d
+     /tmp/cche4iIe.s:3587   .text.QSPI_DMARxHalfCplt:0000000000000000 QSPI_DMARxHalfCplt
+     /tmp/cche4iIe.s:2322   .text.HAL_QSPI_AutoPolling:0000000000000000 $t
+     /tmp/cche4iIe.s:2329   .text.HAL_QSPI_AutoPolling:0000000000000000 HAL_QSPI_AutoPolling
+     /tmp/cche4iIe.s:2681   .text.HAL_QSPI_AutoPolling:0000000000000224 $d
+     /tmp/cche4iIe.s:2686   .text.HAL_QSPI_AutoPolling_IT:0000000000000000 $t
+     /tmp/cche4iIe.s:2693   .text.HAL_QSPI_AutoPolling_IT:0000000000000000 HAL_QSPI_AutoPolling_IT
+     /tmp/cche4iIe.s:3055   .text.HAL_QSPI_AutoPolling_IT:000000000000022c $d
+     /tmp/cche4iIe.s:3060   .text.HAL_QSPI_MemoryMapped:0000000000000000 $t
+     /tmp/cche4iIe.s:3067   .text.HAL_QSPI_MemoryMapped:0000000000000000 HAL_QSPI_MemoryMapped
+     /tmp/cche4iIe.s:3396   .text.HAL_QSPI_MemoryMapped:00000000000001e8 $d
+     /tmp/cche4iIe.s:3401   .text.HAL_QSPI_ErrorCallback:0000000000000000 $t
+     /tmp/cche4iIe.s:3408   .text.HAL_QSPI_ErrorCallback:0000000000000000 HAL_QSPI_ErrorCallback
+     /tmp/cche4iIe.s:3421   .text.QSPI_DMAAbortCplt:0000000000000000 $t
+     /tmp/cche4iIe.s:3427   .text.QSPI_DMAAbortCplt:0000000000000000 QSPI_DMAAbortCplt
+     /tmp/cche4iIe.s:3481   .text.HAL_QSPI_AbortCpltCallback:0000000000000000 $t
+     /tmp/cche4iIe.s:3488   .text.HAL_QSPI_AbortCpltCallback:0000000000000000 HAL_QSPI_AbortCpltCallback
+     /tmp/cche4iIe.s:3501   .text.HAL_QSPI_CmdCpltCallback:0000000000000000 $t
+     /tmp/cche4iIe.s:3508   .text.HAL_QSPI_CmdCpltCallback:0000000000000000 HAL_QSPI_CmdCpltCallback
+ARM GAS  /tmp/cche4iIe.s 			page 152
 
 
-     /tmp/ccn9FJY7.s:3521   .text.HAL_QSPI_RxCpltCallback:0000000000000000 $t
-     /tmp/ccn9FJY7.s:3528   .text.HAL_QSPI_RxCpltCallback:0000000000000000 HAL_QSPI_RxCpltCallback
-     /tmp/ccn9FJY7.s:3541   .text.HAL_QSPI_TxCpltCallback:0000000000000000 $t
-     /tmp/ccn9FJY7.s:3548   .text.HAL_QSPI_TxCpltCallback:0000000000000000 HAL_QSPI_TxCpltCallback
-     /tmp/ccn9FJY7.s:3561   .text.HAL_QSPI_RxHalfCpltCallback:0000000000000000 $t
-     /tmp/ccn9FJY7.s:3568   .text.HAL_QSPI_RxHalfCpltCallback:0000000000000000 HAL_QSPI_RxHalfCpltCallback
-     /tmp/ccn9FJY7.s:3581   .text.QSPI_DMARxHalfCplt:0000000000000000 $t
-     /tmp/ccn9FJY7.s:3611   .text.HAL_QSPI_TxHalfCpltCallback:0000000000000000 $t
-     /tmp/ccn9FJY7.s:3618   .text.HAL_QSPI_TxHalfCpltCallback:0000000000000000 HAL_QSPI_TxHalfCpltCallback
-     /tmp/ccn9FJY7.s:3631   .text.QSPI_DMATxHalfCplt:0000000000000000 $t
-     /tmp/ccn9FJY7.s:3661   .text.HAL_QSPI_FifoThresholdCallback:0000000000000000 $t
-     /tmp/ccn9FJY7.s:3668   .text.HAL_QSPI_FifoThresholdCallback:0000000000000000 HAL_QSPI_FifoThresholdCallback
-     /tmp/ccn9FJY7.s:3681   .text.HAL_QSPI_StatusMatchCallback:0000000000000000 $t
-     /tmp/ccn9FJY7.s:3688   .text.HAL_QSPI_StatusMatchCallback:0000000000000000 HAL_QSPI_StatusMatchCallback
-     /tmp/ccn9FJY7.s:3701   .text.HAL_QSPI_TimeOutCallback:0000000000000000 $t
-     /tmp/ccn9FJY7.s:3708   .text.HAL_QSPI_TimeOutCallback:0000000000000000 HAL_QSPI_TimeOutCallback
-     /tmp/ccn9FJY7.s:3721   .text.HAL_QSPI_IRQHandler:0000000000000000 $t
-     /tmp/ccn9FJY7.s:3728   .text.HAL_QSPI_IRQHandler:0000000000000000 HAL_QSPI_IRQHandler
-     /tmp/ccn9FJY7.s:4114   .text.HAL_QSPI_IRQHandler:0000000000000238 $d
-     /tmp/ccn9FJY7.s:4119   .text.HAL_QSPI_GetState:0000000000000000 $t
-     /tmp/ccn9FJY7.s:4126   .text.HAL_QSPI_GetState:0000000000000000 HAL_QSPI_GetState
-     /tmp/ccn9FJY7.s:4143   .text.HAL_QSPI_GetError:0000000000000000 $t
-     /tmp/ccn9FJY7.s:4150   .text.HAL_QSPI_GetError:0000000000000000 HAL_QSPI_GetError
-     /tmp/ccn9FJY7.s:4167   .text.HAL_QSPI_Abort:0000000000000000 $t
-     /tmp/ccn9FJY7.s:4174   .text.HAL_QSPI_Abort:0000000000000000 HAL_QSPI_Abort
-     /tmp/ccn9FJY7.s:4294   .text.HAL_QSPI_Abort_IT:0000000000000000 $t
-     /tmp/ccn9FJY7.s:4301   .text.HAL_QSPI_Abort_IT:0000000000000000 HAL_QSPI_Abort_IT
-     /tmp/ccn9FJY7.s:4386   .text.HAL_QSPI_Abort_IT:0000000000000074 $d
-     /tmp/ccn9FJY7.s:4391   .text.QSPI_DMAError:0000000000000000 $t
-     /tmp/ccn9FJY7.s:4434   .text.HAL_QSPI_SetTimeout:0000000000000000 $t
-     /tmp/ccn9FJY7.s:4441   .text.HAL_QSPI_SetTimeout:0000000000000000 HAL_QSPI_SetTimeout
-     /tmp/ccn9FJY7.s:4456   .text.HAL_QSPI_Init:0000000000000000 $t
-     /tmp/ccn9FJY7.s:4463   .text.HAL_QSPI_Init:0000000000000000 HAL_QSPI_Init
-     /tmp/ccn9FJY7.s:4733   .text.HAL_QSPI_Init:00000000000001a0 $d
-     /tmp/ccn9FJY7.s:4740   .text.HAL_QSPI_SetFifoThreshold:0000000000000000 $t
-     /tmp/ccn9FJY7.s:4747   .text.HAL_QSPI_SetFifoThreshold:0000000000000000 HAL_QSPI_SetFifoThreshold
-     /tmp/ccn9FJY7.s:4807   .text.HAL_QSPI_GetFifoThreshold:0000000000000000 $t
-     /tmp/ccn9FJY7.s:4814   .text.HAL_QSPI_GetFifoThreshold:0000000000000000 HAL_QSPI_GetFifoThreshold
-     /tmp/ccn9FJY7.s:4834   .text.HAL_QSPI_SetFlashID:0000000000000000 $t
-     /tmp/ccn9FJY7.s:4841   .text.HAL_QSPI_SetFlashID:0000000000000000 HAL_QSPI_SetFlashID
-     /tmp/ccn9FJY7.s:4918   .text.HAL_QSPI_SetFlashID:0000000000000050 $d
-     /tmp/ccn9FJY7.s:4923   .rodata.QSPI_Config.str1.4:0000000000000000 $d
+     /tmp/cche4iIe.s:3521   .text.HAL_QSPI_RxCpltCallback:0000000000000000 $t
+     /tmp/cche4iIe.s:3528   .text.HAL_QSPI_RxCpltCallback:0000000000000000 HAL_QSPI_RxCpltCallback
+     /tmp/cche4iIe.s:3541   .text.HAL_QSPI_TxCpltCallback:0000000000000000 $t
+     /tmp/cche4iIe.s:3548   .text.HAL_QSPI_TxCpltCallback:0000000000000000 HAL_QSPI_TxCpltCallback
+     /tmp/cche4iIe.s:3561   .text.HAL_QSPI_RxHalfCpltCallback:0000000000000000 $t
+     /tmp/cche4iIe.s:3568   .text.HAL_QSPI_RxHalfCpltCallback:0000000000000000 HAL_QSPI_RxHalfCpltCallback
+     /tmp/cche4iIe.s:3581   .text.QSPI_DMARxHalfCplt:0000000000000000 $t
+     /tmp/cche4iIe.s:3611   .text.HAL_QSPI_TxHalfCpltCallback:0000000000000000 $t
+     /tmp/cche4iIe.s:3618   .text.HAL_QSPI_TxHalfCpltCallback:0000000000000000 HAL_QSPI_TxHalfCpltCallback
+     /tmp/cche4iIe.s:3631   .text.QSPI_DMATxHalfCplt:0000000000000000 $t
+     /tmp/cche4iIe.s:3661   .text.HAL_QSPI_FifoThresholdCallback:0000000000000000 $t
+     /tmp/cche4iIe.s:3668   .text.HAL_QSPI_FifoThresholdCallback:0000000000000000 HAL_QSPI_FifoThresholdCallback
+     /tmp/cche4iIe.s:3681   .text.HAL_QSPI_StatusMatchCallback:0000000000000000 $t
+     /tmp/cche4iIe.s:3688   .text.HAL_QSPI_StatusMatchCallback:0000000000000000 HAL_QSPI_StatusMatchCallback
+     /tmp/cche4iIe.s:3701   .text.HAL_QSPI_TimeOutCallback:0000000000000000 $t
+     /tmp/cche4iIe.s:3708   .text.HAL_QSPI_TimeOutCallback:0000000000000000 HAL_QSPI_TimeOutCallback
+     /tmp/cche4iIe.s:3721   .text.HAL_QSPI_IRQHandler:0000000000000000 $t
+     /tmp/cche4iIe.s:3728   .text.HAL_QSPI_IRQHandler:0000000000000000 HAL_QSPI_IRQHandler
+     /tmp/cche4iIe.s:4114   .text.HAL_QSPI_IRQHandler:0000000000000238 $d
+     /tmp/cche4iIe.s:4119   .text.HAL_QSPI_GetState:0000000000000000 $t
+     /tmp/cche4iIe.s:4126   .text.HAL_QSPI_GetState:0000000000000000 HAL_QSPI_GetState
+     /tmp/cche4iIe.s:4143   .text.HAL_QSPI_GetError:0000000000000000 $t
+     /tmp/cche4iIe.s:4150   .text.HAL_QSPI_GetError:0000000000000000 HAL_QSPI_GetError
+     /tmp/cche4iIe.s:4167   .text.HAL_QSPI_Abort:0000000000000000 $t
+     /tmp/cche4iIe.s:4174   .text.HAL_QSPI_Abort:0000000000000000 HAL_QSPI_Abort
+     /tmp/cche4iIe.s:4294   .text.HAL_QSPI_Abort_IT:0000000000000000 $t
+     /tmp/cche4iIe.s:4301   .text.HAL_QSPI_Abort_IT:0000000000000000 HAL_QSPI_Abort_IT
+     /tmp/cche4iIe.s:4386   .text.HAL_QSPI_Abort_IT:0000000000000074 $d
+     /tmp/cche4iIe.s:4391   .text.QSPI_DMAError:0000000000000000 $t
+     /tmp/cche4iIe.s:4434   .text.HAL_QSPI_SetTimeout:0000000000000000 $t
+     /tmp/cche4iIe.s:4441   .text.HAL_QSPI_SetTimeout:0000000000000000 HAL_QSPI_SetTimeout
+     /tmp/cche4iIe.s:4456   .text.HAL_QSPI_Init:0000000000000000 $t
+     /tmp/cche4iIe.s:4463   .text.HAL_QSPI_Init:0000000000000000 HAL_QSPI_Init
+     /tmp/cche4iIe.s:4733   .text.HAL_QSPI_Init:00000000000001a0 $d
+     /tmp/cche4iIe.s:4740   .text.HAL_QSPI_SetFifoThreshold:0000000000000000 $t
+     /tmp/cche4iIe.s:4747   .text.HAL_QSPI_SetFifoThreshold:0000000000000000 HAL_QSPI_SetFifoThreshold
+     /tmp/cche4iIe.s:4807   .text.HAL_QSPI_GetFifoThreshold:0000000000000000 $t
+     /tmp/cche4iIe.s:4814   .text.HAL_QSPI_GetFifoThreshold:0000000000000000 HAL_QSPI_GetFifoThreshold
+     /tmp/cche4iIe.s:4834   .text.HAL_QSPI_SetFlashID:0000000000000000 $t
+     /tmp/cche4iIe.s:4841   .text.HAL_QSPI_SetFlashID:0000000000000000 HAL_QSPI_SetFlashID
+     /tmp/cche4iIe.s:4918   .text.HAL_QSPI_SetFlashID:0000000000000050 $d
+     /tmp/cche4iIe.s:4923   .rodata.QSPI_Config.str1.4:0000000000000000 $d
                      .debug_frame:0000000000000010 $d
 
 UNDEFINED SYMBOLS

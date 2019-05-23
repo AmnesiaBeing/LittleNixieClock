@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccz3bLTm.s 			page 1
+ARM GAS  /tmp/ccxFFApx.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccz3bLTm.s 			page 1
   30:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_ex.c ****   * @attention
   31:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_ex.c ****   *
   32:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_ex.c ****   * <h2><center>&copy; Copyright (c) 2017 STMicroelectronics.
-ARM GAS  /tmp/ccz3bLTm.s 			page 2
+ARM GAS  /tmp/ccxFFApx.s 			page 2
 
 
   33:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_ex.c ****   * All rights reserved.</center></h2>
@@ -118,7 +118,7 @@ ARM GAS  /tmp/ccz3bLTm.s 			page 1
   87:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_ex.c **** /* Exported functions --------------------------------------------------------*/
   88:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_ex.c **** 
   89:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_ex.c **** /** @defgroup UARTEx_Exported_Functions  UARTEx Exported Functions
-ARM GAS  /tmp/ccz3bLTm.s 			page 3
+ARM GAS  /tmp/ccxFFApx.s 			page 3
 
 
   90:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_ex.c ****   * @{
@@ -178,7 +178,7 @@ ARM GAS  /tmp/ccz3bLTm.s 			page 1
  144:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_ex.c ****     |---------|---------|-----------|---------------------------------------|
  145:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_ex.c ****     |    1    |    0    |    1      |    | SB | 6 bit data | PB | STB |     |
  146:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_ex.c ****     +-----------------------------------------------------------------------+
-ARM GAS  /tmp/ccz3bLTm.s 			page 4
+ARM GAS  /tmp/ccxFFApx.s 			page 4
 
 
  147:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_ex.c **** 
@@ -238,7 +238,7 @@ ARM GAS  /tmp/ccz3bLTm.s 			page 1
  201:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_ex.c ****     {
  202:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_ex.c ****       huart->MspInitCallback = HAL_UART_MspInit;
  203:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_ex.c ****     }
-ARM GAS  /tmp/ccz3bLTm.s 			page 5
+ARM GAS  /tmp/ccxFFApx.s 			page 5
 
 
  204:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_ex.c **** 
@@ -298,7 +298,7 @@ ARM GAS  /tmp/ccz3bLTm.s 			page 1
  258:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_ex.c ****     This subsection provides a set of Wakeup and FIFO mode related callback functions.
  259:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_ex.c **** 
  260:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_ex.c ****     (#) Wakeup from Stop mode Callback:
-ARM GAS  /tmp/ccz3bLTm.s 			page 6
+ARM GAS  /tmp/ccxFFApx.s 			page 6
 
 
  261:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_ex.c ****         (+) HAL_UARTEx_WakeupCallback()
@@ -358,7 +358,7 @@ ARM GAS  /tmp/ccz3bLTm.s 			page 1
  315:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_ex.c **** }
  316:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_ex.c **** #endif /* USART_CR1_FIFOEN */
  317:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_ex.c **** 
-ARM GAS  /tmp/ccz3bLTm.s 			page 7
+ARM GAS  /tmp/ccxFFApx.s 			page 7
 
 
  318:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_ex.c **** /**
@@ -418,7 +418,7 @@ ARM GAS  /tmp/ccz3bLTm.s 			page 1
  372:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_ex.c **** 
  373:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_ex.c **** /**
  374:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_ex.c ****   * @brief  Disable UART Clock when in Stop Mode.
-ARM GAS  /tmp/ccz3bLTm.s 			page 8
+ARM GAS  /tmp/ccxFFApx.s 			page 8
 
 
  375:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_ex.c ****   * @param  huart UART handle.
@@ -478,7 +478,7 @@ ARM GAS  /tmp/ccz3bLTm.s 			page 1
  429:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_ex.c ****   return (UART_CheckIdleState(huart));
  430:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_ex.c **** }
  431:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_ex.c **** 
-ARM GAS  /tmp/ccz3bLTm.s 			page 9
+ARM GAS  /tmp/ccxFFApx.s 			page 9
 
 
  432:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_ex.c **** /**
@@ -538,7 +538,7 @@ ARM GAS  /tmp/ccz3bLTm.s 			page 1
  486:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_ex.c **** 
  487:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_ex.c ****   /* Process Unlocked */
  488:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_ex.c ****   __HAL_UNLOCK(huart);
-ARM GAS  /tmp/ccz3bLTm.s 			page 10
+ARM GAS  /tmp/ccxFFApx.s 			page 10
 
 
  489:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_ex.c **** 
@@ -598,7 +598,7 @@ ARM GAS  /tmp/ccz3bLTm.s 			page 1
  543:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_ex.c ****   assert_param(IS_UART_FIFO_INSTANCE(huart->Instance));
  544:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_ex.c **** 
  545:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_ex.c ****   /* Process Locked */
-ARM GAS  /tmp/ccz3bLTm.s 			page 11
+ARM GAS  /tmp/ccxFFApx.s 			page 11
 
 
  546:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_ex.c ****   __HAL_LOCK(huart);
@@ -658,7 +658,7 @@ ARM GAS  /tmp/ccz3bLTm.s 			page 1
  600:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_ex.c **** 
  601:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_ex.c ****   /* Restore UART configuration */
  602:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_ex.c ****   WRITE_REG(huart->Instance->CR1, tmpcr1);
-ARM GAS  /tmp/ccz3bLTm.s 			page 12
+ARM GAS  /tmp/ccxFFApx.s 			page 12
 
 
  603:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_ex.c **** 
@@ -718,7 +718,7 @@ ARM GAS  /tmp/ccz3bLTm.s 			page 1
  657:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_ex.c **** 
  658:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_ex.c ****   return HAL_OK;
  659:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_ex.c **** }
-ARM GAS  /tmp/ccz3bLTm.s 			page 13
+ARM GAS  /tmp/ccxFFApx.s 			page 13
 
 
  660:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_ex.c **** 
@@ -778,7 +778,7 @@ ARM GAS  /tmp/ccz3bLTm.s 			page 1
  714:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_ex.c **** 
  715:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_ex.c **** /**
  716:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_ex.c ****   * @}
-ARM GAS  /tmp/ccz3bLTm.s 			page 14
+ARM GAS  /tmp/ccxFFApx.s 			page 14
 
 
  717:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_ex.c ****   */
@@ -838,7 +838,7 @@ ARM GAS  /tmp/ccz3bLTm.s 			page 1
  735:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_ex.c **** 
  736:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_ex.c ****   /* Set the USART address node */
  737:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_ex.c ****   MODIFY_REG(huart->Instance->CR2, USART_CR2_ADD, ((uint32_t)WakeUpSelection.Address << UART_CR2_AD
-ARM GAS  /tmp/ccz3bLTm.s 			page 15
+ARM GAS  /tmp/ccxFFApx.s 			page 15
 
 
   63              		.loc 1 737 0
@@ -898,7 +898,7 @@ ARM GAS  /tmp/ccz3bLTm.s 			page 1
  115 000c 0E46     		mov	r6, r1
  181:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_ex.c **** 
  116              		.loc 1 181 0
-ARM GAS  /tmp/ccz3bLTm.s 			page 16
+ARM GAS  /tmp/ccxFFApx.s 			page 16
 
 
  117 000e 0368     		ldr	r3, [r0]
@@ -958,7 +958,7 @@ ARM GAS  /tmp/ccz3bLTm.s 			page 1
  192:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_ex.c ****   {
  162              		.loc 1 192 0
  163 004e 636F     		ldr	r3, [r4, #116]
-ARM GAS  /tmp/ccz3bLTm.s 			page 17
+ARM GAS  /tmp/ccxFFApx.s 			page 17
 
 
  164 0050 002B     		cmp	r3, #0
@@ -1018,7 +1018,7 @@ ARM GAS  /tmp/ccz3bLTm.s 			page 1
  210 009a 1D60     		str	r5, [r3]
  241:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_ex.c **** 
  211              		.loc 1 241 0
-ARM GAS  /tmp/ccz3bLTm.s 			page 18
+ARM GAS  /tmp/ccxFFApx.s 			page 18
 
 
  212 009c 2268     		ldr	r2, [r4]
@@ -1078,7 +1078,7 @@ ARM GAS  /tmp/ccz3bLTm.s 			page 1
  178:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_ex.c ****   }
  260              		.loc 1 178 0
  261 00d6 0120     		movs	r0, #1
-ARM GAS  /tmp/ccz3bLTm.s 			page 19
+ARM GAS  /tmp/ccxFFApx.s 			page 19
 
 
  262              	.LVL24:
@@ -1138,7 +1138,7 @@ ARM GAS  /tmp/ccz3bLTm.s 			page 1
  317              		@ args = 0, pretend = 0, frame = 0
  318              		@ frame_needed = 0, uses_anonymous_args = 0
  319              		@ link register save eliminated.
-ARM GAS  /tmp/ccz3bLTm.s 			page 20
+ARM GAS  /tmp/ccxFFApx.s 			page 20
 
 
  320              	.LVL28:
@@ -1198,7 +1198,7 @@ ARM GAS  /tmp/ccz3bLTm.s 			page 1
  367 0000 90F87030 		ldrb	r3, [r0, #112]	@ zero_extendqisi2
  368 0004 012B     		cmp	r3, #1
  369 0006 0CD0     		beq	.L31
-ARM GAS  /tmp/ccz3bLTm.s 			page 21
+ARM GAS  /tmp/ccxFFApx.s 			page 21
 
 
  381:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_ex.c **** 
@@ -1258,7 +1258,7 @@ ARM GAS  /tmp/ccz3bLTm.s 			page 1
  417              		.cfi_offset 4, -12
  418              		.cfi_offset 5, -8
  419              		.cfi_offset 14, -4
-ARM GAS  /tmp/ccz3bLTm.s 			page 22
+ARM GAS  /tmp/ccxFFApx.s 			page 22
 
 
  420 0004 0446     		mov	r4, r0
@@ -1318,7 +1318,7 @@ ARM GAS  /tmp/ccz3bLTm.s 			page 1
  466              		.cfi_restore 5
  467              		.cfi_restore 14
  411:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_ex.c ****   }
-ARM GAS  /tmp/ccz3bLTm.s 			page 23
+ARM GAS  /tmp/ccxFFApx.s 			page 23
 
 
  468              		.loc 1 411 0
@@ -1378,7 +1378,7 @@ ARM GAS  /tmp/ccz3bLTm.s 			page 1
  450:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_ex.c ****   /* check the wake-up selection parameter */
  520              		.loc 1 450 0 discriminator 3
  521 0024 02F56052 		add	r2, r2, #14336
-ARM GAS  /tmp/ccz3bLTm.s 			page 24
+ARM GAS  /tmp/ccxFFApx.s 			page 24
 
 
  522 0028 9342     		cmp	r3, r2
@@ -1438,7 +1438,7 @@ ARM GAS  /tmp/ccz3bLTm.s 			page 1
  566 0076 9360     		str	r3, [r2, #8]
  465:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_ex.c ****   {
  567              		.loc 1 465 0 discriminator 2
-ARM GAS  /tmp/ccz3bLTm.s 			page 25
+ARM GAS  /tmp/ccxFFApx.s 			page 25
 
 
  568 0078 D5B1     		cbz	r5, .L51
@@ -1498,7 +1498,7 @@ ARM GAS  /tmp/ccz3bLTm.s 			page 1
  615 00b6 2046     		mov	r0, r4
  616 00b8 FFF7FEFF 		bl	UARTEx_Wakeup_AddressConfig
  617              	.LVL55:
-ARM GAS  /tmp/ccz3bLTm.s 			page 26
+ARM GAS  /tmp/ccxFFApx.s 			page 26
 
 
  618 00bc DDE7     		b	.L46
@@ -1558,7 +1558,7 @@ ARM GAS  /tmp/ccz3bLTm.s 			page 1
  666              		.loc 1 510 0 discriminator 2
  667 001e 1846     		mov	r0, r3
  668              	.LVL57:
-ARM GAS  /tmp/ccz3bLTm.s 			page 27
+ARM GAS  /tmp/ccxFFApx.s 			page 27
 
 
  669 0020 7047     		bx	lr
@@ -1618,7 +1618,7 @@ ARM GAS  /tmp/ccz3bLTm.s 			page 1
  521:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_ex.c **** 
  717              		.loc 1 521 0
  718 0022 0220     		movs	r0, #2
-ARM GAS  /tmp/ccz3bLTm.s 			page 28
+ARM GAS  /tmp/ccxFFApx.s 			page 28
 
 
  719              	.LVL63:
@@ -1652,34 +1652,34 @@ ARM GAS  /tmp/ccz3bLTm.s 			page 1
  742              		.file 12 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart_ex.h"
  743              		.file 13 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h"
  744              		.file 14 "Inc/stm32l4xx_hal_conf.h"
-ARM GAS  /tmp/ccz3bLTm.s 			page 29
+ARM GAS  /tmp/ccxFFApx.s 			page 29
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 stm32l4xx_hal_uart_ex.c
-     /tmp/ccz3bLTm.s:18     .text.UARTEx_Wakeup_AddressConfig:0000000000000000 $t
-     /tmp/ccz3bLTm.s:24     .text.UARTEx_Wakeup_AddressConfig:0000000000000000 UARTEx_Wakeup_AddressConfig
-     /tmp/ccz3bLTm.s:80     .text.UARTEx_Wakeup_AddressConfig:0000000000000044 $d
-     /tmp/ccz3bLTm.s:85     .text.HAL_RS485Ex_Init:0000000000000000 $t
-     /tmp/ccz3bLTm.s:92     .text.HAL_RS485Ex_Init:0000000000000000 HAL_RS485Ex_Init
-     /tmp/ccz3bLTm.s:280    .text.HAL_RS485Ex_Init:00000000000000dc $d
-     /tmp/ccz3bLTm.s:286    .text.HAL_UARTEx_WakeupCallback:0000000000000000 $t
-     /tmp/ccz3bLTm.s:293    .text.HAL_UARTEx_WakeupCallback:0000000000000000 HAL_UARTEx_WakeupCallback
-     /tmp/ccz3bLTm.s:306    .text.HAL_UARTEx_EnableClockStopMode:0000000000000000 $t
-     /tmp/ccz3bLTm.s:313    .text.HAL_UARTEx_EnableClockStopMode:0000000000000000 HAL_UARTEx_EnableClockStopMode
-     /tmp/ccz3bLTm.s:351    .text.HAL_UARTEx_DisableClockStopMode:0000000000000000 $t
-     /tmp/ccz3bLTm.s:358    .text.HAL_UARTEx_DisableClockStopMode:0000000000000000 HAL_UARTEx_DisableClockStopMode
-     /tmp/ccz3bLTm.s:396    .text.HAL_MultiProcessorEx_AddressLength_Set:0000000000000000 $t
-     /tmp/ccz3bLTm.s:403    .text.HAL_MultiProcessorEx_AddressLength_Set:0000000000000000 HAL_MultiProcessorEx_AddressLength_Set
-     /tmp/ccz3bLTm.s:475    .text.HAL_MultiProcessorEx_AddressLength_Set:0000000000000048 $d
-     /tmp/ccz3bLTm.s:480    .text.HAL_UARTEx_StopModeWakeUpSourceConfig:0000000000000000 $t
-     /tmp/ccz3bLTm.s:487    .text.HAL_UARTEx_StopModeWakeUpSourceConfig:0000000000000000 HAL_UARTEx_StopModeWakeUpSourceConfig
-     /tmp/ccz3bLTm.s:630    .text.HAL_UARTEx_StopModeWakeUpSourceConfig:00000000000000c8 $d
-     /tmp/ccz3bLTm.s:636    .text.HAL_UARTEx_EnableStopMode:0000000000000000 $t
-     /tmp/ccz3bLTm.s:643    .text.HAL_UARTEx_EnableStopMode:0000000000000000 HAL_UARTEx_EnableStopMode
-     /tmp/ccz3bLTm.s:681    .text.HAL_UARTEx_DisableStopMode:0000000000000000 $t
-     /tmp/ccz3bLTm.s:688    .text.HAL_UARTEx_DisableStopMode:0000000000000000 HAL_UARTEx_DisableStopMode
-     /tmp/ccz3bLTm.s:726    .rodata.UARTEx_Wakeup_AddressConfig.str1.4:0000000000000000 $d
+     /tmp/ccxFFApx.s:18     .text.UARTEx_Wakeup_AddressConfig:0000000000000000 $t
+     /tmp/ccxFFApx.s:24     .text.UARTEx_Wakeup_AddressConfig:0000000000000000 UARTEx_Wakeup_AddressConfig
+     /tmp/ccxFFApx.s:80     .text.UARTEx_Wakeup_AddressConfig:0000000000000044 $d
+     /tmp/ccxFFApx.s:85     .text.HAL_RS485Ex_Init:0000000000000000 $t
+     /tmp/ccxFFApx.s:92     .text.HAL_RS485Ex_Init:0000000000000000 HAL_RS485Ex_Init
+     /tmp/ccxFFApx.s:280    .text.HAL_RS485Ex_Init:00000000000000dc $d
+     /tmp/ccxFFApx.s:286    .text.HAL_UARTEx_WakeupCallback:0000000000000000 $t
+     /tmp/ccxFFApx.s:293    .text.HAL_UARTEx_WakeupCallback:0000000000000000 HAL_UARTEx_WakeupCallback
+     /tmp/ccxFFApx.s:306    .text.HAL_UARTEx_EnableClockStopMode:0000000000000000 $t
+     /tmp/ccxFFApx.s:313    .text.HAL_UARTEx_EnableClockStopMode:0000000000000000 HAL_UARTEx_EnableClockStopMode
+     /tmp/ccxFFApx.s:351    .text.HAL_UARTEx_DisableClockStopMode:0000000000000000 $t
+     /tmp/ccxFFApx.s:358    .text.HAL_UARTEx_DisableClockStopMode:0000000000000000 HAL_UARTEx_DisableClockStopMode
+     /tmp/ccxFFApx.s:396    .text.HAL_MultiProcessorEx_AddressLength_Set:0000000000000000 $t
+     /tmp/ccxFFApx.s:403    .text.HAL_MultiProcessorEx_AddressLength_Set:0000000000000000 HAL_MultiProcessorEx_AddressLength_Set
+     /tmp/ccxFFApx.s:475    .text.HAL_MultiProcessorEx_AddressLength_Set:0000000000000048 $d
+     /tmp/ccxFFApx.s:480    .text.HAL_UARTEx_StopModeWakeUpSourceConfig:0000000000000000 $t
+     /tmp/ccxFFApx.s:487    .text.HAL_UARTEx_StopModeWakeUpSourceConfig:0000000000000000 HAL_UARTEx_StopModeWakeUpSourceConfig
+     /tmp/ccxFFApx.s:630    .text.HAL_UARTEx_StopModeWakeUpSourceConfig:00000000000000c8 $d
+     /tmp/ccxFFApx.s:636    .text.HAL_UARTEx_EnableStopMode:0000000000000000 $t
+     /tmp/ccxFFApx.s:643    .text.HAL_UARTEx_EnableStopMode:0000000000000000 HAL_UARTEx_EnableStopMode
+     /tmp/ccxFFApx.s:681    .text.HAL_UARTEx_DisableStopMode:0000000000000000 $t
+     /tmp/ccxFFApx.s:688    .text.HAL_UARTEx_DisableStopMode:0000000000000000 HAL_UARTEx_DisableStopMode
+     /tmp/ccxFFApx.s:726    .rodata.UARTEx_Wakeup_AddressConfig.str1.4:0000000000000000 $d
                      .debug_frame:0000000000000010 $d
 
 UNDEFINED SYMBOLS

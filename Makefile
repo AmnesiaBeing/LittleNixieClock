@@ -75,6 +75,7 @@ HAL/tim.c \
 HAL/usart.c \
 HAL/dma.c \
 main.c \
+FUN/Debug.c
 
 # ASM sources
 ASM_SOURCES =  \

@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccXqsszZ.s 			page 1
+ARM GAS  /tmp/ccGJo400.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccXqsszZ.s 			page 1
   29:HAL/dma.c     **** 
   30:HAL/dma.c     **** /* USER CODE BEGIN 1 */
   31:HAL/dma.c     **** 
-ARM GAS  /tmp/ccXqsszZ.s 			page 2
+ARM GAS  /tmp/ccGJo400.s 			page 2
 
 
   32:HAL/dma.c     **** /* USER CODE END 1 */
@@ -89,10 +89,8 @@ ARM GAS  /tmp/ccXqsszZ.s 			page 1
   44 0012 0193     		str	r3, [sp, #4]
   45 0014 019B     		ldr	r3, [sp, #4]
   46              	.LBE2:
-  41:HAL/dma.c     **** 
-  42:HAL/dma.c     **** 
-  43:HAL/dma.c     **** }
-  47              		.loc 1 43 0
+  41:HAL/dma.c     **** }
+  47              		.loc 1 41 0
   48 0016 02B0     		add	sp, sp, #8
   49              	.LCFI1:
   50              		.cfi_def_cfa_offset 0
@@ -104,24 +102,49 @@ ARM GAS  /tmp/ccXqsszZ.s 			page 1
   56 001c 00100240 		.word	1073876992
   57              		.cfi_endproc
   58              	.LFE284:
-  60              		.text
-  61              	.Letext0:
-  62              		.file 2 "/usr/include/newlib/machine/_default_types.h"
-  63              		.file 3 "/usr/include/newlib/sys/_stdint.h"
-  64              		.file 4 "Drivers/CMSIS/Include/core_cm4.h"
-  65              		.file 5 "Drivers/CMSIS/Device/ST/STM32L4xx/Include/system_stm32l4xx.h"
-  66              		.file 6 "Drivers/CMSIS/Device/ST/STM32L4xx/Include/stm32l433xx.h"
-  67              		.file 7 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_def.h"
-  68              		.file 8 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_flash.h"
-  69              		.file 9 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h"
-ARM GAS  /tmp/ccXqsszZ.s 			page 3
+  60              		.section	.text.MX_DMA_CHAN3_Init,"ax",%progbits
+  61              		.align	1
+  62              		.global	MX_DMA_CHAN3_Init
+  63              		.syntax unified
+  64              		.thumb
+  65              		.thumb_func
+  66              		.fpu fpv4-sp-d16
+  68              	MX_DMA_CHAN3_Init:
+  69              	.LFB285:
+  42:HAL/dma.c     **** 
+  43:HAL/dma.c     **** void MX_DMA_CHAN3_Init(void)
+  44:HAL/dma.c     **** {
+  70              		.loc 1 44 0
+  71              		.cfi_startproc
+  72              		@ args = 0, pretend = 0, frame = 0
+  73              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  /tmp/ccGJo400.s 			page 3
+
+
+  74              		@ link register save eliminated.
+  75 0000 7047     		bx	lr
+  76              		.cfi_endproc
+  77              	.LFE285:
+  79              		.text
+  80              	.Letext0:
+  81              		.file 2 "/usr/include/newlib/machine/_default_types.h"
+  82              		.file 3 "/usr/include/newlib/sys/_stdint.h"
+  83              		.file 4 "Drivers/CMSIS/Include/core_cm4.h"
+  84              		.file 5 "Drivers/CMSIS/Device/ST/STM32L4xx/Include/system_stm32l4xx.h"
+  85              		.file 6 "Drivers/CMSIS/Device/ST/STM32L4xx/Include/stm32l433xx.h"
+  86              		.file 7 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_def.h"
+  87              		.file 8 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_flash.h"
+  88              		.file 9 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h"
+ARM GAS  /tmp/ccGJo400.s 			page 4
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 dma.c
-     /tmp/ccXqsszZ.s:18     .text.MX_DMA_Init:0000000000000000 $t
-     /tmp/ccXqsszZ.s:25     .text.MX_DMA_Init:0000000000000000 MX_DMA_Init
-     /tmp/ccXqsszZ.s:56     .text.MX_DMA_Init:000000000000001c $d
+     /tmp/ccGJo400.s:18     .text.MX_DMA_Init:0000000000000000 $t
+     /tmp/ccGJo400.s:25     .text.MX_DMA_Init:0000000000000000 MX_DMA_Init
+     /tmp/ccGJo400.s:56     .text.MX_DMA_Init:000000000000001c $d
+     /tmp/ccGJo400.s:61     .text.MX_DMA_CHAN3_Init:0000000000000000 $t
+     /tmp/ccGJo400.s:68     .text.MX_DMA_CHAN3_Init:0000000000000000 MX_DMA_CHAN3_Init
                      .debug_frame:0000000000000010 $d
 
 NO UNDEFINED SYMBOLS
