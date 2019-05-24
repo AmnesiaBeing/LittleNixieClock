@@ -57,7 +57,7 @@ void RGBLED_SetColorRGB(uint8_t r, uint8_t g, uint8_t b, int index)
 void RGBLED_SendData()
 {
     //此处代码必须可以优化，不过先试试吧
-    for (int i = 0; i < LEDNUM; ++i)
+    for (int i = 0; i < LEDNUM * 8 * 3; ++i)
     {
         for (int j = 0; j < 8; ++j)
         {
