@@ -2,6 +2,10 @@
 
 static uint8_t buf[LEDNUM * 3 * 8];
 
+//小灯归零码的高低电平持续时间（计时器的脉冲数）
+#define TH 8
+#define TL 4
+
 void WS2812_Init(void)
 {
     MX_TIM2_Init();

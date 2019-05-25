@@ -28,7 +28,9 @@ HAL| GPIO  SLEEP  SYSWPK  EXIT  SPI  TIM  QSPI  SAI  DMA  I2C
 * PWR_MeasureVBat() 这是个测试点，如果stm32的vbat不接vcc，甚至悬空，会有何种后果？ 
 //PWR_XXXX() why power up?
 
-## BTN: two button: nrst & mode, nrst btn is controlled by PWR
+## BTN:
+
+板子上有俩按钮，一个rst，一个mode。这个模块仅仅负责mode。
 
 * BTN_Scan() 状态机，每个循环都判断一次IO口状态，如果按钮按下，判断短按还是长按，执行不同的功能（功能未定）
 
