@@ -3,6 +3,9 @@
         "main.h": "c",
         "stm32l4xx_hal.h": "c",
         "dma.h": "c",
-        "tim.h": "c"
-    }
+        "tim.h": "c",
+        "debug.h": "c",
+        "threads.h": "c"
+    },
+    "C_Cpp.errorSquiggles": "Disabled"
 }

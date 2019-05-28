@@ -76,7 +76,8 @@ HAL/usart.c \
 HAL/dma.c \
 main.c \
 FUN/Debug.c \
-FUN/RGBLED.c
+FUN/RGBLED.c \
+DRV/WS2812.c
 
 # ASM sources
 ASM_SOURCES =  \
@@ -133,7 +134,8 @@ AS_INCLUDES =
 
 # C includes
 C_INCLUDES =  \
--IInc \
+-I. \
+-IHAL \
 -IDrivers/STM32L4xx_HAL_Driver/Inc \
 -IDrivers/STM32L4xx_HAL_Driver/Inc/Legacy \
 -IDrivers/CMSIS/Device/ST/STM32L4xx/Include \
