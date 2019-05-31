@@ -13,7 +13,11 @@
 #include <math.h>
 #include <stdbool.h>
 
+#include "FUN/PWR.h"
 #include "FUN/RGBLED.h"
+
+//for test
+#include "DRV/HV507.h"
 
 void SystemClock_Config(void);
 
@@ -42,17 +46,18 @@ int main(void)
     bool flag = false;
     while (1)
     {
-        RGBLED_Clear(c, c, c);
-        RGBLED_Update();
-        HAL_Delay(10);
-        if (flag)
-            c++;
-        else
-            c--;
-        if (c > 100)
-            flag = false;
-        if (c < 10)
-            flag = true;
+        // RGBLED_Clear(c, c, c);
+        // RGBLED_Update();
+        // HAL_Delay(10);
+        // if (flag)
+        //     c++;
+        // else
+        //     c--;
+        // if (c > 100)
+        //     flag = false;
+        // if (c < 10)
+        //     flag = true;
+        
     }
 }
 

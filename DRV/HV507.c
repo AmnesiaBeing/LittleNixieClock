@@ -1,13 +1,4 @@
-/*
-    HV507 use spi1 and dma1 channel3
-*/
-
-#include "main.h"
-#include "stdbool.h"
-
-#include "spi.h"
-
-#include "mutex.h"
+#include "DRV/HV507.h"
 
 // LE == PB4
 #define LE_ON()                                             \
