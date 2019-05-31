@@ -9,9 +9,10 @@
 #include "usart.h"
 #include "gpio.h"
 
-#include "stdio.h"
+#include <stdio.h>
+#include <math.h>
+#include <stdbool.h>
 
-#include "FUN/Debug.h"
 #include "FUN/RGBLED.h"
 
 void SystemClock_Config(void);
@@ -25,26 +26,33 @@ int main(void)
 
     /* Initialize all configured peripherals */
     MX_GPIO_Init();
-    // MX_DMA_Init();
-    // MX_ADC1_Init();
-    // MX_I2C1_Init();
-    // MX_QUADSPI_Init();
-    // MX_SAI1_Init();
-    // MX_SPI1_Init();
+    MX_DMA_Init();
+    MX_ADC1_Init();
+    MX_I2C1_Init();
+    MX_QUADSPI_Init();
+    MX_SAI1_Init();
+    MX_SPI1_Init();
+    // MX_TIM2_Init();
+    MX_USART1_UART_Init();
+    MX_USART2_UART_Init();
 
-    // MX_USART1_UART_Init();
-    Debug_Init();
+    // RGBLED_Init();
 
-    RGBLED_Init();
-
-    uint8_t c = 100;
+    uint8_t c = 20;
+    bool flag = false;
     while (1)
     {
-        printf("hello world!\n");
-        HAL_Delay(10);
         RGBLED_Clear(c, c, c);
-        c++;
         RGBLED_Update();
+        HAL_Delay(10);
+        if (flag)
+            c++;
+        else
+            c--;
+        if (c > 100)
+            flag = false;
+        if (c < 10)
+            flag = true;
     }
 }
 
@@ -129,7 +137,7 @@ void Error_Handler(void)
   */
 void assert_failed(char *file, uint32_t line)
 {
-    printf("Wrong parameters value: file %s on line %d\r\n", file, line);
+    printf("Wrong parameters value: file %s on line %ld\r\n", file, line);
 }
 #endif /* USE_FULL_ASSERT */
 

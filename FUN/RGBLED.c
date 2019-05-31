@@ -5,13 +5,14 @@
 #include "FUN/RGBLED.h"
 #include "DRV/WS2812.h"
 
+#include <stdio.h>
+
 // 维护小灯颜色grb信息的缓冲区，注意颜色存储顺序
 // 内存中的排列： grbgrb...
 static uint8_t buf[LEDNUM * 3] = {0};
 
 void RGBLED_Init()
 {
-    extern void WS2812_Init(void);
     WS2812_Init();
 }
 
@@ -37,6 +38,5 @@ void RGBLED_SetColor(uint8_t r, uint8_t g, uint8_t b, int i)
 // 更新小灯显示
 void RGBLED_Update()
 {
-    extern void WS2812_SendData(uint8_t *data);
     WS2812_SendData(buf);
 }
