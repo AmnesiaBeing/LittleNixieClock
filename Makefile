@@ -77,7 +77,10 @@ HAL/dma.c \
 main.c \
 FUN/Debug.c \
 FUN/RGBLED.c \
-DRV/WS2812.c
+FUN/NixieTube.c \
+FUN/PWR.c \
+DRV/WS2812.c \
+DRV/HV507.c
 
 # ASM sources
 ASM_SOURCES =  \

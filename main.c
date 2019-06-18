@@ -15,9 +15,7 @@
 
 #include "FUN/PWR.h"
 #include "FUN/RGBLED.h"
-
-//for test
-#include "DRV/HV507.h"
+#include "FUN/NixieTube.h"
 
 void SystemClock_Config(void);
 
@@ -30,34 +28,148 @@ int main(void)
 
     /* Initialize all configured peripherals */
     MX_GPIO_Init();
-    MX_DMA_Init();
-    MX_ADC1_Init();
-    MX_I2C1_Init();
-    MX_QUADSPI_Init();
-    MX_SAI1_Init();
-    MX_SPI1_Init();
-    // MX_TIM2_Init();
-    MX_USART1_UART_Init();
+    // MX_DMA_Init();
+    // MX_ADC1_Init();
+    // MX_I2C1_Init();
+    // MX_QUADSPI_Init();
+    // MX_SAI1_Init();
+    // MX_SPI1_Init();
+    // MX_USART1_UART_Init();
     MX_USART2_UART_Init();
 
-    // RGBLED_Init();
+    HAL_Delay(1000);
+
+    PWR_5V_ON();
+
+    RGBLED_Init();
+    NixieTube_Init();
+
+    PWR_VPP_ON();
 
     uint8_t c = 20;
     bool flag = false;
     while (1)
     {
-        // RGBLED_Clear(c, c, c);
-        // RGBLED_Update();
-        // HAL_Delay(10);
-        // if (flag)
-        //     c++;
-        // else
-        //     c--;
-        // if (c > 100)
-        //     flag = false;
-        // if (c < 10)
-        //     flag = true;
-        
+        // 考虑到单片机用的MSB模式，所以SPI用LSB模式好了，这个数字就从最右边发送
+        // HV507_SendData(0x0123456789abcdef);
+
+        RGBLED_Clear(c, c, c);
+        RGBLED_Update();
+        if (flag)
+            c += 10;
+        else
+            c -= 10;
+        if (c > 100)
+            flag = false;
+        if (c < 10)
+            flag = true;
+
+        NixieTube_Show("000000", true);
+        HAL_Delay(100);
+
+        RGBLED_Clear(c, c, c);
+        RGBLED_Update();
+        if (flag)
+            c += 10;
+        else
+            c -= 10;
+        if (c > 100)
+            flag = false;
+        if (c < 10)
+            flag = true;
+        NixieTube_Show("111111", true);
+        HAL_Delay(100);
+
+        RGBLED_Clear(c, c, c);
+        RGBLED_Update();
+        if (flag)
+            c += 10;
+        else
+            c -= 10;
+        if (c > 100)
+            flag = false;
+        if (c < 10)
+            flag = true;
+        NixieTube_Show("222222", true);
+        HAL_Delay(100);
+
+        RGBLED_Clear(c, c, c);
+        RGBLED_Update();
+        if (flag)
+            c += 10;
+        else
+            c -= 10;
+        if (c > 100)
+            flag = false;
+        if (c < 10)
+            flag = true;
+        NixieTube_Show("333333", true);
+        HAL_Delay(100);
+
+        RGBLED_Clear(c, c, c);
+        RGBLED_Update();
+        if (flag)
+            c += 10;
+        else
+            c -= 10;
+        if (c > 100)
+            flag = false;
+        if (c < 10)
+            flag = true;
+        NixieTube_Show("444444", true);
+        HAL_Delay(100);
+
+        RGBLED_Clear(c, c, c);
+        RGBLED_Update();
+        if (flag)
+            c += 10;
+        else
+            c -= 10;
+        if (c > 100)
+            flag = false;
+        if (c < 10)
+            flag = true;
+        NixieTube_Show("555555", true);
+        HAL_Delay(100);
+
+        RGBLED_Clear(c, c, c);
+        RGBLED_Update();
+        if (flag)
+            c += 10;
+        else
+            c -= 10;
+        if (c > 100)
+            flag = false;
+        if (c < 10)
+            flag = true;
+        NixieTube_Show("666666", true);
+        HAL_Delay(100);
+
+        RGBLED_Clear(c, c, c);
+        RGBLED_Update();
+        if (flag)
+            c += 10;
+        else
+            c -= 10;
+        if (c > 100)
+            flag = false;
+        if (c < 10)
+            flag = true;
+        NixieTube_Show("777777", true);
+        HAL_Delay(100);
+
+        RGBLED_Clear(c, c, c);
+        RGBLED_Update();
+        if (flag)
+            c += 10;
+        else
+            c -= 10;
+        if (c > 100)
+            flag = false;
+        if (c < 10)
+            flag = true;
+        NixieTube_Show("888888", true);
+        HAL_Delay(100);
     }
 }
 

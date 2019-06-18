@@ -1,46 +1,25 @@
 #include "DRV/HV507.h"
 
+// SPI没调通，还是使用GPIO好了
+
 // LE == PB4
-#define LE_ON()                                             \
-    do                                                      \
-    {                                                       \
-        HAL_GPIO_WritePin(GPIOB, GPIO_PIN_4, GPIO_PIN_SET); \
-    } while (0);
-
-#define LE_OFF()                                              \
-    do                                                        \
-    {                                                         \
-        HAL_GPIO_WritePin(GPIOB, GPIO_PIN_4, GPIO_PIN_RESET); \
-    } while (0);
-
-#define LE_DELAYINSYSTICK 1
-
-//spi1 when idle clk is high, dat is low, and ramp edge effect
-
-static mutex_t mutex;
+#define LE_ON() HAL_GPIO_WritePin(GPIOB, GPIO_PIN_4, GPIO_PIN_SET);
+#define LE_OFF() HAL_GPIO_WritePin(GPIOB, GPIO_PIN_4, GPIO_PIN_RESET);
 
 void HV507_Init()
 {
-    MX_DMA_CHAN3_Init();
     MX_SPI1_Init();
-    unlock(mutex);
 }
 
 void HV507_SendData(uint64_t data)
 {
-    iflockret(mutex);
-    HAL_SPI_Transmit_DMA(&hspi1, (uint8_t *)&data, sizeof(data));
-    lock(mutex);
-}
-
-void HAL_SPI_TxCpltCallback(SPI_HandleTypeDef *hspi)
-{
-    if (hspi == &hspi1)
-    {
-        LE_ON();
-        for (int i = 0x100; i > 0; --i)
-            ;
-        LE_OFF();
-        unlock(mutex);
-    }
+    HAL_SPI_Transmit(&hspi1, (uint8_t *)&data, sizeof(data), 0xFF);
+    // SPI上升沿到锁存脉冲至少需要tDLE=35ns的时间，这里长一些好了
+    for (int i = 0; i < 10; ++i)
+        ;
+    // 数据手册要求>80ns
+    LE_ON();
+    for (int i = 0; i < 10; ++i)
+        ;
+    LE_OFF();
 }

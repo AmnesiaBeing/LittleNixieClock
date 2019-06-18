@@ -20,7 +20,8 @@ static uint16_t *buf = dma_buf.buf;
 
 void WS2812_Init(void)
 {
-    MX_TIM2_Init();
+    // MX_TIM2_Init();
+    
 }
 
 #define PL GPIOA->BRR = (uint32_t)GPIO_PIN_15;
@@ -65,7 +66,7 @@ void WS2812_SendData(uint8_t *data)
     }
     PL;
     // uint16_t test[] = {0, 0, 26, 26, 63, 63, 0, 0};
-    HAL_TIM_PWM_Start_DMA(&htim2, TIM_CHANNEL_1, (uint32_t *)test, sizeof(test));
+    // HAL_TIM_PWM_Start_DMA(&htim2, TIM_CHANNEL_1, (uint32_t *)test, sizeof(test));
 }
 
 // void HAL_TIM_PWM_PulseFinishedCallback(TIM_HandleTypeDef *htim)
