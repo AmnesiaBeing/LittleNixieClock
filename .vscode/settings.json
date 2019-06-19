@@ -5,7 +5,9 @@
         "dma.h": "c",
         "tim.h": "c",
         "debug.h": "c",
-        "threads.h": "c"
+        "threads.h": "c",
+        "rgbled.h": "c",
+        "stdint.h": "c"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }

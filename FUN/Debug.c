@@ -1,6 +1,11 @@
 #include "main.h"
 #include "usart.h"
 
+void Debug_Init(void)
+{
+    MX_USART2_UART_Init();
+}
+
 // for printf in newlib arm-none-eabi-gcc
 int _write(int fd, char *ptr, int len)
 {

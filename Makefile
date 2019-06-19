@@ -79,6 +79,7 @@ FUN/Debug.c \
 FUN/RGBLED.c \
 FUN/NixieTube.c \
 FUN/PWR.c \
+FUN/Anim.c \
 DRV/WS2812.c \
 DRV/HV507.c
 

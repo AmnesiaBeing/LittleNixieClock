@@ -32,36 +32,36 @@ static uint32_t NTable[6][10] = {
 #define ND2 42U
 #define ND1 43U
 
-#define NDMASK (uint64_t)((1ULL << ND1) | (1ULL << ND2) | (1ULL << ND3) | (1ULL << ND4))
+#define NDMASK1 (uint64_t)((1ULL << ND1) | (1ULL << ND2))
+#define NDMASK2 (uint64_t)((1ULL << ND3) | (1ULL << ND4))
 
 // 编码数组，表示在输入字符串的第几位，0-->N1最右边的辉光管，5-->N6最左边的辉光管
 // uint8_t str_off[6] = {};
 
-// 输入字符串"192020"，显示对应的数字
-// 第二个参数表示是否显示冒号
-// 输入"------"表示不亮
-void NixieTube_Show(char *str, bool nd)
+// 输入字符串"12 34:56"，显示对应的数字和冒号
+// 输入"-- -- --"表示不亮
+void NixieTube_Show(const char *str)
 {
+    const static uint8_t map[] = {0, 1, 3, 4, 6, 7};
 
-    printf("%s", str);
     char c;
 
     uint64_t res = 0;
 
-    for (int i = 0; i < 6; ++i)
+    for (int i = 0; i < 6; i++)
     {
-        c = str[i] - '0';
+        c = str[map[i]] - '0';
         if ((c >= 0) && (c <= 9))
         {
             res |= (1ULL << NTable[i][(int)c]);
         }
-        else
-        {
-        }
     }
 
-    if (nd)
-        res |= NDMASK;
+    if (str[2] == ':')
+        res |= NDMASK1;
+    
+    if (str[5] == ':')
+        res |= NDMASK2;
 
     HV507_SendData(res);
 }

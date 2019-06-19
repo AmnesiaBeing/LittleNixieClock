@@ -16,8 +16,12 @@
 #include "FUN/PWR.h"
 #include "FUN/RGBLED.h"
 #include "FUN/NixieTube.h"
+#include "FUN/Debug.h"
+#include "FUN/Anim.h"
 
 void SystemClock_Config(void);
+
+ST_t status = ST_INIT;
 
 int main(void)
 {
@@ -26,150 +30,45 @@ int main(void)
     /* Configure the system clock */
     SystemClock_Config();
 
-    /* Initialize all configured peripherals */
     MX_GPIO_Init();
-    // MX_DMA_Init();
-    // MX_ADC1_Init();
-    // MX_I2C1_Init();
-    // MX_QUADSPI_Init();
-    // MX_SAI1_Init();
-    // MX_SPI1_Init();
-    // MX_USART1_UART_Init();
-    MX_USART2_UART_Init();
-
-    HAL_Delay(1000);
-
-    PWR_5V_ON();
-
+    Debug_Init();
     RGBLED_Init();
     NixieTube_Init();
+    // DS3231_Init();
+    // FLASH_Init();
+    // WIFI_Init();
+    // Button_Init();
 
+    // 尝试获取时间
+    // Time_TryGet();
+
+    PWR_5V_ON();
     PWR_VPP_ON();
 
-    uint8_t c = 20;
-    bool flag = false;
+    // 等待所有工作都准备好
+    HAL_Delay(1000);
+
+    // 开启DS3231外部中断
+    // Time_Init();
+    // 进入状态机工作模式
     while (1)
     {
-        // 考虑到单片机用的MSB模式，所以SPI用LSB模式好了，这个数字就从最右边发送
-        // HV507_SendData(0x0123456789abcdef);
-
-        RGBLED_Clear(c, c, c);
-        RGBLED_Update();
-        if (flag)
-            c += 10;
-        else
-            c -= 10;
-        if (c > 100)
-            flag = false;
-        if (c < 10)
-            flag = true;
-
-        NixieTube_Show("000000", true);
-        HAL_Delay(100);
-
-        RGBLED_Clear(c, c, c);
-        RGBLED_Update();
-        if (flag)
-            c += 10;
-        else
-            c -= 10;
-        if (c > 100)
-            flag = false;
-        if (c < 10)
-            flag = true;
-        NixieTube_Show("111111", true);
-        HAL_Delay(100);
-
-        RGBLED_Clear(c, c, c);
-        RGBLED_Update();
-        if (flag)
-            c += 10;
-        else
-            c -= 10;
-        if (c > 100)
-            flag = false;
-        if (c < 10)
-            flag = true;
-        NixieTube_Show("222222", true);
-        HAL_Delay(100);
-
-        RGBLED_Clear(c, c, c);
-        RGBLED_Update();
-        if (flag)
-            c += 10;
-        else
-            c -= 10;
-        if (c > 100)
-            flag = false;
-        if (c < 10)
-            flag = true;
-        NixieTube_Show("333333", true);
-        HAL_Delay(100);
-
-        RGBLED_Clear(c, c, c);
-        RGBLED_Update();
-        if (flag)
-            c += 10;
-        else
-            c -= 10;
-        if (c > 100)
-            flag = false;
-        if (c < 10)
-            flag = true;
-        NixieTube_Show("444444", true);
-        HAL_Delay(100);
-
-        RGBLED_Clear(c, c, c);
-        RGBLED_Update();
-        if (flag)
-            c += 10;
-        else
-            c -= 10;
-        if (c > 100)
-            flag = false;
-        if (c < 10)
-            flag = true;
-        NixieTube_Show("555555", true);
-        HAL_Delay(100);
-
-        RGBLED_Clear(c, c, c);
-        RGBLED_Update();
-        if (flag)
-            c += 10;
-        else
-            c -= 10;
-        if (c > 100)
-            flag = false;
-        if (c < 10)
-            flag = true;
-        NixieTube_Show("666666", true);
-        HAL_Delay(100);
-
-        RGBLED_Clear(c, c, c);
-        RGBLED_Update();
-        if (flag)
-            c += 10;
-        else
-            c -= 10;
-        if (c > 100)
-            flag = false;
-        if (c < 10)
-            flag = true;
-        NixieTube_Show("777777", true);
-        HAL_Delay(100);
-
-        RGBLED_Clear(c, c, c);
-        RGBLED_Update();
-        if (flag)
-            c += 10;
-        else
-            c -= 10;
-        if (c > 100)
-            flag = false;
-        if (c < 10)
-            flag = true;
-        NixieTube_Show("888888", true);
-        HAL_Delay(100);
+        switch (status)
+        {
+        case ST_INIT:
+            Anim_Protect();
+            status = ST_NORMAL;
+            break;
+        case ST_NORMAL:
+            // Do nothing and wait for intterupt
+            break;
+        case ST_UNDERCONTROL:
+            // unimpl
+            break;
+        // case ST_ERROR:
+        default:
+            break;
+        }
     }
 }
 
