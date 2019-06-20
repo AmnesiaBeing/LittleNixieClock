@@ -9,7 +9,8 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-#include "i2c.h"
+#define hi2c hi2c1
+#define DS3231_ADDR (0x68 << 1)
 
 #define DS3231_REG_TIME 0x00
 #define DS3231_REG_ALARM1 0x07

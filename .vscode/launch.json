@@ -13,7 +13,12 @@
             "servertype": "jlink",
             "device": "STM32L433CB",
             "interface": "swd",
-            "armToolchainPath": "C:\\Program Files (x86)\\GNU Tools ARM Embedded\\8 2018-q4-major\\bin",
+            "windows": {
+                "armToolchainPath": "C:\\Program Files (x86)\\GNU Tools ARM Embedded\\8 2018-q4-major\\bin",
+            },
+            "linux": {
+                "armToolchainPath": "/usr/bin/arm-none-eabi-gdb"
+            },
             "runToMain": true
         }
     ]

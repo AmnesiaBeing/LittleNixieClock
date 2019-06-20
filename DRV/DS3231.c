@@ -6,18 +6,43 @@ https://github.com/eziya/STM32_HAL_DS3231/blob/master/Src/stm32_ds3231.c
  *      Author: kiki
  */
 #include "main.h"
-#include "DS3231.h"
 
-#define DS3231_ADDR (0x68 << 1)
+#include "HAL/i2c.h"
 
-static uint8_t B2D(uint8_t bcd);
-static uint8_t D2B(uint8_t decimal);
+#include "DRV/DS3231.h"
 
-I2C_HandleTypeDef *hi2c = hi2c1;
+static bool DS3231_ReadRegister(uint8_t regAddr, uint8_t *value)
+{
+    if (HAL_I2C_Master_Transmit(hi2c, DS3231_ADDR, &regAddr, 1, HAL_MAX_DELAY) != HAL_OK)
+        return false;
+    if (HAL_I2C_Master_Receive(hi2c, DS3231_ADDR, value, 1, HAL_MAX_DELAY) != HAL_OK)
+        return false;
+
+    return true;
+}
+
+static bool DS3231_WriteRegister(uint8_t regAddr, uint8_t value)
+{
+    uint8_t buffer[2] = {regAddr, value};
+    if (HAL_I2C_Master_Transmit(hi2c, DS3231_ADDR, buffer, sizeof(buffer), HAL_MAX_DELAY) != HAL_OK)
+        return false;
+
+    return true;
+}
+
+static uint8_t B2D(uint8_t bcd)
+{
+    return (bcd >> 4) * 10 + (bcd & 0x0F);
+}
+
+static uint8_t D2B(uint8_t decimal)
+{
+    return (((decimal / 10) << 4) | (decimal % 10));
+}
 
 void DS3231_Init()
 {
-    hi2c = hi2c1;
+    MX_I2C1_Init();
 }
 
 bool DS3231_GetTime(DS3231_time_t *time)
@@ -139,31 +164,26 @@ bool DS3231_ClearAlarm1()
     return true;
 }
 
-bool DS3231_ReadRegister(uint8_t regAddr, uint8_t *value)
+bool DS3231_Set1HzSQW(void)
 {
-    if (HAL_I2C_Master_Transmit(hi2c, DS3231_ADDR, &regAddr, 1, HAL_MAX_DELAY) != HAL_OK)
-        return false;
-    if (HAL_I2C_Master_Receive(hi2c, DS3231_ADDR, value, 1, HAL_MAX_DELAY) != HAL_OK)
-        return false;
-
-    return true;
+    uint8_t ctrlReg;
+    DS3231_ReadRegister(DS3231_REG_CONTROL, &ctrlReg);
+    // 将RS2、RS1置0，表示1Hz方波
+    ctrlReg &= ~DS3231_CON_RS1;
+    ctrlReg &= ~DS3231_CON_RS2;
+    // 将INTCN置0，表示输出方波
+    ctrlReg &= ~DS3231_CON_INTCN;
+    DS3231_WriteRegister(DS3231_REG_CONTROL, ctrlReg);
 }
 
-bool DS3231_WriteRegister(uint8_t regAddr, uint8_t value)
+bool DS3231_Clear1HzSQW(void)
 {
-    uint8_t buffer[2] = {regAddr, value};
-    if (HAL_I2C_Master_Transmit(hi2c, DS3231_ADDR, buffer, sizeof(buffer), HAL_MAX_DELAY) != HAL_OK)
-        return false;
-
-    return true;
-}
-
-static uint8_t B2D(uint8_t bcd)
-{
-    return (bcd >> 4) * 10 + (bcd & 0x0F);
-}
-
-static uint8_t D2B(uint8_t decimal)
-{
-    return (((decimal / 10) << 4) | (decimal % 10));
+    uint8_t ctrlReg;
+    DS3231_ReadRegister(DS3231_REG_CONTROL, &ctrlReg);
+    // 将RS2、RS1置0，表示1Hz方波
+    ctrlReg &= ~DS3231_CON_RS1;
+    ctrlReg &= ~DS3231_CON_RS2;
+    // 将INTCN置1，表示不输出方波
+    ctrlReg |= DS3231_CON_INTCN;
+    DS3231_WriteRegister(DS3231_REG_CONTROL, ctrlReg);
 }

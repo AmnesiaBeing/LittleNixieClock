@@ -36,13 +36,15 @@ int main(void)
     NixieTube_Init();
     // DS3231_Init();
     // FLASH_Init();
-    // WIFI_Init();
     // Button_Init();
 
     // 尝试获取时间
     // Time_TryGet();
 
     PWR_5V_ON();
+
+    // WIFI_Init();
+
     PWR_VPP_ON();
 
     // 等待所有工作都准备好

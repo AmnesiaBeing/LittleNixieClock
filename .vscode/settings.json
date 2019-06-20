@@ -7,7 +7,8 @@
         "debug.h": "c",
         "threads.h": "c",
         "rgbled.h": "c",
-        "stdint.h": "c"
+        "stdint.h": "c",
+        "ds3231.h": "c"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }
