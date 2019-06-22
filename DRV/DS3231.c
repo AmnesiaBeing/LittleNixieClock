@@ -13,9 +13,9 @@ https://github.com/eziya/STM32_HAL_DS3231/blob/master/Src/stm32_ds3231.c
 
 static bool DS3231_ReadRegister(uint8_t regAddr, uint8_t *value)
 {
-    if (HAL_I2C_Master_Transmit(hi2c, DS3231_ADDR, &regAddr, 1, HAL_MAX_DELAY) != HAL_OK)
+    if (HAL_I2C_Master_Transmit(&hi2c, DS3231_ADDR, &regAddr, 1, HAL_MAX_DELAY) != HAL_OK)
         return false;
-    if (HAL_I2C_Master_Receive(hi2c, DS3231_ADDR, value, 1, HAL_MAX_DELAY) != HAL_OK)
+    if (HAL_I2C_Master_Receive(&hi2c, DS3231_ADDR, value, 1, HAL_MAX_DELAY) != HAL_OK)
         return false;
 
     return true;
@@ -24,7 +24,7 @@ static bool DS3231_ReadRegister(uint8_t regAddr, uint8_t *value)
 static bool DS3231_WriteRegister(uint8_t regAddr, uint8_t value)
 {
     uint8_t buffer[2] = {regAddr, value};
-    if (HAL_I2C_Master_Transmit(hi2c, DS3231_ADDR, buffer, sizeof(buffer), HAL_MAX_DELAY) != HAL_OK)
+    if (HAL_I2C_Master_Transmit(&hi2c, DS3231_ADDR, buffer, sizeof(buffer), HAL_MAX_DELAY) != HAL_OK)
         return false;
 
     return true;
@@ -52,9 +52,9 @@ bool DS3231_GetTime(DS3231_time_t *time)
         0,
     };
 
-    if (HAL_I2C_Master_Transmit(hi2c, DS3231_ADDR, &startAddr, 1, HAL_MAX_DELAY) != HAL_OK)
+    if (HAL_I2C_Master_Transmit(&hi2c, DS3231_ADDR, &startAddr, 1, HAL_MAX_DELAY) != HAL_OK)
         return false;
-    if (HAL_I2C_Master_Receive(hi2c, DS3231_ADDR, buffer, sizeof(buffer), HAL_MAX_DELAY) != HAL_OK)
+    if (HAL_I2C_Master_Receive(&hi2c, DS3231_ADDR, buffer, sizeof(buffer), HAL_MAX_DELAY) != HAL_OK)
         return false;
 
     time->Sec = B2D(buffer[0] & 0x7F);
@@ -72,7 +72,7 @@ bool DS3231_SetTime(DS3231_time_t *time)
 {
     uint8_t startAddr = DS3231_REG_TIME;
     uint8_t buffer[8] = {startAddr, D2B(time->Sec), D2B(time->Min), D2B(time->Hour), time->DaysOfWeek, D2B(time->Date), D2B(time->Month), D2B(time->Year)};
-    if (HAL_I2C_Master_Transmit(hi2c, DS3231_ADDR, buffer, sizeof(buffer), HAL_MAX_DELAY) != HAL_OK)
+    if (HAL_I2C_Master_Transmit(&hi2c, DS3231_ADDR, buffer, sizeof(buffer), HAL_MAX_DELAY) != HAL_OK)
         return false;
 
     return true;
@@ -85,9 +85,9 @@ bool DS3231_ReadTemperature(float *temp)
         0,
     };
 
-    if (HAL_I2C_Master_Transmit(hi2c, DS3231_ADDR, &startAddr, 1, HAL_MAX_DELAY) != HAL_OK)
+    if (HAL_I2C_Master_Transmit(&hi2c, DS3231_ADDR, &startAddr, 1, HAL_MAX_DELAY) != HAL_OK)
         return false;
-    if (HAL_I2C_Master_Receive(hi2c, DS3231_ADDR, buffer, sizeof(buffer), HAL_MAX_DELAY) != HAL_OK)
+    if (HAL_I2C_Master_Receive(&hi2c, DS3231_ADDR, buffer, sizeof(buffer), HAL_MAX_DELAY) != HAL_OK)
         return false;
 
     int16_t value = (buffer[0] << 8) | (buffer[1]);
@@ -106,21 +106,21 @@ bool DS3231_SetAlarm1(uint8_t mode, uint8_t date, uint8_t hour, uint8_t min, uin
 
     switch (mode)
     {
-    case ALARM_MODE_ALL_MATCHED:
+    case DS3231_ALARM_MODE_ALL_MATCHED:
         break;
-    case ALARM_MODE_HOUR_MIN_SEC_MATCHED:
+    case DS3231_ALARM_MODE_HOUR_MIN_SEC_MATCHED:
         alarmDate |= 0x80;
         break;
-    case ALARM_MODE_MIN_SEC_MATCHED:
+    case DS3231_ALARM_MODE_MIN_SEC_MATCHED:
         alarmDate |= 0x80;
         alarmHour |= 0x80;
         break;
-    case ALARM_MODE_SEC_MATCHED:
+    case DS3231_ALARM_MODE_SEC_MATCHED:
         alarmDate |= 0x80;
         alarmHour |= 0x80;
         alarmMinute |= 0x80;
         break;
-    case ALARM_MODE_ONCE_PER_SECOND:
+    case DS3231_ALARM_MODE_ONCE_PER_SECOND:
         alarmDate |= 0x80;
         alarmHour |= 0x80;
         alarmMinute |= 0x80;
@@ -133,7 +133,7 @@ bool DS3231_SetAlarm1(uint8_t mode, uint8_t date, uint8_t hour, uint8_t min, uin
     /* Write Alarm Registers */
     uint8_t startAddr = DS3231_REG_ALARM1;
     uint8_t buffer[5] = {startAddr, alarmSecond, alarmMinute, alarmHour, alarmDate};
-    if (HAL_I2C_Master_Transmit(hi2c, DS3231_ADDR, buffer, sizeof(buffer), HAL_MAX_DELAY) != HAL_OK)
+    if (HAL_I2C_Master_Transmit(&hi2c, DS3231_ADDR, buffer, sizeof(buffer), HAL_MAX_DELAY) != HAL_OK)
         return false;
 
     /* Enable Alarm1 at Control Register */
@@ -146,7 +146,7 @@ bool DS3231_SetAlarm1(uint8_t mode, uint8_t date, uint8_t hour, uint8_t min, uin
     return true;
 }
 
-bool DS3231_ClearAlarm1()
+void DS3231_ClearAlarm1()
 {
     uint8_t ctrlReg;
     uint8_t statusReg;
@@ -160,11 +160,9 @@ bool DS3231_ClearAlarm1()
     DS3231_ReadRegister(DS3231_REG_STATUS, &statusReg);
     statusReg &= ~DS3231_STA_A1F;
     DS3231_WriteRegister(DS3231_REG_STATUS, statusReg);
-
-    return true;
 }
 
-bool DS3231_Set1HzSQW(void)
+void DS3231_Set1HzSQW(void)
 {
     uint8_t ctrlReg;
     DS3231_ReadRegister(DS3231_REG_CONTROL, &ctrlReg);
@@ -176,7 +174,7 @@ bool DS3231_Set1HzSQW(void)
     DS3231_WriteRegister(DS3231_REG_CONTROL, ctrlReg);
 }
 
-bool DS3231_Clear1HzSQW(void)
+void DS3231_Clear1HzSQW(void)
 {
     uint8_t ctrlReg;
     DS3231_ReadRegister(DS3231_REG_CONTROL, &ctrlReg);

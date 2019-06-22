@@ -70,4 +70,6 @@ bool DS3231_GetTime(DS3231_time_t *rtc);
 bool DS3231_SetTime(DS3231_time_t *rtc);
 bool DS3231_ReadTemperature(float *temp);
 bool DS3231_SetAlarm1(DS3231_AlarmMode mode, uint8_t date, uint8_t hour, uint8_t min, uint8_t sec);
-bool DS3231_ClearAlarm1();
+void DS3231_ClearAlarm1();
+void DS3231_Set1HzSQW(void);
+void DS3231_Clear1HzSQW(void);
