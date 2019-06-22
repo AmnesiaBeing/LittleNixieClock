@@ -8,7 +8,8 @@
         "threads.h": "c",
         "rgbled.h": "c",
         "stdint.h": "c",
-        "ds3231.h": "c"
+        "ds3231.h": "c",
+        "stm32l4xx_it.h": "c"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }

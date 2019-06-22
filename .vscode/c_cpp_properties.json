@@ -1,7 +1,7 @@
 {
     "configurations": [
         {
-            "name": "WSL",
+            "name": "STM32",
             "intelliSenseMode": "gcc-x64",
             "compilerPath": "/usr/bin/arm-none-eabi-gcc",
             "includePath": [
