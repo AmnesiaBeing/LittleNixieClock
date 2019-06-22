@@ -40,7 +40,6 @@ main.c \
 HAL/gpio.c \
 HAL/adc.c \
 HAL/dma.c \
-HAL/freertos.c \
 HAL/i2c.c \
 HAL/quadspi.c \
 HAL/sai.c \
@@ -160,7 +159,7 @@ C_INCLUDES =  \
 -IDrivers/STM32L4xx_HAL_Driver/Inc/Legacy \
 -IMiddlewares/Third_Party/FreeRTOS/Source/include \
 -IMiddlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS \
--IMiddlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F \
+-IMiddlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F
 
 
 # compile gcc flags
