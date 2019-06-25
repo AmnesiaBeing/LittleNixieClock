@@ -54,22 +54,28 @@ typedef enum
     SATURDAY
 } DaysOfWeek;
 
+typedef enum
+{
+    DS3231_ALARM_1,
+    DS3231_ALARM_2
+} DS3231_ALARM_ID;
+
 typedef struct
 {
     uint8_t Year;
     uint8_t Month;
-    uint8_t Date;
+    uint8_t Day;
     uint8_t DaysOfWeek;
     uint8_t Hour;
     uint8_t Min;
     uint8_t Sec;
-} DS3231_time_t;
+} DS3231_datetime_t;
 
 void DS3231_Init();
-bool DS3231_GetTime(DS3231_time_t *rtc);
-bool DS3231_SetTime(DS3231_time_t *rtc);
+bool DS3231_GetTime(DS3231_datetime_t *dt);
+bool DS3231_SetTime(DS3231_datetime_t *dt);
 bool DS3231_ReadTemperature(float *temp);
-bool DS3231_SetAlarm1(DS3231_AlarmMode mode, uint8_t date, uint8_t hour, uint8_t min, uint8_t sec);
+bool DS3231_SetAlarm1(DS3231_AlarmMode mode, DS3231_datetime_t *datetime);
 void DS3231_ClearAlarm1();
 void DS3231_Set1HzSQW(void);
 void DS3231_Clear1HzSQW(void);

@@ -36,14 +36,14 @@ void Anim_Protect(void)
         RGBLED_Clear(c, c, c);
         RGBLED_Update();
         c += 23;
-        osDelay(200);
+        osDelay(100);
     }
-    for (int i = 10; i > 0; --i)
+    for (int i = 8; i >= 0; --i)
     {
         NixieTube_Show(str[i]);
         RGBLED_Clear(c, c, c);
         RGBLED_Update();
         c -= 23;
-        osDelay(200);
+        osDelay(100);
     }
 }

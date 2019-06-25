@@ -34,6 +34,12 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "ESP8266/Wifi.h"
+#include "DRV/DS3231.h"
+#include "DRV/Button.h"
+#include "FUN/NixieTube.h"
+#include "FUN/PWR.h"
+#include "FUN/Anim.h"
+#include "DRV/HV507.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -67,6 +73,41 @@ void MX_FREERTOS_Init(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 
+osThreadId BootTaskHandle;
+osThreadId MainTaskHandle;
+
+// void MainTask(void const *argument)
+// {
+// }
+
+// BootTask
+void BootTask(void const *argument)
+{
+  // 开机动画（这个时候wifi模块也在初始化）
+  Anim_Protect();
+  // 加载配置和时间
+
+  // 加载完成
+  DS3231_Set1HzSQW();
+  HAL_NVIC_SetPriority(EXTI15_10_IRQn, NVIC_PRIORITYGROUP_4, 0);
+  HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
+  // 代码没写干净，I2C没有加锁，不敢在这个地方读取时间
+  // 主频80MHz，10min/(1s/80M*3)=1.6E10
+  int i = 0;
+  while (1)
+  {
+    i++;
+    if (i > 10 * 60)
+    {
+      // osThreadSuspend(MainTaskHandle);
+      HAL_NVIC_DisableIRQ(EXTI15_10_IRQn);
+      Anim_Protect();
+      HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
+      i = 0;
+    }
+    osDelay(1000);
+  }
+}
 /* USER CODE END 0 */
 
 /**
@@ -103,17 +144,36 @@ int main(void)
   MX_QUADSPI_Init();
   MX_SAI1_Init();
   MX_SPI1_Init();
-  MX_TIM2_Init();
   MX_USART1_UART_Init();
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
   printf("Hello World!\n");
-  uint8_t aaa;
-  HAL_UART_Receive_IT(&huart2, &aaa, 1);
+  //uint8_t aaa;
+  //HAL_UART_Receive_IT(&huart2, &aaa, 1);
+  // EXTI_IRQHandler_Config();
+
+  PWR_5V_ON();
+  PWR_VPP_ON();
+
+  // HV507_SendData(0x01);
+  // NixieTube_Show("00:00:00");
+
+  DS3231_Init();
+
+  // Anim_Protect();
+
+  // HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
+  Button_Init();
+
+  // NixieTube_Show("12:34:56");
+
   /* USER CODE END 2 */
 
   /* Call init function for freertos objects (in freertos.c) */
-  Wifi_Init(osPriorityNormal);
+  // Wifi_Init(osPriorityNormal);
+
+  osThreadDef(BootTaskName, BootTask, osPriorityNormal, 0, _WIFI_TASK_SIZE);
+  BootTaskHandle = osThreadCreate(osThread(BootTaskName), NULL);
 
   /* Start scheduler */
   osKernelStart();
@@ -124,6 +184,25 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+    // NixieTube_Show("00:00:00");
+    // HAL_Delay(10);
+    // uint16_t test[] = {0, 0, 0, 26, 26, 63, 63, 26, 26, 63, 63, 26, 26, 63, 63, 26, 26, 63, 63, 0, 0};
+    // HAL_TIM_PWM_Start_DMA(&htim2, TIM_CHANNEL_1, (uint32_t *)test, 21);
+    // HAL_Delay(10);
+    // uint8_t Year;
+    // uint8_t Month;
+    // uint8_t Date;
+    // uint8_t DaysOfWeek;
+    // uint8_t Hour;
+    // uint8_t Min;
+    // uint8_t Sec;
+    // DS3231_time_t t;
+    // if (DS3231_GetTime(&t))
+    // {
+    //   printf("sec:%d\n", t.Sec);
+    // }
+    // HAL_Delay(100);
+
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -194,6 +273,11 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
+
+void HAL_TIM_PWM_PulseFinishedCallback(TIM_HandleTypeDef *htim)
+{
+  HAL_TIM_PWM_Stop(&htim2, TIM_CHANNEL_1);
+}
 
 /* USER CODE END 4 */
 

@@ -1,7 +1,5 @@
 #include "DRV/HV507.h"
 
-// SPI没调通，还是使用GPIO好了
-
 // LE == PB4
 #define LE_ON() HAL_GPIO_WritePin(GPIOB, GPIO_PIN_4, GPIO_PIN_SET);
 #define LE_OFF() HAL_GPIO_WritePin(GPIOB, GPIO_PIN_4, GPIO_PIN_RESET);

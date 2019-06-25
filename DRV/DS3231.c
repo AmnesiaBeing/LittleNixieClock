@@ -11,6 +11,8 @@ https://github.com/eziya/STM32_HAL_DS3231/blob/master/Src/stm32_ds3231.c
 
 #include "DRV/DS3231.h"
 
+#include <stdio.h>
+
 static bool DS3231_ReadRegister(uint8_t regAddr, uint8_t *value)
 {
     if (HAL_I2C_Master_Transmit(&hi2c, DS3231_ADDR, &regAddr, 1, HAL_MAX_DELAY) != HAL_OK)
@@ -42,10 +44,11 @@ static uint8_t D2B(uint8_t decimal)
 
 void DS3231_Init()
 {
-    MX_I2C1_Init();
+    // MX_I2C1_Init();
+    // set exti15_10 irqn
 }
 
-bool DS3231_GetTime(DS3231_time_t *time)
+bool DS3231_GetTime(DS3231_datetime_t *time)
 {
     uint8_t startAddr = DS3231_REG_TIME;
     uint8_t buffer[7] = {
@@ -61,17 +64,17 @@ bool DS3231_GetTime(DS3231_time_t *time)
     time->Min = B2D(buffer[1] & 0x7F);
     time->Hour = B2D(buffer[2] & 0x3F);
     time->DaysOfWeek = buffer[3] & 0x07;
-    time->Date = B2D(buffer[4] & 0x3F);
+    time->Day = B2D(buffer[4] & 0x3F);
     time->Month = B2D(buffer[5] & 0x1F);
     time->Year = B2D(buffer[6]);
 
     return true;
 }
 
-bool DS3231_SetTime(DS3231_time_t *time)
+bool DS3231_SetTime(DS3231_datetime_t *time)
 {
     uint8_t startAddr = DS3231_REG_TIME;
-    uint8_t buffer[8] = {startAddr, D2B(time->Sec), D2B(time->Min), D2B(time->Hour), time->DaysOfWeek, D2B(time->Date), D2B(time->Month), D2B(time->Year)};
+    uint8_t buffer[8] = {startAddr, D2B(time->Sec), D2B(time->Min), D2B(time->Hour), time->DaysOfWeek, D2B(time->Day), D2B(time->Month), D2B(time->Year)};
     if (HAL_I2C_Master_Transmit(&hi2c, DS3231_ADDR, buffer, sizeof(buffer), HAL_MAX_DELAY) != HAL_OK)
         return false;
 
@@ -97,31 +100,36 @@ bool DS3231_ReadTemperature(float *temp)
     return true;
 }
 
-bool DS3231_SetAlarm1(uint8_t mode, uint8_t date, uint8_t hour, uint8_t min, uint8_t sec)
+bool DS3231_SetAlarm(uint8_t mode, DS3231_datetime_t *dt, DS3231_ALARM_ID id)
 {
+    uint8_t day = dt->Day;
+    uint8_t hour = dt->Hour;
+    uint8_t min = dt->Min;
+    uint8_t sec = dt->Sec;
+
     uint8_t alarmSecond = D2B(sec);
     uint8_t alarmMinute = D2B(min);
     uint8_t alarmHour = D2B(hour);
-    uint8_t alarmDate = D2B(date);
+    uint8_t alarmDay = D2B(day);
 
     switch (mode)
     {
     case DS3231_ALARM_MODE_ALL_MATCHED:
         break;
     case DS3231_ALARM_MODE_HOUR_MIN_SEC_MATCHED:
-        alarmDate |= 0x80;
+        alarmDay |= 0x80;
         break;
     case DS3231_ALARM_MODE_MIN_SEC_MATCHED:
-        alarmDate |= 0x80;
+        alarmDay |= 0x80;
         alarmHour |= 0x80;
         break;
     case DS3231_ALARM_MODE_SEC_MATCHED:
-        alarmDate |= 0x80;
+        alarmDay |= 0x80;
         alarmHour |= 0x80;
         alarmMinute |= 0x80;
         break;
     case DS3231_ALARM_MODE_ONCE_PER_SECOND:
-        alarmDate |= 0x80;
+        alarmDay |= 0x80;
         alarmHour |= 0x80;
         alarmMinute |= 0x80;
         alarmSecond |= 0x80;
@@ -130,58 +138,118 @@ bool DS3231_SetAlarm1(uint8_t mode, uint8_t date, uint8_t hour, uint8_t min, uin
         break;
     }
 
-    /* Write Alarm Registers */
-    uint8_t startAddr = DS3231_REG_ALARM1;
-    uint8_t buffer[5] = {startAddr, alarmSecond, alarmMinute, alarmHour, alarmDate};
-    if (HAL_I2C_Master_Transmit(&hi2c, DS3231_ADDR, buffer, sizeof(buffer), HAL_MAX_DELAY) != HAL_OK)
-        return false;
-
-    /* Enable Alarm1 at Control Register */
+    uint8_t startAddr;
+    uint8_t buffer[5] = {startAddr, alarmSecond, alarmMinute, alarmHour, alarmDay};
     uint8_t ctrlReg = 0x00;
-    DS3231_ReadRegister(DS3231_REG_CONTROL, &ctrlReg);
-    ctrlReg |= DS3231_CON_A1IE;
-    ctrlReg |= DS3231_CON_INTCN;
-    DS3231_WriteRegister(DS3231_REG_CONTROL, ctrlReg);
+    switch (id)
+    {
+    case DS3231_ALARM_1:
+        /* Write Alarm 1 Registers */
+        startAddr = DS3231_REG_ALARM1;
+        if (HAL_I2C_Master_Transmit(&hi2c, DS3231_ADDR, buffer, sizeof(buffer), HAL_MAX_DELAY) != HAL_OK)
+            return false;
+
+        /* Enable Alarm1 at Control Register */
+
+        DS3231_ReadRegister(DS3231_REG_CONTROL, &ctrlReg);
+        ctrlReg |= DS3231_CON_A1IE;
+        DS3231_WriteRegister(DS3231_REG_CONTROL, ctrlReg);
+        break;
+    case DS3231_ALARM_2:
+        /* Write Alarm 2 Registers */
+        startAddr = DS3231_REG_ALARM2;
+        if (HAL_I2C_Master_Transmit(&hi2c, DS3231_ADDR, buffer, sizeof(buffer), HAL_MAX_DELAY) != HAL_OK)
+            return false;
+
+        /* Enable Alarm1 at Control Register */
+
+        DS3231_ReadRegister(DS3231_REG_CONTROL, &ctrlReg);
+        ctrlReg |= DS3231_CON_A2IE;
+        DS3231_WriteRegister(DS3231_REG_CONTROL, ctrlReg);
+        break;
+    default:
+        return false;
+        break;
+    }
 
     return true;
 }
 
-void DS3231_ClearAlarm1()
+void DS3231_ClearAlarm(DS3231_ALARM_ID id)
 {
     uint8_t ctrlReg;
     uint8_t statusReg;
+    switch (id)
+    {
+    case DS3231_ALARM_1:
+        /* Clear Control Register */
+        DS3231_ReadRegister(DS3231_REG_CONTROL, &ctrlReg);
+        ctrlReg &= ~DS3231_CON_A1IE;
+        DS3231_WriteRegister(DS3231_REG_CONTROL, ctrlReg);
 
-    /* Clear Control Register */
-    DS3231_ReadRegister(DS3231_REG_CONTROL, &ctrlReg);
-    ctrlReg &= ~DS3231_CON_A1IE;
-    DS3231_WriteRegister(DS3231_REG_CONTROL, ctrlReg);
+        /* Clear Status Register */
+        DS3231_ReadRegister(DS3231_REG_STATUS, &statusReg);
+        statusReg &= ~DS3231_STA_A1F;
+        DS3231_WriteRegister(DS3231_REG_STATUS, statusReg);
+        break;
+    case DS3231_ALARM_2:
+        /* Clear Control Register */
+        DS3231_ReadRegister(DS3231_REG_CONTROL, &ctrlReg);
+        ctrlReg &= ~DS3231_CON_A2IE;
+        DS3231_WriteRegister(DS3231_REG_CONTROL, ctrlReg);
 
-    /* Clear Status Register */
-    DS3231_ReadRegister(DS3231_REG_STATUS, &statusReg);
-    statusReg &= ~DS3231_STA_A1F;
-    DS3231_WriteRegister(DS3231_REG_STATUS, statusReg);
+        /* Clear Status Register */
+        DS3231_ReadRegister(DS3231_REG_STATUS, &statusReg);
+        statusReg &= ~DS3231_STA_A2F;
+        DS3231_WriteRegister(DS3231_REG_STATUS, statusReg);
+        break;
+    default:
+        break;
+    }
 }
 
 void DS3231_Set1HzSQW(void)
 {
     uint8_t ctrlReg;
     DS3231_ReadRegister(DS3231_REG_CONTROL, &ctrlReg);
+    ctrlReg |= DS3231_CON_BBSQW;
+    ctrlReg |= DS3231_CON_EOSC;
     // 将RS2、RS1置0，表示1Hz方波
     ctrlReg &= ~DS3231_CON_RS1;
     ctrlReg &= ~DS3231_CON_RS2;
     // 将INTCN置0，表示输出方波
     ctrlReg &= ~DS3231_CON_INTCN;
     DS3231_WriteRegister(DS3231_REG_CONTROL, ctrlReg);
+    // HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
 }
 
 void DS3231_Clear1HzSQW(void)
 {
     uint8_t ctrlReg;
     DS3231_ReadRegister(DS3231_REG_CONTROL, &ctrlReg);
-    // 将RS2、RS1置0，表示1Hz方波
-    ctrlReg &= ~DS3231_CON_RS1;
-    ctrlReg &= ~DS3231_CON_RS2;
-    // 将INTCN置1，表示不输出方波
+    // 将INTCN置1，表示不输出方波，输出闹钟
     ctrlReg |= DS3231_CON_INTCN;
     DS3231_WriteRegister(DS3231_REG_CONTROL, ctrlReg);
+    // HAL_NVIC_DisableIRQ(EXTI15_10_IRQn);
+}
+
+extern void NixieTube_Show(const char *str);
+
+void DS3231_SQW_Callback(void)
+{
+    DS3231_datetime_t t;
+    uint8_t h;
+    uint8_t m;
+    uint8_t s;
+    char buf[] = "00:00:00";
+    static bool flag = false;
+    if (DS3231_GetTime(&t))
+    {
+        h = t.Hour;
+        m = t.Min;
+        s = t.Sec;
+        flag ? sprintf(buf, "%02d:%02d:%02d", h, m, s) : sprintf(buf, "%02d %02d %02d", h, m, s);
+        flag = !flag;
+        NixieTube_Show(buf);
+    }
 }

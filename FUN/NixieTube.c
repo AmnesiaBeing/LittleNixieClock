@@ -42,7 +42,7 @@ static uint32_t NTable[6][10] = {
 // 输入"-- -- --"表示不亮
 void NixieTube_Show(const char *str)
 {
-    const static uint8_t map[] = {0, 1, 3, 4, 6, 7};
+    const static uint8_t map[] = {7, 6, 4, 3, 1, 0};
 
     char c;
 
@@ -59,7 +59,7 @@ void NixieTube_Show(const char *str)
 
     if (str[2] == ':')
         res |= NDMASK1;
-    
+
     if (str[5] == ':')
         res |= NDMASK2;
 

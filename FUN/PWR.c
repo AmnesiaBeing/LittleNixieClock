@@ -1,5 +1,7 @@
 #include "main.h"
 
+#define LOG(...)
+
 //#define EN_5V PA5
 //VPP_EN PA4
 

@@ -14,6 +14,10 @@ static dma_buf_t dma_buf = {.head = 0,
 
 static uint16_t *buf = dma_buf.buf;
 
+#define PL GPIOA->BRR = (uint32_t)GPIO_PIN_15;
+#define PH GPIOA->BSRR = (uint32_t)GPIO_PIN_15;
+
+
 //小灯归零码的高低电平持续时间（计时器的脉冲数）
 // #define TH 61
 // #define TL 28
@@ -23,9 +27,6 @@ void WS2812_Init(void)
     // MX_TIM2_Init();
     
 }
-
-#define PL GPIOA->BRR = (uint32_t)GPIO_PIN_15;
-#define PH GPIOA->BSRR = (uint32_t)GPIO_PIN_15;
 
 // data[LEDNUM*3]按照grb顺序排列
 void WS2812_SendData(uint8_t *data)

@@ -95,7 +95,8 @@ FUN/Debug.c \
 FUN/NixieTube.c \
 FUN/PWR.c \
 FUN/RGBLED.c \
-RUN/TIME.c
+FUN/Anim.c \
+DRV/Button.c
 
 # ASM sources
 ASM_SOURCES =  \
