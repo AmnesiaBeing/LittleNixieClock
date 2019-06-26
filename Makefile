@@ -44,7 +44,6 @@ HAL/i2c.c \
 HAL/quadspi.c \
 HAL/sai.c \
 HAL/spi.c \
-HAL/tim.c \
 HAL/usart.c \
 HAL/stm32l4xx_it.c \
 HAL/stm32l4xx_hal_msp.c \
@@ -96,7 +95,8 @@ FUN/NixieTube.c \
 FUN/PWR.c \
 FUN/RGBLED.c \
 FUN/Anim.c \
-DRV/Button.c
+DRV/Button.c \
+FUN/NTP.c
 
 # ASM sources
 ASM_SOURCES =  \

@@ -1,17 +1,13 @@
-/*
-https://github.com/eziya/STM32_HAL_DS3231/blob/master/Src/stm32_ds3231.c
- * stm32_ds3231.c
- *
- *  Created on: 2019. 3. 17.
- *      Author: kiki
- */
-#include "main.h"
-
-#include "HAL/i2c.h"
-
-#include "DRV/DS3231.h"
-
 #include <stdio.h>
+#include <time.h>
+
+#include "FreeRTOS.h"
+#include "task.h"
+#include "cmsis_os.h"
+
+#include "main.h"
+#include "HAL/i2c.h"
+#include "DRV/DS3231.h"
 
 static bool DS3231_ReadRegister(uint8_t regAddr, uint8_t *value)
 {
@@ -48,7 +44,7 @@ void DS3231_Init()
     // set exti15_10 irqn
 }
 
-bool DS3231_GetTime(DS3231_datetime_t *time)
+bool DS3231_GetTime(struct tm *time)
 {
     uint8_t startAddr = DS3231_REG_TIME;
     uint8_t buffer[7] = {
@@ -60,24 +56,30 @@ bool DS3231_GetTime(DS3231_datetime_t *time)
     if (HAL_I2C_Master_Receive(&hi2c, DS3231_ADDR, buffer, sizeof(buffer), HAL_MAX_DELAY) != HAL_OK)
         return false;
 
-    time->Sec = B2D(buffer[0] & 0x7F);
-    time->Min = B2D(buffer[1] & 0x7F);
-    time->Hour = B2D(buffer[2] & 0x3F);
-    time->DaysOfWeek = buffer[3] & 0x07;
-    time->Day = B2D(buffer[4] & 0x3F);
-    time->Month = B2D(buffer[5] & 0x1F);
-    time->Year = B2D(buffer[6]);
+    time->tm_sec = B2D(buffer[0] & 0x7F);
+    time->tm_min = B2D(buffer[1] & 0x7F);
+    time->tm_hour = B2D(buffer[2] & 0x3F);
+    time->tm_wday = buffer[3] & 0x07;
+    time->tm_mday = B2D(buffer[4] & 0x3F);
+    time->tm_mon = B2D(buffer[5] & 0x1F);
+    time->tm_year = B2D(buffer[6]);
 
     return true;
 }
 
-bool DS3231_SetTime(DS3231_datetime_t *time)
+bool DS3231_SetTime(struct tm *time)
 {
+    portENTER_CRITICAL();
     uint8_t startAddr = DS3231_REG_TIME;
-    uint8_t buffer[8] = {startAddr, D2B(time->Sec), D2B(time->Min), D2B(time->Hour), time->DaysOfWeek, D2B(time->Day), D2B(time->Month), D2B(time->Year)};
+    uint8_t buffer[8] = {startAddr,
+                         D2B(time->tm_sec), D2B(time->tm_min), D2B(time->tm_hour), time->tm_wday,
+                         D2B(time->tm_mday), D2B(time->tm_mon), D2B(time->tm_year)};
     if (HAL_I2C_Master_Transmit(&hi2c, DS3231_ADDR, buffer, sizeof(buffer), HAL_MAX_DELAY) != HAL_OK)
+    {
+        portEXIT_CRITICAL();
         return false;
-
+    }
+    portEXIT_CRITICAL();
     return true;
 }
 
@@ -100,12 +102,12 @@ bool DS3231_ReadTemperature(float *temp)
     return true;
 }
 
-bool DS3231_SetAlarm(uint8_t mode, DS3231_datetime_t *dt, DS3231_ALARM_ID id)
+bool DS3231_SetAlarm(uint8_t mode, struct tm *dt, uint8_t id)
 {
-    uint8_t day = dt->Day;
-    uint8_t hour = dt->Hour;
-    uint8_t min = dt->Min;
-    uint8_t sec = dt->Sec;
+    uint8_t day = dt->tm_mday;
+    uint8_t hour = dt->tm_hour;
+    uint8_t min = dt->tm_min;
+    uint8_t sec = dt->tm_sec;
 
     uint8_t alarmSecond = D2B(sec);
     uint8_t alarmMinute = D2B(min);
@@ -143,7 +145,7 @@ bool DS3231_SetAlarm(uint8_t mode, DS3231_datetime_t *dt, DS3231_ALARM_ID id)
     uint8_t ctrlReg = 0x00;
     switch (id)
     {
-    case DS3231_ALARM_1:
+    case 1:
         /* Write Alarm 1 Registers */
         startAddr = DS3231_REG_ALARM1;
         if (HAL_I2C_Master_Transmit(&hi2c, DS3231_ADDR, buffer, sizeof(buffer), HAL_MAX_DELAY) != HAL_OK)
@@ -155,7 +157,7 @@ bool DS3231_SetAlarm(uint8_t mode, DS3231_datetime_t *dt, DS3231_ALARM_ID id)
         ctrlReg |= DS3231_CON_A1IE;
         DS3231_WriteRegister(DS3231_REG_CONTROL, ctrlReg);
         break;
-    case DS3231_ALARM_2:
+    case 2:
         /* Write Alarm 2 Registers */
         startAddr = DS3231_REG_ALARM2;
         if (HAL_I2C_Master_Transmit(&hi2c, DS3231_ADDR, buffer, sizeof(buffer), HAL_MAX_DELAY) != HAL_OK)
@@ -175,13 +177,13 @@ bool DS3231_SetAlarm(uint8_t mode, DS3231_datetime_t *dt, DS3231_ALARM_ID id)
     return true;
 }
 
-void DS3231_ClearAlarm(DS3231_ALARM_ID id)
+void DS3231_ClearAlarm(uint8_t id)
 {
     uint8_t ctrlReg;
     uint8_t statusReg;
     switch (id)
     {
-    case DS3231_ALARM_1:
+    case 1:
         /* Clear Control Register */
         DS3231_ReadRegister(DS3231_REG_CONTROL, &ctrlReg);
         ctrlReg &= ~DS3231_CON_A1IE;
@@ -192,7 +194,7 @@ void DS3231_ClearAlarm(DS3231_ALARM_ID id)
         statusReg &= ~DS3231_STA_A1F;
         DS3231_WriteRegister(DS3231_REG_STATUS, statusReg);
         break;
-    case DS3231_ALARM_2:
+    case 2:
         /* Clear Control Register */
         DS3231_ReadRegister(DS3231_REG_CONTROL, &ctrlReg);
         ctrlReg &= ~DS3231_CON_A2IE;
@@ -237,7 +239,7 @@ extern void NixieTube_Show(const char *str);
 
 void DS3231_SQW_Callback(void)
 {
-    DS3231_datetime_t t;
+    struct tm t;
     uint8_t h;
     uint8_t m;
     uint8_t s;
@@ -245,9 +247,9 @@ void DS3231_SQW_Callback(void)
     static bool flag = false;
     if (DS3231_GetTime(&t))
     {
-        h = t.Hour;
-        m = t.Min;
-        s = t.Sec;
+        h = t.tm_hour;
+        m = t.tm_min;
+        s = t.tm_sec;
         flag ? sprintf(buf, "%02d:%02d:%02d", h, m, s) : sprintf(buf, "%02d %02d %02d", h, m, s);
         flag = !flag;
         NixieTube_Show(buf);

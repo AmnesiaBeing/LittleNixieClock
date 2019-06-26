@@ -208,5 +208,11 @@ void EXTI3_IRQHandler(void)
     Button_Callback();
   }
 }
+
+void USART1_IRQHandler(void)
+{
+  extern UART_HandleTypeDef huart1;
+  HAL_UART_IRQHandler(&huart1);
+}
 /* USER CODE END 1 */
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

@@ -48,20 +48,20 @@ void WS2812_SendData(uint8_t *data)
         {
             // 1
             PH;
-            for (int j = 0; j < 3; ++j)
+            for (int j = 0; j < 10; ++j)
                 ;
             PL;
-            for (int j = 0; j < 2; ++j)
+            for (int j = 0; j < 5; ++j)
                 ;
         }
         else
         {
             // 0
             PH;
-            for (int j = 0; j < 1; ++j)
+            for (int j = 0; j < 5; ++j)
                 ;
             PL;
-            for (int j = 0; j < 3; ++j)
+            for (int j = 0; j < 10; ++j)
                 ;
         }
     }

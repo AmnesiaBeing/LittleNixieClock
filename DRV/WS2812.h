@@ -1,7 +1,7 @@
 #pragma once
 
 #include "main.h"
-#include "tim.h"
+// #include "tim.h"
 
 //小灯数量
 #define LEDNUM 6

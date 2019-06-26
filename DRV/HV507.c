@@ -6,7 +6,7 @@
 
 void HV507_Init()
 {
-    MX_SPI1_Init();
+    // MX_SPI1_Init();
 }
 
 void HV507_SendData(uint64_t data)

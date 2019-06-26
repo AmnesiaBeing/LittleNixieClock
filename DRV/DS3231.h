@@ -8,6 +8,7 @@
 
 #include <stdlib.h>
 #include <stdbool.h>
+#include <time.h>
 
 #define hi2c hi2c1
 #define DS3231_ADDR (0x68 << 1)
@@ -43,39 +44,11 @@ typedef enum
     DS3231_ALARM_MODE_ONCE_PER_SECOND
 } DS3231_AlarmMode;
 
-typedef enum
-{
-    SUNDAY = 1,
-    MONDAY,
-    TUESDAY,
-    WEDNESDAY,
-    THURSDAY,
-    FRIDAY,
-    SATURDAY
-} DaysOfWeek;
-
-typedef enum
-{
-    DS3231_ALARM_1,
-    DS3231_ALARM_2
-} DS3231_ALARM_ID;
-
-typedef struct
-{
-    uint8_t Year;
-    uint8_t Month;
-    uint8_t Day;
-    uint8_t DaysOfWeek;
-    uint8_t Hour;
-    uint8_t Min;
-    uint8_t Sec;
-} DS3231_datetime_t;
-
 void DS3231_Init();
-bool DS3231_GetTime(DS3231_datetime_t *dt);
-bool DS3231_SetTime(DS3231_datetime_t *dt);
+bool DS3231_GetTime(struct tm *tm);
+bool DS3231_SetTime(struct tm *tm);
 bool DS3231_ReadTemperature(float *temp);
-bool DS3231_SetAlarm1(DS3231_AlarmMode mode, DS3231_datetime_t *datetime);
-void DS3231_ClearAlarm1();
+bool DS3231_SetAlarm(uint8_t mode, struct tm *dt, uint8_t id);
+void DS3231_ClearAlarm(uint8_t id);
 void DS3231_Set1HzSQW(void);
 void DS3231_Clear1HzSQW(void);

@@ -1,8 +1,6 @@
 #include "FUN/NixieTube.h"
 #include "FUN/RGBLED.h"
 
-#include "HAL/tim.h"
-
 #include "cmsis_os.h"
 /*
     这个文件负责动画效果的管理。

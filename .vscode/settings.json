@@ -11,7 +11,14 @@
         "ds3231.h": "c",
         "stm32l4xx_it.h": "c",
         "cmsis_os.h": "c",
-        "spi.h": "c"
+        "spi.h": "c",
+        "ws2812.h": "c",
+        "time.h": "c",
+        "nixietube.h": "c",
+        "timespec.h": "c",
+        "xlocale.h": "c",
+        "wifi.h": "c",
+        "freertos.h": "c"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }

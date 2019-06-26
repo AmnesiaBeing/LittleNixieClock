@@ -27,7 +27,6 @@
 #include "quadspi.h"
 #include "sai.h"
 #include "spi.h"
-#include "tim.h"
 #include "usart.h"
 #include "gpio.h"
 
@@ -40,6 +39,7 @@
 #include "FUN/PWR.h"
 #include "FUN/Anim.h"
 #include "DRV/HV507.h"
+#include "FUN/RGBLED.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -88,15 +88,17 @@ void BootTask(void const *argument)
   // 加载配置和时间
 
   // 加载完成
+
+  // 开启中断，显示时间
   DS3231_Set1HzSQW();
   HAL_NVIC_SetPriority(EXTI15_10_IRQn, NVIC_PRIORITYGROUP_4, 0);
   HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
-  // 代码没写干净，I2C没有加锁，不敢在这个地方读取时间
-  // 主频80MHz，10min/(1s/80M*3)=1.6E10
+
   int i = 0;
   while (1)
   {
     i++;
+    // 每大约10分钟进行一次辉光管保护程序
     if (i > 10 * 60)
     {
       // osThreadSuspend(MainTaskHandle);
@@ -117,7 +119,8 @@ void BootTask(void const *argument)
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-
+  // while (1)
+  //   ;
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -148,32 +151,25 @@ int main(void)
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
   printf("Hello World!\n");
-  //uint8_t aaa;
-  //HAL_UART_Receive_IT(&huart2, &aaa, 1);
-  // EXTI_IRQHandler_Config();
 
   PWR_5V_ON();
   PWR_VPP_ON();
 
-  // HV507_SendData(0x01);
-  // NixieTube_Show("00:00:00");
-
+  NixieTube_Init();
   DS3231_Init();
 
-  // Anim_Protect();
-
-  // HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
   Button_Init();
-
-  // NixieTube_Show("12:34:56");
 
   /* USER CODE END 2 */
 
   /* Call init function for freertos objects (in freertos.c) */
-  // Wifi_Init(osPriorityNormal);
 
   osThreadDef(BootTaskName, BootTask, osPriorityNormal, 0, _WIFI_TASK_SIZE);
   BootTaskHandle = osThreadCreate(osThread(BootTaskName), NULL);
+  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);
+  Wifi_Init(osPriorityNormal);
+  
+
 
   /* Start scheduler */
   osKernelStart();
@@ -201,6 +197,8 @@ int main(void)
     // {
     //   printf("sec:%d\n", t.Sec);
     // }
+    // RGBLED_Clear(100, 100, 100);
+    // RGBLED_Update();
     // HAL_Delay(100);
 
     /* USER CODE END WHILE */
@@ -274,10 +272,10 @@ void SystemClock_Config(void)
 
 /* USER CODE BEGIN 4 */
 
-void HAL_TIM_PWM_PulseFinishedCallback(TIM_HandleTypeDef *htim)
-{
-  HAL_TIM_PWM_Stop(&htim2, TIM_CHANNEL_1);
-}
+// void HAL_TIM_PWM_PulseFinishedCallback(TIM_HandleTypeDef *htim)
+// {
+//   HAL_TIM_PWM_Stop(&htim2, TIM_CHANNEL_1);
+// }
 
 /* USER CODE END 4 */
 
