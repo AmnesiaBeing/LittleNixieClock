@@ -74,7 +74,8 @@ void MX_FREERTOS_Init(void);
 /* USER CODE BEGIN 0 */
 
 osThreadId BootTaskHandle;
-osThreadId MainTaskHandle;
+// osThreadId MainTaskHandle;
+osThreadId DS3231TaskHandle;
 
 // void MainTask(void const *argument)
 // {
@@ -110,6 +111,8 @@ void BootTask(void const *argument)
     osDelay(1000);
   }
 }
+
+extern void DS3231Task(void const *argument);
 /* USER CODE END 0 */
 
 /**
@@ -166,10 +169,12 @@ int main(void)
 
   osThreadDef(BootTaskName, BootTask, osPriorityNormal, 0, _WIFI_TASK_SIZE);
   BootTaskHandle = osThreadCreate(osThread(BootTaskName), NULL);
+
+  osThreadDef(DS3231TaskName, DS3231Task, osPriorityNormal, 0, _WIFI_TASK_SIZE);
+  DS3231TaskHandle = osThreadCreate(osThread(DS3231TaskName), NULL);
+
   HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);
   Wifi_Init(osPriorityNormal);
-  
-
 
   /* Start scheduler */
   osKernelStart();
