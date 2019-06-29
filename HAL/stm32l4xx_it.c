@@ -160,19 +160,6 @@ void DebugMon_Handler(void)
 /* please refer to the startup file (startup_stm32l4xx.s).                    */
 /******************************************************************************/
 
-/**
-  * @brief This function handles DMA1 channel3 global interrupt.
-  */
-void DMA1_Channel3_IRQHandler(void)
-{
-  /* USER CODE BEGIN DMA1_Channel3_IRQn 0 */
-
-  /* USER CODE END DMA1_Channel3_IRQn 0 */
-  HAL_DMA_IRQHandler(&hdma_spi1_tx);
-  /* USER CODE BEGIN DMA1_Channel3_IRQn 1 */
-
-  /* USER CODE END DMA1_Channel3_IRQn 1 */
-}
 
 /**
   * @brief This function handles TIM6 global interrupt, DAC channel1 and channel2 underrun error interrupts.
@@ -194,8 +181,8 @@ void EXTI15_10_IRQHandler(void)
   if (__HAL_GPIO_EXTI_GET_IT(GPIO_PIN_13) != 0x00u)
   {
     __HAL_GPIO_EXTI_CLEAR_IT(GPIO_PIN_13);
-    extern void DS3231_SQW_Callback(void);
-    DS3231_SQW_Callback();
+    extern void DS3231_SQW_INT_Callback(void);
+    DS3231_SQW_INT_Callback();
   }
 }
 
@@ -204,8 +191,8 @@ void EXTI3_IRQHandler(void)
   if (__HAL_GPIO_EXTI_GET_IT(GPIO_PIN_3) != 0x00u)
   {
     __HAL_GPIO_EXTI_CLEAR_IT(GPIO_PIN_3);
-    extern void Button_Callback(void);
-    Button_Callback();
+    extern void Button_Int_Callback(void);
+    Button_Int_Callback();
   }
 }
 

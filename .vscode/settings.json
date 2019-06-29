@@ -18,7 +18,9 @@
         "timespec.h": "c",
         "xlocale.h": "c",
         "wifi.h": "c",
-        "freertos.h": "c"
+        "freertos.h": "c",
+        "adc.h": "c",
+        "gpio.h": "c"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }

@@ -1,14 +1,41 @@
-#include "main.h"
+#include "BSP/BSP.h"
+#include "DRV/Button.h"
+#include "cmsis_os.h"
 
-#include <stdio.h>
+osSemaphoreId ButtonSemHandle;
 
 void Button_Init(void)
 {
-    // GPIO Init
-    HAL_NVIC_EnableIRQ(EXTI3_IRQn);
+    osSemaphoreDef(ButtonSemHandle);
+    ButtonSemHandle = osSemaphoreCreate(osSemaphore(ButtonSemHandle), 1);
 }
 
-void Button_Callback(void)
+static void (*Button_Callback)(void);
+
+void Button_Int_Callback(void)
 {
-    printf("btn press\n");
+    if (Button_Callback)
+        Button_Callback();
+}
+
+void Button_Register_Callback(void (*callback)(void))
+{
+    osSemaphoreWait(ButtonSemHandle, osWaitForever);
+    do
+    {
+        Button_Callback = callback;
+        HAL_NVIC_EnableIRQ(Button_IRQ);
+    } while (0);
+    osSemaphoreRelease(ButtonSemHandle);
+}
+
+void Button_Unregister_Callback(void)
+{
+    osSemaphoreWait(ButtonSemHandle, osWaitForever);
+    do
+    {
+        Button_Callback = NULL;
+        HAL_NVIC_DisableIRQ(Button_IRQ);
+    } while (0);
+    osSemaphoreRelease(ButtonSemHandle);
 }

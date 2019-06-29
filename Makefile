@@ -39,7 +39,6 @@ C_SOURCES =  \
 main.c \
 HAL/gpio.c \
 HAL/adc.c \
-HAL/dma.c \
 HAL/i2c.c \
 HAL/quadspi.c \
 HAL/sai.c \
@@ -85,17 +84,16 @@ Middlewares/Third_Party/FreeRTOS/Source/timers.c \
 Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c \
 Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c \
 Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c \
-ESP8266/Wifi.c \
-ESP8266/WifiUser.c \
+DRV/ESP8266/Wifi.c \
 DRV/DS3231.c \
 DRV/HV507.c \
 DRV/WS2812.c \
-FUN/Debug.c \
+DRV/Button.c \
+DRV/Debug.c \
 FUN/NixieTube.c \
 FUN/PWR.c \
 FUN/RGBLED.c \
 FUN/Anim.c \
-DRV/Button.c \
 FUN/NTP.c
 
 # ASM sources

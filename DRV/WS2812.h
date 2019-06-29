@@ -1,7 +1,6 @@
 #pragma once
 
-#include "main.h"
-// #include "tim.h"
+#include "HAL/gpio.h"
 
 //小灯数量
 #define LEDNUM 6

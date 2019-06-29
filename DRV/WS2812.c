@@ -1,76 +1,56 @@
+#include "BSP/BSP.h"
 #include "DRV/WS2812.h"
 
-#include <stdio.h>
-
-typedef struct
-{
-    const uint64_t head;
-    uint16_t buf[LEDNUM * 3 * 8];
-    const uint64_t tail;
-} dma_buf_t;
-
-static dma_buf_t dma_buf = {.head = 0,
-                            .tail = 0};
-
-static uint16_t *buf = dma_buf.buf;
-
-#define PL GPIOA->BRR = (uint32_t)GPIO_PIN_15;
-#define PH GPIOA->BSRR = (uint32_t)GPIO_PIN_15;
-
-
-//小灯归零码的高低电平持续时间（计时器的脉冲数）
-// #define TH 61
-// #define TL 28
+#define IO_OFF() (WS2812_GPIO_PORT->BRR = (uint32_t)WS2812_GPIO_PIN)
+#define IO_ON() (WS2812_GPIO_PORT->BSRR = (uint32_t)WS2812_GPIO_PIN)
 
 void WS2812_Init(void)
 {
-    // MX_TIM2_Init();
-    
+    // PA15已在MX_GPIO_Init()中初始化
+    WS2812_SendData(0);
 }
 
-// data[LEDNUM*3]按照grb顺序排列
-void WS2812_SendData(uint8_t *data)
+// 将grb数据转换为位数据01，注意大小端
+static inline void WS2812_Data2Bit(uint8_t *data, uint8_t *bit)
 {
-    PL;
-    // 注意大小端
     for (int i = 0; i < LEDNUM * 3; ++i)
     {
         uint8_t tmp = *(data + i);
         for (int j = 0; j < 8; ++j)
         {
-            *(buf + i * 8 + j) = (tmp & 0x80) ? 1 : 0;
+            *(bit + i * 8 + j) = (tmp & 0x80) ? 1 : 0;
             tmp <<= 1;
         }
     }
-    for (int i = 0; i < 144; ++i)
+}
+
+// data[LEDNUM*3]按照grb顺序排列
+void WS2812_SendData(uint8_t *data)
+{
+    uint8_t bit[LEDNUM * 3 * 8];
+    WS2812_Data2Bit(data, bit);
+    IO_OFF();
+    for (int i = 0; i < LEDNUM * 3 * 8; ++i)
     {
-        if (buf[i])
+        if (bit[i])
         {
-            // 1
-            PH;
+            // 1: 总时长1.2us，高电平时长800ns
+            IO_ON();
             for (int j = 0; j < 10; ++j)
                 ;
-            PL;
+            IO_OFF();
             for (int j = 0; j < 5; ++j)
                 ;
         }
         else
         {
-            // 0
-            PH;
+            // 0: 总时长1.2us，高电平时长400ns
+            IO_ON();
             for (int j = 0; j < 5; ++j)
                 ;
-            PL;
+            IO_OFF();
             for (int j = 0; j < 10; ++j)
                 ;
         }
     }
-    PL;
-    // uint16_t test[] = {0, 0, 26, 26, 63, 63, 0, 0};
-    // HAL_TIM_PWM_Start_DMA(&htim2, TIM_CHANNEL_1, (uint32_t *)test, sizeof(test));
 }
-
-// void HAL_TIM_PWM_PulseFinishedCallback(TIM_HandleTypeDef *htim)
-// {
-//     HAL_TIM_PWM_Stop(&htim2, TIM_CHANNEL_1);
-// }

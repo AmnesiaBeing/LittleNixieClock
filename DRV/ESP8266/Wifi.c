@@ -1,9 +1,6 @@
-#include "Wifi.h"
-#include "WifiConfig.h"
+#include "BSP/BSP.h"
+#include "DRV/ESP8266/Wifi.h"
 
-//2017-3-16
-
-osThreadId WifiTaskHandle;
 osSemaphoreId WifiSemHandle;
 
 Wifi_t Wifi;
@@ -14,7 +11,7 @@ bool Wifi_SendRaw(uint8_t *data, uint16_t len)
 	if (len <= _WIFI_TX_SIZE)
 	{
 		memcpy(Wifi.TxBuffer, data, len);
-		if (HAL_UART_Transmit(&_WIFI_USART, data, len, 100) == HAL_OK)
+		if (HAL_UART_Transmit(&WIFI_UARTHANDLE, data, len, 100) == HAL_OK)
 			return true;
 		else
 			return false;
@@ -142,7 +139,6 @@ bool Wifi_ReturnInteger(int32_t *result, uint8_t WantWhichOne, char *SplitterCha
 	return true;
 }
 //#########################################################################################################
-
 bool Wifi_ReturnFloat(float *result, uint8_t WantWhichOne, char *SplitterChars)
 {
 	if ((char *)Wifi.RxBuffer == NULL)
@@ -169,7 +165,7 @@ void Wifi_RxClear(void)
 {
 	memset(Wifi.RxBuffer, 0, _WIFI_RX_SIZE);
 	Wifi.RxIndex = 0;
-	HAL_UART_Receive_IT(&_WIFI_USART, &Wifi.usartBuff, 1);
+	HAL_UART_Receive_IT(&WIFI_UARTHANDLE, &Wifi.usartBuff, 1);
 }
 //#########################################################################################################
 void Wifi_TxClear(void)
@@ -237,7 +233,7 @@ void Wifi_RxCallBack(void)
 		//--- Fill Data Buffer
 	}
 	//--- data buffer
-	HAL_UART_Receive_IT(&_WIFI_USART, &Wifi.usartBuff, 1);
+	HAL_UART_Receive_IT(&WIFI_UARTHANDLE, &Wifi.usartBuff, 1);
 	//+++ check +IPD in At command buffer
 	if (Wifi.RxIndex > 4)
 	{
@@ -259,72 +255,16 @@ void Wifi_RxCallBack(void)
 	//--- check +IPD in At command buffer
 }
 //#########################################################################################################
-void HAL_UART_RxCpltCallback(UART_HandleTypeDef *UartHandle)
+void Wifi_Init(void)
 {
-	Wifi_RxCallBack();
-}
-//#########################################################################################################
-//#########################################################################################################
-//#########################################################################################################
-void WifiTask(void const *argument)
-{
-	osDelay(3000);
-	Wifi_SendStringAndWait("AT\r\n", 1000);
-	Wifi_SetRfPower(82);
-	Wifi_TcpIp_GetMultiConnection();
-	Wifi_TcpIp_Close(0);
-	Wifi_TcpIp_Close(1);
-	Wifi_TcpIp_Close(2);
-	Wifi_TcpIp_Close(3);
-	Wifi_TcpIp_Close(4);
-	Wifi_TcpIp_SetMultiConnection(true);
-	Wifi_GetMode();
-	Wifi_Station_DhcpIsEnable();
-	Wifi_UserInit();
-
-	//#######################
-	while (1)
-	{
-		Wifi_GetMyIp();
-		if ((Wifi.Mode == WifiMode_SoftAp) || (Wifi.Mode == WifiMode_StationAndSoftAp))
-			Wifi_SoftAp_GetConnectedDevices();
-		Wifi_TcpIp_GetConnectionStatus();
-		Wifi_RxClear();
-		for (uint8_t i = 0; i < 100; i++)
-		{
-			if (Wifi.GotNewData == true)
-			{
-				Wifi.GotNewData = false;
-				for (uint8_t ii = 0; ii < 5; ii++)
-				{
-					if ((strstr(Wifi.TcpIpConnections[ii].Type, "UDP") != NULL) && (Wifi.RxDataConnectionNumber == Wifi.TcpIpConnections[ii].LinkId))
-						Wifi_UserGetUdpData(Wifi.RxDataConnectionNumber, Wifi.RxDataLen, Wifi.RxBufferForData);
-					if ((strstr(Wifi.TcpIpConnections[ii].Type, "TCP") != NULL) && (Wifi.RxDataConnectionNumber == Wifi.TcpIpConnections[ii].LinkId))
-						Wifi_UserGetTcpData(Wifi.RxDataConnectionNumber, Wifi.RxDataLen, Wifi.RxBufferForData);
-				}
-			}
-			osDelay(10);
-		}
-		Wifi_UserProcess();
-	}
-}
-//#########################################################################################################
-//#########################################################################################################
-//#########################################################################################################
-//#########################################################################################################
-void Wifi_Init(osPriority Priority)
-{
-	HAL_UART_Receive_IT(&_WIFI_USART, &Wifi.usartBuff, 1);
+	HAL_GPIO_WritePin(WIFI_RST_GPIO_PORT, WIFI_RST_GPIO_PIN, GPIO_PIN_SET);
+	// RST引脚变高后，WIFI模块会输出LOGO信息，所以在Network程序中再开中断好了
+	// HAL_UART_Receive_IT(&WIFI_UARTHANDLE, &Wifi.usartBuff, 1);
 	Wifi_RxClear();
 	Wifi_TxClear();
 	osSemaphoreDef(WifiSemHandle);
 	WifiSemHandle = osSemaphoreCreate(osSemaphore(WifiSemHandle), 1);
-	osThreadDef(WifiTaskName, WifiTask, Priority, 0, _WIFI_TASK_SIZE);
-	WifiTaskHandle = osThreadCreate(osThread(WifiTaskName), NULL);
 }
-//#########################################################################################################
-//#########################################################################################################
-//#########################################################################################################
 //#########################################################################################################
 bool Wifi_Restart(void)
 {

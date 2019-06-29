@@ -1,16 +1,11 @@
-/*
- * stm32_ds3231.h
- *
- *  Created on: 2019. 3. 17.
- *      Author: Jihoon Lee
- */
 #pragma once
 
 #include <stdlib.h>
 #include <stdbool.h>
 #include <time.h>
 
-#define hi2c hi2c1
+#include "HAL/i2c.h"
+
 #define DS3231_ADDR (0x68 << 1)
 
 #define DS3231_REG_TIME 0x00
@@ -38,17 +33,21 @@
 typedef enum
 {
     DS3231_ALARM_MODE_ALL_MATCHED = 0,
-    DS3231_ALARM_MODE_HOUR_MIN_SEC_MATCHED,
-    DS3231_ALARM_MODE_MIN_SEC_MATCHED,
-    DS3231_ALARM_MODE_SEC_MATCHED,
-    DS3231_ALARM_MODE_ONCE_PER_SECOND
-} DS3231_AlarmMode;
+    DS3231_ALARM_MODE_EVERYDAY,
+    DS3231_ALARM_MODE_EVERYHOUR
+} DS3231_ALARM_MODE;
+
+typedef enum
+{
+    DS3231_ALARM_1 = 0,
+    DS3231_ALARM_2
+} DS3231_ALARM_ID;
 
 void DS3231_Init();
 bool DS3231_GetTime(struct tm *tm);
 bool DS3231_SetTime(struct tm *tm);
 bool DS3231_ReadTemperature(float *temp);
-bool DS3231_SetAlarm(uint8_t mode, struct tm *dt, uint8_t id);
+bool DS3231_SetAlarm(DS3231_ALARM_MODE mode, struct tm *dt, DS3231_ALARM_ID id);
 void DS3231_ClearAlarm(uint8_t id);
 void DS3231_Set1HzSQW(void);
 void DS3231_Clear1HzSQW(void);
