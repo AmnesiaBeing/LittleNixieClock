@@ -90,11 +90,13 @@ DRV/HV507.c \
 DRV/WS2812.c \
 DRV/Button.c \
 DRV/Debug.c \
+DRV/W25QXX.c \
 FUN/NixieTube.c \
 FUN/PWR.c \
 FUN/RGBLED.c \
 FUN/Anim.c \
-FUN/NTP.c
+FUN/NTP.c \
+FUN/Config.c
 
 # ASM sources
 ASM_SOURCES =  \

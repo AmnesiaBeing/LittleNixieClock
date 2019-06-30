@@ -4,8 +4,8 @@
 #define Debug_UARTHANDLE            huart2
 
 // Button
-// P?3
-#define Button_GPIO_PORT            GPIO
+// PH3
+#define Button_GPIO_PORT            GPIOH
 #define Button_PIN                  GPIO_PIN_3
 #define Button_IRQ                  EXTI3_IRQn
 
@@ -22,8 +22,8 @@
 // SQW/INT-->P?13
 #define DS3231_I2C                  I2C1
 #define DS3231_I2CHANDLE            hi2c1
-#define DS3231_SQW_INT_GPIO_PORT    GPIO
-#define DS3231_SQW_INT_GPIO_PIN     GPIO_PIN_
+#define DS3231_SQW_INT_GPIO_PORT    GPIOC
+#define DS3231_SQW_INT_GPIO_PIN     GPIO_PIN_13
 #define DS3231_SQW_INT_IRQ          EXTI15_10_IRQn 
 
 // WS2812
@@ -40,7 +40,12 @@
 #define VPP_GPIO_PIN                GPIO_PIN_4
 
 // ESP8266 Wifi
+// RST-->PA8
 #define WIFI_UART                   USART1
 #define WIFI_UARTHANDLE             huart1
-#define WIFI_RST_GPIO_PORT          GPIO?
-#define WIFI_RST_GPIO_PIN           GPIO_PIN_?
+#define WIFI_RST_GPIO_PORT          GPIOA
+#define WIFI_RST_GPIO_PIN           GPIO_PIN_8
+
+// W25QXX
+// QSPI FLASH
+#define W25QXX_QSPIHANDLE           hqspi

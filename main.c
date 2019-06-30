@@ -20,42 +20,6 @@
 
 void SystemClock_Config(void);
 
-osThreadId BootTaskHandle;
-osThreadId DS3231TaskHandle;
-
-// // BootTask
-// void BootTask(void const *argument)
-// {
-//   // 开机动画（这个时候wifi模块也在初始化）
-//   Anim_Protect();
-//   // 加载配置和时间
-
-    // PWR_5V_ON();
-    // PWR_VPP_ON();
-//   // 加载完成
-
-//   // 开启中断，显示时间
-//   DS3231_Set1HzSQW();
-//   HAL_NVIC_SetPriority(EXTI15_10_IRQn, NVIC_PRIORITYGROUP_4, 0);
-//   HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
-
-//   int i = 0;
-//   while (1)
-//   {
-//     i++;
-//     // 每大约10分钟进行一次辉光管保护程序
-//     if (i > 10 * 60)
-//     {
-//       // osThreadSuspend(MainTaskHandle);
-//       HAL_NVIC_DisableIRQ(EXTI15_10_IRQn);
-//       Anim_Protect();
-//       HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
-//       i = 0;
-//     }
-//     osDelay(1000);
-//   }
-// }
-
 // extern void DS3231Task(void const *argument);
 
 int main(void)
@@ -73,17 +37,11 @@ int main(void)
     //W25QXX_Init();
     Wifi_Init();
 
+    Network_Init();
+
     printf("Hello World!\n");
 
-
-    // osThreadDef(BootTaskName, BootTask, osPriorityNormal, 0, _WIFI_TASK_SIZE);
-    // BootTaskHandle = osThreadCreate(osThread(BootTaskName), NULL);
-
-    // osThreadDef(DS3231TaskName, DS3231Task, osPriorityNormal, 0, _WIFI_TASK_SIZE);
-    // DS3231TaskHandle = osThreadCreate(osThread(DS3231TaskName), NULL);
-
-    // HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);
-    // Wifi_Init(osPriorityNormal);
+    
 
     /* Start scheduler */
     osKernelStart();

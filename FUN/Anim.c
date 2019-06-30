@@ -30,7 +30,7 @@ void Anim_Protect(void)
 
     for (int i = 0; i < 10; ++i)
     {
-        NixieTube_Show(str[i]);
+        NixieTube_ShowStr(str[i]);
         RGBLED_Clear(c, c, c);
         RGBLED_Update();
         c += 23;
@@ -38,7 +38,7 @@ void Anim_Protect(void)
     }
     for (int i = 8; i >= 0; --i)
     {
-        NixieTube_Show(str[i]);
+        NixieTube_ShowStr(str[i]);
         RGBLED_Clear(c, c, c);
         RGBLED_Update();
         c -= 23;

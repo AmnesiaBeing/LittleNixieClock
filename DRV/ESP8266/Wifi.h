@@ -1,6 +1,4 @@
-#ifndef _WIFI_H
-#define _WIFI_H
-
+#pragma once
 // 感谢 https://github.com/nimaltd/ESP8266 提供的代码
 
 #include "cmsis_os.h"
@@ -23,6 +21,8 @@
 #define _WIFI_WAIT_TIME_MED 10000
 #define _WIFI_WAIT_TIME_HIGH 25000
 #define _WIFI_WAIT_TIME_VERYHIGH 60000
+
+#define _WIFI_MAX_TCPIP_CONNECTIONS 5
 //###################################################################################################
 typedef enum
 {
@@ -89,7 +89,7 @@ typedef struct
     //----------------TcpIp Parameter
     bool TcpIpMultiConnection;
     uint16_t TcpIpPingAnswer;
-    WifiConnection_t TcpIpConnections[5];
+    WifiConnection_t TcpIpConnections[_WIFI_MAX_TCPIP_CONNECTIONS];
     //----------------
 } Wifi_t;
 //###################################################################################################
@@ -130,5 +130,3 @@ bool Wifi_TcpIp_SetEnableTcpServer(uint16_t PortNumber);
 bool Wifi_TcpIp_SetDisableTcpServer(uint16_t PortNumber);
 bool Wifi_TcpIp_SendDataUdp(uint8_t LinkId, uint16_t dataLen, uint8_t *data);
 bool Wifi_TcpIp_SendDataTcp(uint8_t LinkId, uint16_t dataLen, uint8_t *data);
-
-#endif

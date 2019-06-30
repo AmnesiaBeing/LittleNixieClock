@@ -51,3 +51,5 @@ bool DS3231_SetAlarm(DS3231_ALARM_MODE mode, struct tm *dt, DS3231_ALARM_ID id);
 void DS3231_ClearAlarm(uint8_t id);
 void DS3231_Set1HzSQW(void);
 void DS3231_Clear1HzSQW(void);
+void DS3231_Register_Callback(void (*callback)(void));
+void DS3231_Unregister_Callback(void);
