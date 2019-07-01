@@ -22,7 +22,7 @@ TARGET = LittleNixieClock
 # debug build?
 DEBUG = 1
 # optimization
-OPT = -Og
+OPT = -O0
 
 
 #######################################
@@ -96,7 +96,11 @@ FUN/PWR.c \
 FUN/RGBLED.c \
 FUN/Anim.c \
 FUN/NTP.c \
-FUN/Config.c
+FUN/Config.c \
+FUN/Time.c \
+FUN/Network.c \
+TASK/MainTask.c \
+TASK/NetworkTask.c
 
 # ASM sources
 ASM_SOURCES =  \

@@ -13,17 +13,18 @@
 #include "DRV/PWR.h"
 #include "DRV/Debug.h"
 #include "DRV/HV507.h"
+#include "DRV/W25QXX.h"
 
 #include "FUN/NixieTube.h"
 #include "FUN/Anim.h"
 #include "FUN/RGBLED.h"
+#include "FUN/Network.h"
 
 void SystemClock_Config(void);
 
-// extern void DS3231Task(void const *argument);
-
 int main(void)
 {
+
     /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
     HAL_Init();
     /* Configure the system clock */
@@ -34,14 +35,15 @@ int main(void)
     Button_Init();
     HV507_Init();
     DS3231_Init();
-    //W25QXX_Init();
+    W25QXX_Init();
+    while (1)
+        ;
+
     Wifi_Init();
 
     Network_Init();
 
     printf("Hello World!\n");
-
-    
 
     /* Start scheduler */
     osKernelStart();
@@ -50,17 +52,16 @@ int main(void)
 }
 
 /**
-  * @brief System Clock Configuration
-  * @retval None
-  */
+* @brief System Clock Configuration
+* @retval None
+*/
 void SystemClock_Config(void)
 {
     RCC_OscInitTypeDef RCC_OscInitStruct = {0};
     RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
     RCC_PeriphCLKInitTypeDef PeriphClkInit = {0};
 
-    /** Initializes the CPU, AHB and APB busses clocks 
-  */
+    /** Initializes the CPU, AHB and APB busses clocks */
     RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
     RCC_OscInitStruct.HSEState = RCC_HSE_ON;
     RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
@@ -74,8 +75,7 @@ void SystemClock_Config(void)
     {
         Error_Handler();
     }
-    /** Initializes the CPU, AHB and APB busses clocks 
-  */
+    /** Initializes the CPU, AHB and APB busses clocks */
     RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK | RCC_CLOCKTYPE_SYSCLK | RCC_CLOCKTYPE_PCLK1 | RCC_CLOCKTYPE_PCLK2;
     RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
     RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
@@ -103,8 +103,7 @@ void SystemClock_Config(void)
     {
         Error_Handler();
     }
-    /** Configure the main internal regulator output voltage 
-  */
+    /** Configure the main internal regulator output voltage */
     if (HAL_PWREx_ControlVoltageScaling(PWR_REGULATOR_VOLTAGE_SCALE1) != HAL_OK)
     {
         Error_Handler();
@@ -112,13 +111,13 @@ void SystemClock_Config(void)
 }
 
 /**
-  * @brief  Period elapsed callback in non blocking mode
-  * @note   This function is called  when TIM6 interrupt took place, inside
-  * HAL_TIM_IRQHandler(). It makes a direct call to HAL_IncTick() to increment
-  * a global variable "uwTick" used as application time base.
-  * @param  htim : TIM handle
-  * @retval None
-  */
+* @brief  Period elapsed callback in non blocking mode
+* @note   This function is called  when TIM6 interrupt took place, inside
+* HAL_TIM_IRQHandler(). It makes a direct call to HAL_IncTick() to increment
+* a global variable "uwTick" used as application time base.
+* @param  htim : TIM handle
+* @retval None
+*/
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
     /* USER CODE BEGIN Callback 0 */
@@ -134,9 +133,9 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 }
 
 /**
-  * @brief  This function is executed in case of error occurrence.
-  * @retval None
-  */
+* @brief  This function is executed in case of error occurrence.
+* @retval None
+*/
 void Error_Handler(void)
 {
     /* USER CODE BEGIN Error_Handler_Debug */
@@ -147,12 +146,12 @@ void Error_Handler(void)
 
 #ifdef USE_FULL_ASSERT
 /**
-  * @brief  Reports the name of the source file and the source line number
-  *         where the assert_param error has occurred.
-  * @param  file: pointer to the source file name
-  * @param  line: assert_param error line source number
-  * @retval None
-  */
+* @brief  Reports the name of the source file and the source line number
+*         where the assert_param error has occurred.
+* @param  file: pointer to the source file name
+* @param  line: assert_param error line source number
+* @retval None
+*/
 void assert_failed(char *file, uint32_t line)
 {
     /* USER CODE BEGIN 6 */

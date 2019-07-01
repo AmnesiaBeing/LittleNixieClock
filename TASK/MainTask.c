@@ -1,5 +1,6 @@
 #include "TASK/Tasks.h"
 #include "DRV/DS3231.h"
+#include "DRV/PWR.h"
 #include "cmsis_os.h"
 
 osThreadId AnimTaskHandle;
@@ -27,8 +28,8 @@ void BootTask(void const *argument)
     PWR_VPP_ON();
 
     // 开机动画线程，NULL表示动画随机
-    osThreadDef(AnimTaskName, Anim_Task, Priority, 0, 128);
-    AnimTaskHandle = osThreadCreate(osThread(AnimTaskName), NULL);
+    // osThreadDef(AnimTaskName, AnimTask, osPriorityNormal, 0, 128);
+    // AnimTaskHandle = osThreadCreate(osThread(AnimTaskName), NULL);
 
     // 判断电池是否存在
     bool BAT = false; // = PWR_BAT_IsAvailable();
@@ -51,20 +52,20 @@ void BootTask(void const *argument)
     osThreadTerminate(NULL);
 }
 
-static bool flag1=false;
+static bool flag1 = false;
 static void callback(void)
 {
-    falg1=true;
+    flag1 = true;
 }
 
 // 负责显示时间的循环
 void ShowTimeTask(void const *argument)
 {
     DS3231_Register_Callback(callback);
-    while()
+    // while()
 }
 
 void AnimTask(void const *argument)
 {
-    uint8_t i = (uint8_t)*argument;
+    uint8_t i = *(uint8_t *)argument;
 }

@@ -94,6 +94,18 @@ typedef struct
 } Wifi_t;
 //###################################################################################################
 extern Wifi_t Wifi;
+//#########################################################################################################
+bool Wifi_SendRaw(uint8_t *data, uint16_t len);
+bool Wifi_SendString(char *data);
+bool Wifi_SendStringAndWait(char *data, uint16_t DelayMs);
+bool Wifi_WaitForString(uint32_t TimeOut_ms, uint8_t *result, uint8_t CountOfParameter, ...);
+bool Wifi_ReturnString(char *result, uint8_t WantWhichOne, char *SplitterChars);
+bool Wifi_ReturnStrings(char *InputString, char *SplitterChars, uint8_t CountOfParameter, ...);
+bool Wifi_ReturnInteger(int32_t *result, uint8_t WantWhichOne, char *SplitterChars);
+bool Wifi_ReturnFloat(float *result, uint8_t WantWhichOne, char *SplitterChars);
+void Wifi_RemoveChar(char *str, char garbage);
+void Wifi_RxClear(void);
+void Wifi_TxClear(void);
 //###################################################################################################
 void Wifi_RxCallBack(void);
 //###################################################################################################

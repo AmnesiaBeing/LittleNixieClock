@@ -4,7 +4,7 @@
 
 #include <time.h>
 
-time_t time;
+time_t time_dat;
 
 #if _DLIB_TIME_USES_64
 time_t __time64 (time_t *p) {
