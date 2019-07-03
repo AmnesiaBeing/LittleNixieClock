@@ -100,7 +100,8 @@ FUN/Config.c \
 FUN/Time.c \
 FUN/Network.c \
 TASK/MainTask.c \
-TASK/NetworkTask.c
+TASK/NetworkTask.c \
+TASK/DebugMode.c
 
 # ASM sources
 ASM_SOURCES =  \

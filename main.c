@@ -34,6 +34,10 @@ int main(void)
     Debug_Init();
     PWR_5V_ON();
     Button_Init();
+
+    extern void DebugMode(void);
+    Button_Register_Callback(DebugMode);
+
     HV507_Init();
     DS3231_Init();
     W25QXX_Init();

@@ -24,6 +24,9 @@ static inline void WS2812_Data2Bit(uint8_t *data, uint8_t *bit)
     }
 }
 
+#define HIGHTIMES   9
+#define LOWTIMES    4
+
 // data[LEDNUM*3]按照grb顺序排列
 void WS2812_SendData(uint8_t *data)
 {
@@ -36,20 +39,20 @@ void WS2812_SendData(uint8_t *data)
         {
             // 1: 总时长1.2us，高电平时长800ns
             IO_ON();
-            for (int j = 0; j < 10; ++j)
+            for (int j = 0; j < HIGHTIMES; ++j)
                 ;
             IO_OFF();
-            for (int j = 0; j < 5; ++j)
+            for (int j = 0; j < LOWTIMES; ++j)
                 ;
         }
         else
         {
             // 0: 总时长1.2us，高电平时长400ns
             IO_ON();
-            for (int j = 0; j < 5; ++j)
+            for (int j = 0; j < LOWTIMES; ++j)
                 ;
             IO_OFF();
-            for (int j = 0; j < 10; ++j)
+            for (int j = 0; j < HIGHTIMES; ++j)
                 ;
         }
     }
