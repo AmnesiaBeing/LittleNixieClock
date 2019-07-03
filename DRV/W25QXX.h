@@ -1,6 +1,7 @@
 #pragma once
 
 #include <stdint.h>
+#include <stdbool.h>
 
 // 按照W25Q128JV数据手册上的指令顺序写的
 

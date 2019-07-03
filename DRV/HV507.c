@@ -2,15 +2,14 @@
 #include "DRV/HV507.h"
 
 // LE == PB4
-#define LE_ON() (HV507_LE_GPIO_PORT->BSRR=(uint32_t)HV507_LE_GPIO_PIN)
-#define LE_OFF() (HV507_LE_GPIO_PORT->BRR=(uint32_t)HV507_LE_GPIO_PIN)
+#define LE_ON() (HV507_LE_GPIO_PORT->BSRR = (uint32_t)HV507_LE_GPIO_PIN)
+#define LE_OFF() (HV507_LE_GPIO_PORT->BRR = (uint32_t)HV507_LE_GPIO_PIN)
 
 void HV507_Init(void)
 {
     //MX_GPIO_Init() has LE Init
     MX_SPI1_Init();
-    uint8_t buf[8] = {0, 0, 0, 0, 0, 0, 0, 0};
-    HAL_SPI_Transmit(&HV507_SPIHANDLE, (uint8_t *)&buf, sizeof(buf), 0xFF);
+    HV507_SendData(0);
 }
 
 void HV507_SendData(uint64_t data)

@@ -4,6 +4,7 @@
 
 #include <time.h>
 
+// 在it.c文件中，每来一个上升沿，该值+1
 time_t time_dat;
 
 #if _DLIB_TIME_USES_64

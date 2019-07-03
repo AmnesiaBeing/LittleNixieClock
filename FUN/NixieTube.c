@@ -5,6 +5,8 @@
 */
 #include "FUN/NixieTube.h"
 
+#include <stdio.h>
+
 // 6个灯，10个数字的移位硬编码表
 static uint32_t NTable[6][10] = {
     /*         0,  1,  2,  3,  4,  5,  6,  7,  8,  9*/
@@ -72,14 +74,16 @@ void NixieTube_ShowTM(struct tm *tm)
 
     uint64_t res = 0;
 
+    // printf("%d,%d,%d,%d,%d,%d\n", GetTenDigit(hour), GetOneDigit(hour), GetTenDigit(min), GetOneDigit(min), GetTenDigit(sec), GetOneDigit(sec));
+
     // 不想检查数字范围是否在0~99了
-    res |= NTable[0][GetTenDigit(hour)];
-    res |= NTable[1][GetOneDigit(hour)];
-    res |= NTable[2][GetTenDigit(min)];
-    res |= NTable[3][GetOneDigit(min)];
-    res |= NTable[4][GetTenDigit(sec)];
-    res |= NTable[5][GetOneDigit(sec)];
-    
+    res |= (1ULL << NTable[5][GetTenDigit(hour)]);
+    res |= (1ULL << NTable[4][GetOneDigit(hour)]);
+    res |= (1ULL << NTable[3][GetTenDigit(min)]);
+    res |= (1ULL << NTable[2][GetOneDigit(min)]);
+    res |= (1ULL << NTable[1][GetTenDigit(sec)]);
+    res |= (1ULL << NTable[0][GetOneDigit(sec)]);
+
     // 如果sec为奇数
     if (sec % 2)
     {

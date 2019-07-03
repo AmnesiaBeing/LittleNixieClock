@@ -32,18 +32,19 @@ int main(void)
     /* Initialize all configured peripherals */
     MX_GPIO_Init();
     Debug_Init();
+    PWR_5V_ON();
     Button_Init();
     HV507_Init();
     DS3231_Init();
     W25QXX_Init();
-    while (1)
-        ;
-
+#if 1
     Wifi_Init();
-
     Network_Init();
-
+#endif
     printf("Hello World!\n");
+
+    extern void Boot(void);
+    Boot();
 
     /* Start scheduler */
     osKernelStart();

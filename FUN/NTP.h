@@ -2,6 +2,8 @@
 // Structure that defines the 48 byte NTP packet protocol.
 
 #include <stdint.h>
+#include <stdbool.h>
+#include <time.h>
 
 typedef struct
 {
@@ -33,3 +35,5 @@ typedef struct
                             (((uint32_t)(A)&0x00ff0000) >> 8) |  \
                             (((uint32_t)(A)&0x0000ff00) << 8) |  \
                             (((uint32_t)(A)&0x000000ff) << 24))
+
+bool NTP_GetTime(time_t *t);

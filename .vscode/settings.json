@@ -20,7 +20,10 @@
         "wifi.h": "c",
         "freertos.h": "c",
         "adc.h": "c",
-        "gpio.h": "c"
+        "gpio.h": "c",
+        "w25qxx.h": "c",
+        "tasks.h": "c",
+        "network.h": "c"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }

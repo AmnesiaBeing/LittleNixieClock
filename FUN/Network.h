@@ -7,7 +7,8 @@
 typedef enum
 {
     TCPIP_TCP,
-    TCPIP_UDP
+    TCPIP_UDP,
+    TCPIP_UNKNOWN
 } TCPIP_PROTOTYPE;
 
 #define MAX_LINKID _WIFI_MAX_TCPIP_CONNECTIONS
@@ -16,9 +17,9 @@ typedef enum
 typedef uint8_t LinkID;
 
 LinkID Network_ConnectBlock(TCPIP_PROTOTYPE type, char *RemoteIp, uint16_t RemotePort, uint32_t timeout);
-LinkID Network_ConnectAsyn(TCPIP_PROTOTYPE type, char *RemoteIp, uint16_t RemotePort, void (*ConnectCompleteCallback)(bool flag));
-void Network_WriteBlock(LinkID id, uint8_t *data, size_t len, uint32_t timeout);
-void Network_ReadBlock(LinkID id, uint8_t *data, size_t *len, uint32_t timeout);
+void Network_ConnectAsyn(TCPIP_PROTOTYPE type, char *RemoteIp, uint16_t RemotePort, void (*ConnectCompleteCallback)(bool flag, LinkID id));
+bool Network_WriteBlock(LinkID id, uint8_t *data, size_t len, uint32_t timeout);
+bool Network_ReadBlock(LinkID id, uint8_t *data, size_t *len, uint32_t timeout);
 void Network_WriteAsyn(LinkID id, uint8_t *data, size_t len, void (*WriteCompleteCallback)(size_t len));
 void Network_ReadAsyn(LinkID id, size_t len, void (*ReadCompleteCallback)(uint8_t *data, size_t *len));
 

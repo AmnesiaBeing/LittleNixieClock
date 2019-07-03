@@ -2,7 +2,6 @@
 #include "DRV/ESP8266/Wifi.h"
 
 #include <stdbool.h>
-#include <time.h>
 
 // 肯定用不完
 static uint16_t localport = 1000;
@@ -42,16 +41,17 @@ LinkID Network_ConnectBlock(TCPIP_PROTOTYPE type, char *RemoteIp, uint16_t Remot
     return ret;
 }
 
-LinkID Network_ConnectAsyn(TCPIP_PROTOTYPE type, char *RemoteIp, uint16_t RemotePort, void (*ConnectCompleteCallback)(bool flag))
+void Network_ConnectAsyn(TCPIP_PROTOTYPE type, char *RemoteIp, uint16_t RemotePort, void (*ConnectCompleteCallback)(bool flag, LinkID id))
 {
 }
 
-static TCPIP_PROTOTYPE getPrototype(LInkID id)
+static TCPIP_PROTOTYPE getPrototype(LinkID id)
 {
     if (Wifi.TcpIpConnections[id].Type[0] == 'T')
         return TCPIP_TCP;
     if (Wifi.TcpIpConnections[id].Type[0] == 'U')
         return TCPIP_UDP;
+    return TCPIP_UNKNOWN;
 }
 
 bool Network_WriteBlock(LinkID id, uint8_t *data, size_t len, uint32_t timeout)
@@ -71,11 +71,11 @@ bool Network_WriteBlock(LinkID id, uint8_t *data, size_t len, uint32_t timeout)
 // 要求，data在调用方申请（不想搞malloc）
 bool Network_ReadBlock(LinkID id, uint8_t *data, size_t *len, uint32_t timeout)
 {
-    time_t t = time(NULL);
-    osSemaphoreWait(Wifi)
-    if (Wifi.GotNewData)
-    {
-    }
+    uint32_t t = HAL_GetTick();
+    // osSemaphoreWait(Wifi)
+    // if (Wifi.GotNewData)
+    // {
+    // }
     return false;
 }
 

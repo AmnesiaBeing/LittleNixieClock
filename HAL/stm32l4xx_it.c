@@ -24,6 +24,7 @@
 #include "cmsis_os.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include <time.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -160,7 +161,6 @@ void DebugMon_Handler(void)
 /* please refer to the startup file (startup_stm32l4xx.s).                    */
 /******************************************************************************/
 
-
 /**
   * @brief This function handles TIM6 global interrupt, DAC channel1 and channel2 underrun error interrupts.
   */
@@ -181,6 +181,8 @@ void EXTI15_10_IRQHandler(void)
   if (__HAL_GPIO_EXTI_GET_IT(GPIO_PIN_13) != 0x00u)
   {
     __HAL_GPIO_EXTI_CLEAR_IT(GPIO_PIN_13);
+    extern time_t time_dat;
+    time_dat++;
     extern void DS3231_SQW_INT_Callback(void);
     DS3231_SQW_INT_Callback();
   }
