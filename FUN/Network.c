@@ -3,9 +3,6 @@
 
 #include <stdbool.h>
 
-// 肯定用不完
-static uint16_t localport = 1000;
-
 static bool AvailLinkID[MAX_LINKID] = {};
 
 static LinkID GetAvailLinkID(void)
@@ -18,7 +15,7 @@ static LinkID GetAvailLinkID(void)
     return ERROR_LINKID;
 }
 
-LinkID Network_ConnectBlock(TCPIP_PROTOTYPE type, char *RemoteIp, uint16_t RemotePort, uint32_t timeout)
+LinkID Network_ConnectBlock(TCPIP_PROTOTYPE type, char *RemoteIp, uint16_t RemotePort)
 {
     LinkID ret = GetAvailLinkID();
     if (ret == 0xFF)
@@ -26,12 +23,12 @@ LinkID Network_ConnectBlock(TCPIP_PROTOTYPE type, char *RemoteIp, uint16_t Remot
     switch (type)
     {
     case TCPIP_TCP:
-        if (!Wifi_TcpIp_StartTcpConnection(ret, RemoteIp, RemotePort, timeout))
+        if (!Wifi_TcpIp_StartTcpConnection(ret, RemoteIp, RemotePort, 3600))
             return 0xFF;
         AvailLinkID[ret] = false;
         break;
     case TCPIP_UDP:
-        if (!Wifi_TcpIp_StartUdpConnection(ret, RemoteIp, RemotePort, localport++))
+        if (!Wifi_TcpIp_StartUdpConnection(ret, RemoteIp, RemotePort))
             return 0xFF;
         AvailLinkID[ret] = false;
         break;
@@ -41,9 +38,9 @@ LinkID Network_ConnectBlock(TCPIP_PROTOTYPE type, char *RemoteIp, uint16_t Remot
     return ret;
 }
 
-void Network_ConnectAsyn(TCPIP_PROTOTYPE type, char *RemoteIp, uint16_t RemotePort, void (*ConnectCompleteCallback)(bool flag, LinkID id))
-{
-}
+// void Network_ConnectAsyn(TCPIP_PROTOTYPE type, char *RemoteIp, uint16_t RemotePort, void (*ConnectCompleteCallback)(bool flag, LinkID id))
+// {
+// }
 
 static TCPIP_PROTOTYPE getPrototype(LinkID id)
 {
@@ -54,7 +51,7 @@ static TCPIP_PROTOTYPE getPrototype(LinkID id)
     return TCPIP_UNKNOWN;
 }
 
-bool Network_WriteBlock(LinkID id, uint8_t *data, size_t len, uint32_t timeout)
+bool Network_WriteBlock(LinkID id, uint8_t *data, size_t len)
 {
     switch (getPrototype(id))
     {
@@ -72,20 +69,27 @@ bool Network_WriteBlock(LinkID id, uint8_t *data, size_t len, uint32_t timeout)
 bool Network_ReadBlock(LinkID id, uint8_t *data, size_t *len, uint32_t timeout)
 {
     uint32_t t = HAL_GetTick();
-    // osSemaphoreWait(Wifi)
-    // if (Wifi.GotNewData)
-    // {
-    // }
-    return false;
+    while (!NetworkBufferAvailable[id])
+    {
+        if (HAL_GetTick() - t > timeout)
+        {
+            return false;
+        }
+        osDelay(1);
+    }
+    memcpy(data, NetworkBuffer[id], NetworkBufferLen[id]);
+    *len = NetworkBufferLen[id];
+    NetworkBufferAvailable[id] = false;
+    return true;
 }
 
-void Network_WriteAsyn(LinkID id, uint8_t *data, size_t len, void (*WriteCompleteCallback)(size_t len))
-{
-}
+// void Network_WriteAsyn(LinkID id, uint8_t *data, size_t len, void (*WriteCompleteCallback)(size_t len))
+// {
+// }
 
-void Network_ReadAsyn(LinkID id, size_t len, void (*ReadCompleteCallback)(uint8_t *data, size_t *len))
-{
-}
+// void Network_ReadAsyn(LinkID id, size_t len, void (*ReadCompleteCallback)(uint8_t *data, size_t *len))
+// {
+// }
 
 void Network_Init(void)
 {

@@ -9,5 +9,5 @@
 
 void Config_Init(void)
 {
-    W25QXX_ReadSector();
+    // W25QXX_ReadSector();
 }

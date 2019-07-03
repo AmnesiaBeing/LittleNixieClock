@@ -24,12 +24,15 @@ static inline void WS2812_Data2Bit(uint8_t *data, uint8_t *bit)
     }
 }
 
-#define HIGHTIMES   9
-#define LOWTIMES    4
+#define HIGHTIMES 9
+#define LOWTIMES 4
 
 // data[LEDNUM*3]按照grb顺序排列
 void WS2812_SendData(uint8_t *data)
 {
+#if 1
+    return;
+#endif
     uint8_t bit[LEDNUM * 3 * 8];
     WS2812_Data2Bit(data, bit);
     IO_OFF();

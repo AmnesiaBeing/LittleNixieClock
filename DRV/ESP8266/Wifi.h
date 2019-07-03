@@ -136,7 +136,7 @@ bool Wifi_TcpIp_Ping(char *PingTo);
 bool Wifi_TcpIp_SetMultiConnection(bool EnableMultiConnections);
 bool Wifi_TcpIp_GetMultiConnection(void);
 bool Wifi_TcpIp_StartTcpConnection(uint8_t LinkId, char *RemoteIp, uint16_t RemotePort, uint16_t TimeOut_S);
-bool Wifi_TcpIp_StartUdpConnection(uint8_t LinkId, char *RemoteIp, uint16_t RemotePort, uint16_t LocalPort);
+bool Wifi_TcpIp_StartUdpConnection(uint8_t LinkId, char *RemoteIp, uint16_t RemotePort);
 bool Wifi_TcpIp_Close(uint8_t LinkId);
 bool Wifi_TcpIp_SetEnableTcpServer(uint16_t PortNumber);
 bool Wifi_TcpIp_SetDisableTcpServer(uint16_t PortNumber);

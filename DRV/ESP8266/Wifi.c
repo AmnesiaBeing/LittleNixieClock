@@ -210,7 +210,7 @@ void Wifi_RxCallBack(void)
 				Wifi.RxIndexForDataTmp++;
 				if (Wifi.RxBufferForDataTmp[2] == ',')
 				{
-					Wifi.RxDataConnectionNumber = Wifi.RxBufferForDataTmp[1] - 48;
+					Wifi.RxDataConnectionNumber = Wifi.RxBufferForDataTmp[1] - '0';
 				}
 				if ((Wifi.RxIndexForDataTmp > 3) && (Wifi.RxBufferForDataTmp[Wifi.RxIndexForDataTmp - 1] == ':'))
 					Wifi.RxDataLen = atoi((char *)&Wifi.RxBufferForDataTmp[3]);
@@ -340,7 +340,7 @@ bool Wifi_Update(void)
 		sprintf((char *)Wifi.TxBuffer, "AT+CIUPDATE\r\n");
 		if (Wifi_SendString((char *)Wifi.TxBuffer) == false)
 			break;
-		if (Wifi_WaitForString(1000 * 60 * 5, &result, 2, "OK", "ERROR") == false)
+		if (Wifi_WaitForString(_WIFI_WAIT_TIME_HIGH, &result, 2, "OK", "ERROR") == false)
 			break;
 		if (result == 2)
 			break;
@@ -678,10 +678,10 @@ bool Wifi_TcpIp_GetConnectionStatus(void)
 			break;
 		str = strchr(str, ':');
 		str++;
-		for (uint8_t i = 0; i < 5; i++)
+		for (uint8_t i = 0; i < _WIFI_MAX_TCPIP_CONNECTIONS; i++)
 			Wifi.TcpIpConnections[i].status = (WifiConnectionStatus_t)atoi(str);
 		str = strstr((char *)Wifi.RxBuffer, "+CIPSTATUS:");
-		for (uint8_t i = 0; i < 5; i++)
+		for (uint8_t i = 0; i < _WIFI_MAX_TCPIP_CONNECTIONS; i++)
 		{
 			sscanf(str, "+CIPSTATUS:%d,\"%3s\",\"%[^\"]\",%d,%d,%d", (int *)&Wifi.TcpIpConnections[i].LinkId, Wifi.TcpIpConnections[i].Type, Wifi.TcpIpConnections[i].RemoteIp, (int *)&Wifi.TcpIpConnections[i].RemotePort, (int *)&Wifi.TcpIpConnections[i].LocalPort, (int *)&Wifi.TcpIpConnections[i].RunAsServer);
 			str++;
@@ -797,7 +797,7 @@ bool Wifi_TcpIp_StartTcpConnection(uint8_t LinkId, char *RemoteIp, uint16_t Remo
 	return returnVal;
 }
 //#########################################################################################################
-bool Wifi_TcpIp_StartUdpConnection(uint8_t LinkId, char *RemoteIp, uint16_t RemotePort, uint16_t LocalPort)
+bool Wifi_TcpIp_StartUdpConnection(uint8_t LinkId, char *RemoteIp, uint16_t RemotePort)
 {
 	osSemaphoreWait(WifiSemHandle, osWaitForever);
 	uint8_t result;
@@ -806,9 +806,9 @@ bool Wifi_TcpIp_StartUdpConnection(uint8_t LinkId, char *RemoteIp, uint16_t Remo
 	{
 		Wifi_RxClear();
 		if (Wifi.TcpIpMultiConnection == false)
-			sprintf((char *)Wifi.TxBuffer, "AT+CIPSTART=\"UDP\",\"%s\",%d,%d\r\n", RemoteIp, RemotePort, LocalPort);
+			sprintf((char *)Wifi.TxBuffer, "AT+CIPSTART=\"UDP\",\"%s\",%d\r\n", RemoteIp, RemotePort);
 		else
-			sprintf((char *)Wifi.TxBuffer, "AT+CIPSTART=%d,\"UDP\",\"%s\",%d,%d\r\n", LinkId, RemoteIp, RemotePort, LocalPort);
+			sprintf((char *)Wifi.TxBuffer, "AT+CIPSTART=%d,\"UDP\",\"%s\",%d\r\n", LinkId, RemoteIp, RemotePort);
 		if (Wifi_SendString((char *)Wifi.TxBuffer) == false)
 			break;
 		if (Wifi_WaitForString(_WIFI_WAIT_TIME_HIGH, &result, 3, "OK", "ALREADY", "ERROR") == false)

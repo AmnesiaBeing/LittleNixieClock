@@ -14,6 +14,9 @@ void HV507_Init(void)
 
 void HV507_SendData(uint64_t data)
 {
+#if 1
+    return;
+#endif
     // 20190618 18：30 测试，总共时间大约150us，SPI分频128，似乎可以快一些
     HAL_SPI_Transmit(&HV507_SPIHANDLE, (uint8_t *)&data, sizeof(data), 0xFF);
     // SPI上升沿到锁存脉冲至少需要tDLE=35ns的时间，其实可以不要这个NOP

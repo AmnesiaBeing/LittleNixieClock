@@ -53,9 +53,8 @@ static void BootTask(void const *argument)
     // // 如果电池存在，配置存在，说明已经可以正常工作了
     // // 如果电池存在，配置不存在，说明这是第一次启动，需要初始化配置信息，时间也需要矫正
     // // 如果电池不存在，配置存在，可能是没电了，说明时间需要矫正
-    // // Time_UpdateFromNTP();
-    // osThreadDef(TimeUpdateTaskName, TimeUpdateTask, osPriorityNormal, 0, 128);
-    // TimeUpdateTaskHandle = osThreadCreate(osThread(TimeUpdateTaskName), NULL);
+    osThreadDef(TimeUpdateTaskName, TimeUpdateTask, osPriorityNormal, 0, 128);
+    TimeUpdateTaskHandle = osThreadCreate(osThread(TimeUpdateTaskName), NULL);
     // // 如果电池不存在，配置不存在，测试模式，从串口中读取字符并执行相应的命令
     // 加载完成，显示时间
     // ok:

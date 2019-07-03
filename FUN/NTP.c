@@ -23,21 +23,21 @@ bool NTP_GetTime(time_t *t)
     memset(&packet, 0, sizeof(NTP_Package_t));
     packet.li_vn_mode_stratum_poll_precision = BigLittleSwap32((LI << 30) | (VN << 27) | (MODE << 24) | (STRATUM << 16) | (POLL << 8) | (PREC & 0xff));
 
-    LinkID id = Network_ConnectBlock(TCPIP_UDP, "ntp1.aliyun.com", 123, 0xFFFFFFFF);
+    LinkID id = Network_ConnectBlock(TCPIP_UDP, "ntp1.aliyun.com", 123);
 
     if (id == ERROR_LINKID)
     {
         return false;
     }
 
-    if (!Network_WriteBlock(id, (uint8_t *)&packet, sizeof(NTP_Package_t), 0xFFFFFFFF))
+    if (!Network_WriteBlock(id, (uint8_t *)&packet, sizeof(NTP_Package_t)))
     {
         return false;
     }
 
     size_t len = 0;
 
-    if (!Network_ReadBlock(id, (uint8_t *)&packet, &len, 0xFFFFFFFF))
+    if (!Network_ReadBlock(id, (uint8_t *)&packet, &len, 2000))
     {
         return false;
     }
