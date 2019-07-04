@@ -10,7 +10,7 @@ bool Wifi_SendRaw(uint8_t *data, uint16_t len)
 {
 	if (len <= _WIFI_TX_SIZE)
 	{
-		memcpy(Wifi.TxBuffer, data, len);
+		// memcpy(Wifi.TxBuffer, data, len);
 		if (HAL_UART_Transmit(&WIFI_UARTHANDLE, data, len, 100) == HAL_OK)
 			return true;
 		else
@@ -181,7 +181,7 @@ void Wifi_RxCallBack(void)
 		Wifi.RxBuffer[Wifi.RxIndex] = Wifi.usartBuff;
 		if (Wifi.RxIndex < _WIFI_RX_SIZE)
 			Wifi.RxIndex++;
-		if (Wifi.RxIndex == 2)
+		if (Wifi.RxIndex == 3)
 			__NOP();
 	}
 	//--- at command buffer
@@ -259,10 +259,9 @@ void Wifi_RxCallBack(void)
 //#########################################################################################################
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
-	if (huart == &WIFI_UARTHANDLE)
-	{
-		Wifi_RxCallBack();
-	}
+	HAL_UART_Receive_IT(&WIFI_UARTHANDLE, &Wifi.usartBuff, 1);
+	if (Wifi.usartBuff != 'A')
+		__NOP() :
 }
 //#########################################################################################################
 void Wifi_Init(void)
@@ -975,7 +974,7 @@ bool Wifi_STNP_GetTime(struct tm *timer)
 		sprintf((char *)Wifi.TxBuffer, "AT+CIPSNTPTIME?\r\n");
 		if (Wifi_SendString((char *)Wifi.TxBuffer) == false)
 			break;
-		if (Wifi_WaitForString(_WIFI_WAIT_TIME_LOW, &result, 1, "OK") == false)
+		if (Wifi_WaitForString(_WIFI_WAIT_TIME_LOW, &result, 2, "OK", "ERROR") == false)
 			break;
 		if (Wifi_ReturnString((char *)Wifi.RxBuffer, 1, ":") == false)
 			break;

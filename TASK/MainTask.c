@@ -86,7 +86,7 @@ static void MainTask(void const *argument)
     Button_Init();
     DS3231_Init();
     W25QXX_Init();
-#if 1
+#if 0
     Wifi_Init();
     Network_Init();
 #endif
@@ -101,7 +101,8 @@ static void MainTask(void const *argument)
     // 然后，更新时间
     TimeUpdateTaskHandle = osThreadCreate(osThread(TimeUpdateTaskName), NULL);
 #endif
-
+    while (1)
+        ;
     // 如果连配置信息都木有，emmm，将就吧，直到按钮按下，进入配置模式，总能设置点什么东西的
 
     // 加载完成，显示时间
@@ -127,12 +128,15 @@ static void MainTask(void const *argument)
 #endif
     while (1)
     {
+#if 0
         if (flag1)
         {
             flag1 = false;
             localtime_r(&time_dat, &timer);
             NixieTube_ShowTM(&timer);
         }
+#endif
+#if 0
         if (flag2)
         {
             // 按钮按下，表示需要进入配对模式或者再次连接指定的AP热点
@@ -142,6 +146,7 @@ static void MainTask(void const *argument)
             // 然后就阻塞在这，直到调试模式结束
             osSemaphoreWait(DebugModeExitSemHandle, 0);
         }
+#endif
     }
 }
 

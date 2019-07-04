@@ -13,6 +13,7 @@ int main(void)
     HAL_Init();
     /* Configure the system clock */
     SystemClock_Config();
+    HAL_NVIC_SetPriorityGrouping(NVIC_PRIORITYGROUP_4);
     /* Initialize all configured peripherals */
     MX_GPIO_Init();
     Debug_Init();
@@ -20,8 +21,15 @@ int main(void)
     // 哈哈
     printf("Hello World!\n");
 
+
+#if 1
+    Wifi_Init();
+    Network_Init();
+#endif
+
     extern void Boot(void);
     Boot();
+
 
     /* Start scheduler */
     osKernelStart();
