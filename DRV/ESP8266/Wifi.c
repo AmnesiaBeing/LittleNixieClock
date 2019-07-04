@@ -261,7 +261,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
 	HAL_UART_Receive_IT(&WIFI_UARTHANDLE, &Wifi.usartBuff, 1);
 	if (Wifi.usartBuff != 'A')
-		__NOP() :
+		__NOP();
 }
 //#########################################################################################################
 void Wifi_Init(void)
