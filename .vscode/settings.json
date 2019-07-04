@@ -23,7 +23,8 @@
         "gpio.h": "c",
         "w25qxx.h": "c",
         "tasks.h": "c",
-        "network.h": "c"
+        "network.h": "c",
+        "anim.h": "c"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }

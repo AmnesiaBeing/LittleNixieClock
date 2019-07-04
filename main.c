@@ -1,24 +1,8 @@
 #include "cmsis_os.h"
-#include "HAL/adc.h"
-#include "HAL/i2c.h"
-#include "HAL/quadspi.h"
-#include "HAL/sai.h"
-#include "HAL/spi.h"
-#include "HAL/usart.h"
 #include "HAL/gpio.h"
-
-#include "DRV/ESP8266/Wifi.h"
-#include "DRV/DS3231.h"
-#include "DRV/Button.h"
-#include "DRV/PWR.h"
 #include "DRV/Debug.h"
-#include "DRV/HV507.h"
-#include "DRV/W25QXX.h"
 
-#include "FUN/NixieTube.h"
-#include "FUN/Anim.h"
-#include "FUN/RGBLED.h"
-#include "FUN/Network.h"
+#include <stdio.h>
 
 void SystemClock_Config(void);
 
@@ -32,19 +16,8 @@ int main(void)
     /* Initialize all configured peripherals */
     MX_GPIO_Init();
     Debug_Init();
-    PWR_5V_ON();
-    Button_Init();
 
-    extern void DebugMode(void);
-    Button_Register_Callback(DebugMode);
-
-    HV507_Init();
-    DS3231_Init();
-    W25QXX_Init();
-#if 1
-    Wifi_Init();
-    Network_Init();
-#endif
+    // 哈哈
     printf("Hello World!\n");
 
     extern void Boot(void);

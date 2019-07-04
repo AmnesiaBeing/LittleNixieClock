@@ -257,6 +257,7 @@ void Wifi_RxCallBack(void)
 //#########################################################################################################
 void Wifi_Init(void)
 {
+	MX_USART1_UART_Init();
 	HAL_GPIO_WritePin(WIFI_RST_GPIO_PORT, WIFI_RST_GPIO_PIN, GPIO_PIN_SET);
 	// RST引脚变高后，WIFI模块会输出LOGO信息，所以在Network程序中再开中断好了
 	// HAL_UART_Receive_IT(&WIFI_UARTHANDLE, &Wifi.usartBuff, 1);
