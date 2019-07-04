@@ -24,7 +24,6 @@ void Button_Register_Callback(void (*callback)(void))
     do
     {
         Button_Callback = callback;
-        HAL_NVIC_SetPriority(Button_IRQ, 0, 0);
         HAL_NVIC_EnableIRQ(Button_IRQ);
     } while (0);
     osSemaphoreRelease(ButtonSemHandle);

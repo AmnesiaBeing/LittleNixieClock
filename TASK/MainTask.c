@@ -15,14 +15,28 @@
 #include <time.h>
 #include <string.h>
 
+static void MainTask(void const *argument);
+static void AnimTask(void const *argument);
+static void TimeUpdateTask(void const *argument);
+
+osThreadDef(MainTaskName, MainTask, osPriorityNormal, 0, 128);
+osThreadDef(AnimTaskName, AnimTask, osPriorityNormal, 0, 128);
+osThreadDef(TimeUpdateTaskName, TimeUpdateTask, osPriorityNormal, 0, 128);
+
 osThreadId AnimTaskHandle;
 osThreadId ConfigTaskHandle;
 osThreadId MainTaskHandle;
 osThreadId TimeUpdateTaskHandle;
 
-static void MainTask(void const *argument);
-static void AnimTask(void const *argument);
-static void TimeUpdateTask(void const *argument);
+// 动画线程的信号量
+osSemaphoreDef(AnimSemName);
+osSemaphoreId AnimSemHandle;
+osMessageQDef(AnimQueueName, 3, uint32_t);
+osMessageQId AnimQueueHandle;
+
+extern void DebugMode_Init(void);
+extern osSemaphoreId DebugModeIntoSemHandle;
+extern osSemaphoreId DebugModeExitSemHandle;
 
 // 这个表示来自于DS3231的中断，需要更新时间了。
 static bool flag1 = false;
@@ -60,11 +74,14 @@ static void MainTask(void const *argument)
     // 开启VPP的电源
     PWR_VPP_ON();
 
-    // 上述做完，至少能有个开机动画，开个线程，动画线程里有osDelay，优先级高一点没事的
-    Anim_Ctl_t ac = {false, 1};
-    osThreadDef(AnimTaskName, AnimTask, osPriorityNormal, 0, 128);
-    AnimTaskHandle = osThreadCreate(osThread(AnimTaskName), (void *)&ac);
-
+    // 上述做完，至少能有个开机动画，开个线程
+#if 0
+    AnimSemHandle = osSemaphoreCreate(osSemaphore(AnimSemName), 1);
+    osSemaphoreWait(AnimSemHandle, 0); /* 不能能停在这吧 */
+    AnimQueueHandle = osMessageCreate(osMessageQ(AnimQueueName), NULL);
+    AnimTaskHandle = osThreadCreate(osThread(AnimTaskName), NULL);
+    osMessagePut(AnimQueueHandle, 1, 0); /* 0表示非阻塞 */
+#endif
     // 继续初始化
     Button_Init();
     DS3231_Init();
@@ -73,20 +90,20 @@ static void MainTask(void const *argument)
     Wifi_Init();
     Network_Init();
 #endif
-    // // 判断电池是否存在
-    // // bool BAT = false; // = PWR_BAT_IsAvailable();
-    // // 加载配置
-    // // Config_Read();
-    // // 判断配置是否存在
-    // // 不存在则使用默认配置
-    // // bool CFG = false; // = Config_Init();
+#if 0
+    DebugMode_Init();
+#endif
+#if 0
+    // 判断配置是否存在，存在就读取其中WifiAP的SSID和PASSWORD（非阻塞）
+#endif
 
-    // // 如果电池存在，配置存在，说明已经可以正常工作了
-    // // 如果电池存在，配置不存在，说明这是第一次启动，需要初始化配置信息，时间也需要矫正
-    // // 如果电池不存在，配置存在，可能是没电了，说明时间需要矫正
-    // osThreadDef(TimeUpdateTaskName, TimeUpdateTask, osPriorityNormal, 0, 128);
-    // TimeUpdateTaskHandle = osThreadCreate(osThread(TimeUpdateTaskName), NULL);
-    // // 如果电池不存在，配置不存在，测试模式，从串口中读取字符并执行相应的命令
+#if 0
+    // 然后，更新时间
+    TimeUpdateTaskHandle = osThreadCreate(osThread(TimeUpdateTaskName), NULL);
+#endif
+
+    // 如果连配置信息都木有，emmm，将就吧，直到按钮按下，进入配置模式，总能设置点什么东西的
+
     // 加载完成，显示时间
     // ok:
     struct tm timer;
@@ -96,10 +113,8 @@ static void MainTask(void const *argument)
     }
     extern time_t time_dat;
     time_dat = mktime(&timer);
-    // 这样结束进程真的可以吗？上锁结束自己
-    ac.flag = false;
-    while (!ac.flag)
-        ;
+
+    osSemaphoreWait(AnimSemHandle, 0);
 
     // MainTask
     // 负责显示时间的循环
@@ -107,9 +122,9 @@ static void MainTask(void const *argument)
     DS3231_Register_Callback(callback1);
     DS3231_Set1HzSQW();
 
-    extern void DebugMode(void);
+#if 0
     Button_Register_Callback(callback2);
-
+#endif
     while (1)
     {
         if (flag1)
@@ -123,41 +138,37 @@ static void MainTask(void const *argument)
             // 按钮按下，表示需要进入配对模式或者再次连接指定的AP热点
             flag2 = false;
             // 不管咋样，给个动画效果，表示，emmm，按钮按下了
-            Anim_Ctl_t ac = {false, 1};
-            // osThreadDef(AnimTaskName, AnimTask, osPriorityNormal, 0, 128);
-            // AnimTaskHandle = osThreadCreate(osThread(AnimTaskName), (void *)&ac);
-            while (1)
-                ;
+            osMessagePut(AnimQueueHandle, 2, 0);
+            // 然后就阻塞在这，直到调试模式结束
+            osSemaphoreWait(DebugModeExitSemHandle, 0);
         }
     }
 }
 
 // freertos和线程安全没有学到家的感觉
-// 应该有办法传递某种互斥信号才对的，而不是这么丑陋地传个可修改的bool，而且还是线程不安全的情况下
+// 应该有办法传递某种互斥信号才对的
 // 播放特定动画的任务
 static void AnimTask(void const *argument)
 {
-    Anim_Ctl_t *const ac = (Anim_Ctl_t *)argument;
-    volatile bool *const flag = &(ac->flag);
-    void (*p)(void);
-    switch (ac->index)
-    {
-    case 1:
-        p = &Anim_1;
-        break;
-    default:
-        p = &Anim_1;
-        break;
-    }
-
-    do
-    {
-        p();
-    } while (*flag);
-
-    *flag = true;
     while (1)
-        ;
+    {
+        osEvent ev = osMessageGet(AnimQueueHandle, osWaitForever); /* 阻塞在这，直到要播放某个动画效果 */
+        if (ev.status == osEventMessage)
+        {
+            uint32_t index = ev.value.v;
+            void (*p)(void) = &Anim_1;
+            switch (index)
+            {
+            case 1:
+                p = &Anim_1;
+                break;
+            default:
+                break;
+            }
+            p();
+            osSemaphoreRelease(AnimSemHandle);
+        }
+    }
 }
 
 static void TimeUpdateTask(void const *argument)
@@ -171,11 +182,9 @@ static void TimeUpdateTask(void const *argument)
         localtime_r(&t, &timer);
         DS3231_SetTime(&timer);
     }
-    
 }
 
 void Boot(void)
 {
-    osThreadDef(MainTaskName, MainTask, osPriorityNormal, 0, 128);
     osThreadCreate(osThread(MainTaskName), NULL);
 }

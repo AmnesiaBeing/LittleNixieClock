@@ -72,3 +72,5 @@ void W25QXX_Reset(void);
 uint32_t W25QXX_ReadID(void);
 void W25QXX_Enable_QSPIMODE(void);
 void W25QXX_WriteEnable(void);
+bool W25QXX_ReadSector(uint8_t *pData, uint32_t sa, uint32_t sn);
+bool W25QXX_WriteSector(uint8_t *pData, uint32_t sa, uint32_t sn);

@@ -2,6 +2,8 @@
 #include "FUN/Network.h"
 #include "cmsis_os.h"
 
+#include <time.h>
+
 osThreadId NetworkTaskHandle;
 
 uint8_t NetworkBuffer[MAX_LINKID][_WIFI_RX_FOR_DATA_SIZE];
@@ -23,6 +25,8 @@ void Network_Task(void const *argument)
 	Wifi_SetMode(WifiMode_Station);
 	while (Wifi_Station_ConnectToAp("testap", "12345678", NULL) == false)
 		;
+	struct tm timer;
+	Wifi_STNP_GetTime(&timer);
 	//#######################
 	while (1)
 	{

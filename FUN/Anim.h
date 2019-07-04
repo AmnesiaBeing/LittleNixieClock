@@ -1,10 +1,7 @@
 #pragma once
 
-// 为了达成，动画至少要播放完一次的目标，和播放哪个动画的参数，只能做个结构体了
-typedef struct 
-{
-    volatile bool flag;
-    uint8_t index;
-}Anim_Ctl_t;
-
 void Anim_1(void);
+void Anim_2(void);
+void Anim_3(void);
+void Anim_4(void);
+void Anim_5(void);

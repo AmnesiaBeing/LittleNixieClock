@@ -178,7 +178,7 @@ bool W25QXX_ReadSector(uint8_t *pData, uint32_t sa, uint32_t sn)
 }
 
 // 需要先执行WriteEnable
-// databuf：写入数据缓冲区（不想考虑是否溢出的问题），sa：开始扇区，sn：扇区数量
-bool W25QXX_WriteSector(uint8_t *databuf, uint32_t sa, uint32_t sn)
+// pData：写入数据缓冲区（不想考虑是否溢出的问题），sa：开始扇区，sn：扇区数量
+bool W25QXX_WriteSector(uint8_t *pData, uint32_t sa, uint32_t sn)
 {
 }

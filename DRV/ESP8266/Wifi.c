@@ -181,6 +181,8 @@ void Wifi_RxCallBack(void)
 		Wifi.RxBuffer[Wifi.RxIndex] = Wifi.usartBuff;
 		if (Wifi.RxIndex < _WIFI_RX_SIZE)
 			Wifi.RxIndex++;
+		if (Wifi.RxIndex == 2)
+			__NOP();
 	}
 	//--- at command buffer
 	//+++  data buffer
@@ -253,6 +255,14 @@ void Wifi_RxCallBack(void)
 		}
 	}
 	//--- check +IPD in At command buffer
+}
+//#########################################################################################################
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+{
+	if (huart == &WIFI_UARTHANDLE)
+	{
+		Wifi_RxCallBack();
+	}
 }
 //#########################################################################################################
 void Wifi_Init(void)
@@ -907,10 +917,7 @@ bool Wifi_TcpIp_SendDataUdp(uint8_t LinkId, uint16_t dataLen, uint8_t *data)
 	do
 	{
 		Wifi_RxClear();
-		if (Wifi.TcpIpMultiConnection == false)
-			sprintf((char *)Wifi.TxBuffer, "AT+CIPSERVER=0\r\n");
-		else
-			sprintf((char *)Wifi.TxBuffer, "AT+CIPSEND=%d,%d\r\n", LinkId, dataLen);
+		sprintf((char *)Wifi.TxBuffer, "AT+CIPSEND=%d,%d\r\n", LinkId, dataLen);
 		if (Wifi_SendString((char *)Wifi.TxBuffer) == false)
 			break;
 		if (Wifi_WaitForString(_WIFI_WAIT_TIME_LOW, &result, 2, ">", "ERROR") == false)
@@ -935,10 +942,7 @@ bool Wifi_TcpIp_SendDataTcp(uint8_t LinkId, uint16_t dataLen, uint8_t *data)
 	do
 	{
 		Wifi_RxClear();
-		if (Wifi.TcpIpMultiConnection == false)
-			sprintf((char *)Wifi.TxBuffer, "AT+CIPSENDBUF=%d\r\n", dataLen);
-		else
-			sprintf((char *)Wifi.TxBuffer, "AT+CIPSENDBUF=%d,%d\r\n", LinkId, dataLen);
+		sprintf((char *)Wifi.TxBuffer, "AT+CIPSENDBUF=%d,%d\r\n", LinkId, dataLen);
 		if (Wifi_SendString((char *)Wifi.TxBuffer) == false)
 			break;
 		if (Wifi_WaitForString(_WIFI_WAIT_TIME_LOW, &result, 2, "OK", "ERROR") == false)
@@ -952,6 +956,47 @@ bool Wifi_TcpIp_SendDataTcp(uint8_t LinkId, uint16_t dataLen, uint8_t *data)
 		if (Wifi_WaitForString(_WIFI_WAIT_TIME_LOW, &result, 2, "OK", "ERROR") == false)
 			break;
 		returnVal = true;
+	} while (0);
+	osSemaphoreRelease(WifiSemHandle);
+	return returnVal;
+}
+//#########################################################################################################
+bool Wifi_STNP_SetServer(int tz, char *server)
+{
+}
+bool Wifi_STNP_GetTime(struct tm *timer)
+{
+	osSemaphoreWait(WifiSemHandle, osWaitForever);
+	uint8_t result;
+	bool returnVal = false;
+	do
+	{
+		Wifi_RxClear();
+		sprintf((char *)Wifi.TxBuffer, "AT+CIPSNTPTIME?\r\n");
+		if (Wifi_SendString((char *)Wifi.TxBuffer) == false)
+			break;
+		if (Wifi_WaitForString(_WIFI_WAIT_TIME_LOW, &result, 1, "OK") == false)
+			break;
+		if (Wifi_ReturnString((char *)Wifi.RxBuffer, 1, ":") == false)
+			break;
+		// +CIPSNTPTIME:Thu Jul 04 15:41:10 2019
+		// Thu Jul 04 15:41:10 2019
+		// 012345678901234567890123
+		char wday[5];
+		char mon[4];
+		char mday[3];
+		char hour[9];
+		char min[3];
+		char sec[3];
+		char year[5];
+		Wifi_ReturnStrings((char *)Wifi.RxBuffer, " ", 5, &wday, &mon, &mday, &hour, &year);
+		Wifi_ReturnStrings((char *)hour, ":", 3, &hour, &min, &year);
+		timer->tm_year = atoi(year);
+		timer->tm_mday = atoi(mday);
+		timer->tm_hour = atoi(hour);
+		timer->tm_min = atoi(min);
+		timer->tm_sec = atoi(sec);
+		__NOP();
 	} while (0);
 	osSemaphoreRelease(WifiSemHandle);
 	return returnVal;

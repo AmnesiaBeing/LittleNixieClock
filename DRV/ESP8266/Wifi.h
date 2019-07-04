@@ -11,6 +11,8 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdarg.h>
+
+#include <time.h>
 //###################################################################################################
 #define _WIFI_RX_SIZE 512
 #define _WIFI_RX_FOR_DATA_SIZE 1024
@@ -109,7 +111,6 @@ void Wifi_TxClear(void);
 //###################################################################################################
 void Wifi_RxCallBack(void);
 //###################################################################################################
-// void Wifi_HW_RST(void);
 void Wifi_Init(void);
 //###################################################################################################
 bool Wifi_Restart(void);
@@ -142,3 +143,6 @@ bool Wifi_TcpIp_SetEnableTcpServer(uint16_t PortNumber);
 bool Wifi_TcpIp_SetDisableTcpServer(uint16_t PortNumber);
 bool Wifi_TcpIp_SendDataUdp(uint8_t LinkId, uint16_t dataLen, uint8_t *data);
 bool Wifi_TcpIp_SendDataTcp(uint8_t LinkId, uint16_t dataLen, uint8_t *data);
+//###################################################################################################
+bool Wifi_STNP_SetServer(int tz, char *server);
+bool Wifi_STNP_GetTime(struct tm *timer);
